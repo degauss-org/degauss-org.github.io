@@ -2,15 +2,15 @@
 
 ## About
 
-DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization.  This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine -- it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study. Please see detailed documentation within the [wiki](https://github.com/degauss-org/DeGAUSS/wiki):
+DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization.  This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine -- it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study. Please see detailed documentation within the [wiki](https://github.com/degauss-org/degauss-org.github.io/wiki):
 
-- [A background on geocoding, geomarkers, and private health information](https://github.com/degauss-org/DeGAUSS/wiki/Background)
+- [Background on geocoding, geomarkers, and private health information](https://github.com/degauss-org/degauss-org.github.io/wiki/Background)
 - [Installing Docker](https://github.com/degauss-org/degauss-org/wiki/Installing-Docker)
-- [Reproducibility and Versioning](https://github.com/degauss-org/DeGAUSS/wiki/Reproducibility-and-Versioning)
-- [Geocoding with DeGAUSS](https://github.com/degauss-org/DeGAUSS/wiki/Geocoding-with-DeGAUSS)
-- [Geomarker Assessment with DeGAUSS](https://github.com/degauss-org/DeGAUSS/wiki/Geomarker-Assessment-with-DeGAUSS)
-- [Troubleshooting](https://github.com/degauss-org/DeGAUSS/wiki/Troubleshooting)
-- [Memoisation](https://github.com/degauss-org/DeGAUSS/wiki/Memoisation)
+- [Reproducibility and Versioning](https://github.com/degauss-org.github.io/DeGAUSS/wiki/Reproducibility-and-Versioning)
+- [Geocoding with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS)
+- [Geomarker Assessment with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geomarker-Assessment-with-DeGAUSS)
+- [Troubleshooting](https://github.com/degauss-org/degauss-org.github.io/wiki/Troubleshooting)
+- [Microsoft Windows Troubleshooting and Workarounds](https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Troubleshooting-and-Workarounds)
 
 ## Currently Available Images
 
@@ -22,6 +22,7 @@ DeGAUSS is a decentralized method for geocoding and deriving community and indiv
 [`degauss/census_block_group`](https://degauss.org/census_block_group) | census block group FIPS | [![](https://img.shields.io/docker/automated/census_block_group/geocoder)](https://hub.docker.com/repository/docker/degauss/census_block_group/tags) | [![](https://img.shields.io/github/v/tag/degauss-org/census_block_group)](https://github.com/degauss-org/census_block_group)
 [`degauss/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/docker/automated/degauss/roads)](https://hub.docker.com/repository/docker/degauss/roads/tags) | [![](https://img.shields.io/github/v/tag/degauss-org/roads)](https://github.com/degauss-org/roads)
 [`degauss/geocoder_slim`](https://degauss.org/geocoder_slim) | API returning geocoded text string as JSON | [![](https://img.shields.io/docker/automated/degauss/geocoder_slim)](https://hub.docker.com/repository/docker/degauss/geocoder_slim/tags) | [![](https://img.shields.io/github/v/tag/degauss-org/geocoder_slim)](https://github.com/degauss-org/geocoder_slim)
+[`degauss/PEPR_drivetime`](https://degauss.org/PEPR_drivetime) | distance and drive time to PEPR study sites | [![](https://img.shields.io/docker/automated/degauss/pepr_drivetime)](https://hub.docker.com/repository/docker/degauss/pepr_drivetime/tags) | [![](https://img.shields.io/github/v/tag/degauss-org/PEPR_drivetime)](https://github.com/degauss-org/PEPR_drivetime)
 
 ## Citation
 
@@ -29,5 +30,3 @@ If you use this software in a scientific publication, please consider citing one
 
 - Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf).
 - Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. *Journal of Open Source Software*. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf).
-
-## Supported By
