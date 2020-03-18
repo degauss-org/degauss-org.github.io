@@ -9,7 +9,7 @@
 DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization.  This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine -- it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study. Please see detailed documentation within the [wiki](https://github.com/degauss-org/degauss-org.github.io/wiki):
 
 - [Background on geocoding, geomarkers, and private health information](https://github.com/degauss-org/degauss-org.github.io/wiki/Background)
-- [Installing Docker](https://github.com/degauss-org/degauss-org/wiki/Installing-Docker)
+- [Installing Docker](https://github.com/degauss-org/degauss-org.github.io/wiki/Installing-Docker)
 - [Reproducibility and Versioning](https://github.com/degauss-org.github.io/DeGAUSS/wiki/Reproducibility-and-Versioning)
 - [Geocoding with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS)
 - [Geomarker Assessment with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geomarker-Assessment-with-DeGAUSS)
