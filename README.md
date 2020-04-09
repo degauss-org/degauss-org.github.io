@@ -10,7 +10,7 @@ DeGAUSS is a decentralized method for geocoding and deriving community and indiv
 
 - [Background on geocoding, geomarkers, and private health information](https://github.com/degauss-org/degauss-org.github.io/wiki/Background)
 - [Installing Docker](https://github.com/degauss-org/degauss-org.github.io/wiki/Installing-Docker)
-- [Reproducibility and Versioning](https://github.com/degauss-org.github.io/DeGAUSS/wiki/Reproducibility-and-Versioning)
+- [Reproducibility and Versioning](https://github.com/degauss-org/degauss-org.github.io/wiki/Reproducibility-and-Versioning)
 - [Geocoding with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS)
 - [Geomarker Assessment with DeGAUSS](https://github.com/degauss-org/degauss-org.github.io/wiki/Geomarker-Assessment-with-DeGAUSS)
 - [Troubleshooting](https://github.com/degauss-org/degauss-org.github.io/wiki/Troubleshooting)
