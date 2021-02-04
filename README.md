@@ -35,12 +35,11 @@ DeGAUSS is a decentralized method for geocoding and deriving community and indiv
 
 ## Citation
 
-### Used and Trusted By: <p style="vertical-align: top;" >
-  <img src="figs/cchmc_logo.png" width="100" /> <img src="figs/NIH_logo.png" width="100" /> <img src="figs/ECHO_logo.jpg" width="100" /> <img src="figs/BCH_logo.png" width="100" /> <img src="figs/vandy_logo.png" width="100" /> <img src="figs/childrens_philly_logo.png" width="100" />
-</p>
-
-
 If you use this software in a scientific publication, please consider citing one of our publications:
 
 - Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf).
 - Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. *Journal of Open Source Software*. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf).
+
+### Used and Trusted By: <p float="left" >
+  <img src="figs/vandy_logo.png" width="100" /> <img src="figs/NIH_logo.png" width="100" /> <img src="figs/ECHO_logo.jpg" width="100" /> <img src="figs/BCH_logo.png" width="100" /> <img src="figs/cchmc_logo.png" width="100" /> <img src="figs/childrens_philly_logo.png" width="100" />
+</p>
