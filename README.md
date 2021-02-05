@@ -48,6 +48,6 @@ If you use this software in a scientific publication, please consider citing one
    * The Harmony Project
 
 
-## Used and Trusted By <p float="left" >
+## Used and Trusted By 
   <img align="center" src="figs/NIH_logo.png" width="100" /> <img align="center" src="figs/vandy2_logo.png" width="100" /> <img align="center" src="figs/ECHO_logo.jpg" width="100" /> <img align="center" src="figs/cchmc_logo.png" width="100" /> <img align="center" src="figs/childrens_philly_logo.png" width="100" /> <img align="center" src="figs/BCH_logo.png" width="100" /> <img align="center" src="figs/eMERGE_logo.png" width="100" /> <img align="center" src="figs/pepr_logo.png" width="100" /> <img align="center" src="figs/harvard_logo.jpg" width="100" /> <img align="center" src="figs/nw_logo.png" width="100" /> <img align="center" src="figs/columbia_logo.png" width="100" /> <img align="center" src="figs/weill_logo.png" width="100" /> <img align="center" src="figs/odh_logo.png" width="100" /> <img align="center" src="figs/jfs_logo.jpg" width="100" /> <img align="center" src="figs/stjude_logo.jpg" width="100" /> <img align="center" src="figs/mayo_logo.jpg" width="100" /> 
 </p>
