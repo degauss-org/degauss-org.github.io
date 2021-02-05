@@ -8,7 +8,7 @@ If you have used DeGAUSS, would you mind providing us some feedback and completi
 
 ## About
 
-<img src='figs/DeG_flow.png' align="center" height="90.5" /></a>
+<img src='figs/DeG_flow.png' align="center" height="90.5" />
 
 
 DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization.  This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine -- it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study. Please see detailed documentation within the [wiki](https://github.com/degauss-org/degauss-org.github.io/wiki):
