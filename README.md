@@ -40,6 +40,12 @@ If you use this software in a scientific publication, please consider citing one
 - Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf).
 - Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. *Journal of Open Source Software*. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf).
 
+### Supported By:
+   * NIH 1R01LM013222-01A1
+   * NIH 1U2COD023375-04
+   * The Harmony Project
+
+
 ### Used and Trusted By: <p float="left" >
   <img src="figs/NIH_logo.png" width="100" /> <img src="figs/vandy2_logo.png" width="100" /> <img src="figs/ECHO_logo.jpg" width="100" /> <img src="figs/cchmc_logo.png" width="100" /> <img src="figs/childrens_philly_logo.png" width="100" /> <img src="figs/BCH_logo.png" width="100" />
 </p>
