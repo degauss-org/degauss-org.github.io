@@ -47,5 +47,5 @@ If you use this software in a scientific publication, please consider citing one
 
 
 ### Used and Trusted By: <p float="left" >
-  <img src="figs/NIH_logo.png" width="100" /> <img src="figs/vandy2_logo.png" width="100" /> <img src="figs/ECHO_logo.jpg" width="100" /> <img src="figs/cchmc_logo.png" width="100" /> <img src="figs/childrens_philly_logo.png" width="100" /> <img src="figs/BCH_logo.png" width="100" />
+  <img src="figs/NIH_logo.png" width="100" /> <img src="figs/vandy2_logo.png" width="100" /> <img src="figs/ECHO_logo.jpg" width="100" /> <img src="figs/cchmc_logo.png" width="100" /> <img src="figs/childrens_philly_logo.png" width="100" /> <img src="figs/BCH_logo.png" width="100" /> <img src="figs/eMERGE_logo.png" width="100" /> <img src="figs/pepr_logo.png" width="100" /> <img src="figs/harvard_logo.jpg" width="100" /> <img src="figs/nw_logo.png" width="100" /> <img src="figs/columbia_logo.png" width="100" /> <img src="figs/weill_logo.png" width="100" /> <img src="figs/odh_logo.png" width="100" /> <img src="figs/jfs_logo.jpg" width="100" /> <img src="figs/stjude_logo.jpg" width="100" /> <img src="figs/mayo_logo.jpg" width="100" /> 
 </p>
