@@ -1,0 +1,38 @@
+name: "degauss"
+output_dir: "."
+navbar:
+  title: "DeGAUSS"
+  left:
+    - icon: fa-home fa-lg
+      href: index.html
+    - text: "Background"
+      href: background.html
+    - text: "Getting Started"
+      menu:
+        - text: "Installing Docker"
+          href: installing_docker.html
+        - text: "Geocoding"
+          href: https://degauss.org/geocoder/
+        - text: "Geomarker Assessment"
+          href: geomarker.html
+    - text: "Troubleshooting"
+      menu:
+        - text: "General"
+          href: troubleshooting.html
+        - text: "Windows"
+          href: windows_troubleshooting.html
+        - text: "Excel Formatting"
+          href: excel.html
+    - text: "More"
+      menu:
+        - text: "Reproducibility and Versioning"
+          href: versioning.html
+        - text: "Using DeGAUSS as a Geocoding API"
+          href: geocoding_api.html
+        - text: "Manual Geocoder Installation"
+          href: manual_install.html
+  right:
+    - icon: fa-github
+      href: https://github.com/degauss-org
+output:
+  html_document

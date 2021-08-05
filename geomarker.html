@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>geomarker.utf8</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DeGAUSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="background.html">Background</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Getting Started
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="installing_docker.html">Installing Docker</a>
+    </li>
+    <li>
+      <a href="https://degauss.org/geocoder/">Geocoding</a>
+    </li>
+    <li>
+      <a href="geomarker.html">Geomarker Assessment</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Troubleshooting
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="troubleshooting.html">General</a>
+    </li>
+    <li>
+      <a href="windows_troubleshooting.html">Windows</a>
+    </li>
+    <li>
+      <a href="excel.html">Excel Formatting</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="versioning.html">Reproducibility and Versioning</a>
+    </li>
+    <li>
+      <a href="geocoding_api.html">Using DeGAUSS as a Geocoding API</a>
+    </li>
+    <li>
+      <a href="manual_install.html">Manual Geocoder Installation</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/degauss-org">
+    <span class="fas fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="geomarker-assessment-with-degauss" class="section level1">
+<h1>Geomarker Assessment with DeGAUSS</h1>
+<p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Troubleshooting-and-Workarounds">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
+<div id="geomarker-assessment-with-degauss-1" class="section level2">
+<h2>Geomarker Assessment with DeGAUSS</h2>
+<p>The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named <code>lat</code> and <code>lon</code>). In a similar fashion as <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS">before</a>, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.</p>
+<p>Run:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/&lt;name-of-image&gt; &lt;name-of-geocoded-file&gt;</code></pre>
+<p>Continuing with our usage example, if we wanted to calculate the distance to the nearest road and length of roads within a 400 m buffer for each subject, we could use the <a href="https://degauss.org/roads/">degauss/roads</a> image:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/roads my_address_file_geocoded.csv</code></pre>
+<p>Docker will emit some messages as it progresses through the calculations and will again write the file to the working directory with a descriptive name appended, in this case the distance to nearest primary (<code>dist_to_1100</code>) and secondary (<code>dist_to_1200</code>) roads and the length of primary (<code>length_1100</code>) and secondary (<code>length_1200</code>) roads within a 400 m buffer.</p>
+<p>Again, our output file will be written into the same directory as our input file. In our example above, this will be called <code>my_address_file_geocoded_roads.csv</code>:</p>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="23%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>address</th>
+<th>lat</th>
+<th>lon</th>
+<th>dist_to_1100</th>
+<th>dist_to_1200</th>
+<th>length_1100</th>
+<th>length_1200</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>131</td>
+<td>1922 CATALINA AV CINCINNATI OH 45237</td>
+<td>39.17112</td>
+<td>-84.46176</td>
+<td>502.7</td>
+<td>534.8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>540</td>
+<td>5358 LILIBET CT DELHI TOWNSHIP OH 45238</td>
+<td>39.11552</td>
+<td>-84.61902</td>
+<td>5793.1</td>
+<td>1654.7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>112</td>
+<td>630 GREENWOOD AV CINCINNATI OH 45229</td>
+<td>39.15321</td>
+<td>-84.49236</td>
+<td>1453.0</td>
+<td>548.5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that the geomarker assesment programs will return <code>NA</code> for geomarkers when coordinate values are missing. Missing coordinate values are possible if the geocoding container failed to assign them, for example, when using a malformed address string. A user should verify that the address strings have been recorded correctly; however, geocoding sometimes fails even with a correctly supplied address due to inconsistencies and inaccuracies in the street range files provided by the census.</p>
+</div>
+<div id="deidentifying-data" class="section level2">
+<h2>Deidentifying Data</h2>
+<p>Now that we have our desired geomarkers, we can remove the addresses and coordinates from our output file, leaving only the geomarker information that will be associated with health outcomes in a downstream analysis:</p>
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>dist_to_1100</th>
+<th>dist_to_1200</th>
+<th>length_1100</th>
+<th>length_1200</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>131</td>
+<td>502.7</td>
+<td>534.8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>540</td>
+<td>5793.1</td>
+<td>1654.7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>112</td>
+<td>1453.0</td>
+<td>548.5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. (<em>Note: Here, we are applying the “Safe Harbor” method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together. Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies.</em>)</p>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

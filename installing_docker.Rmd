@@ -1,0 +1,39 @@
+# Installing Docker
+
+#### Installing
+
+Docker can be installed on Linux, Microsoft Windows, or MacOS machines.  Docker "Community Engine", or Docker CE, is the free and open source version of Docker that can be used to run DeGAUSS containers. Follow instructions specific to your operating system found on the [Docker CE page on dockerhub](https://hub.docker.com/search/?type=edition&offering=community). Docker can also be installed to cloud platforms, such as AWS or Azure.
+
+#### MacOS
+
+- [detailed installation instructions](https://docs.docker.com/docker-for-mac/install/)
+- [troubleshooting](https://docs.docker.com/docker-for-mac/troubleshoot/)
+- [FAQs](https://docs.docker.com/docker-for-mac/faqs/)
+- [Getting Started](https://docs.docker.com/docker-for-mac/)
+
+#### Microsoft Windows
+
+- [detailed installation instructions](https://docs.docker.com/docker-for-windows/install/)
+- [troubleshooting](https://docs.docker.com/docker-for-windows/troubleshoot/)
+- [FAQs](https://docs.docker.com/docker-for-windows/faqs/)
+- [Getting Started](https://docs.docker.com/docker-for-windows/)
+
+#### Testing the Installation
+
+To test your installation, open a shell (e.g. "Terminal" on macOS or "cmd" on Microsoft Windows) and run `docker run hello-world`. You should see some output describing what Docker did and that it is working correctly:
+
+```
+$ docker run hello-world
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+ca4f61b1923c: Pull complete
+Digest: sha256:ca0eeb6fb05351dfc8759c20733c91def84cb8007aa89a5bf606bc8b315b9fc7
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+```
+
+Notice that after asking Docker to run a container, if it does not find the image locally, it downloads it from an online repository. This is only necessary the first time you run a container from each image.  Once downloaded, Docker will continue to use the same local image to create containers. 

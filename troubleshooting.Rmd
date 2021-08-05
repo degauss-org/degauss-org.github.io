@@ -1,0 +1,56 @@
+# General Troubleshooting
+
+## Insufficient Memory
+
+#### Problem:
+
+DeGAUSS seems to run without reporting any errors, but does not produce an output file. Intermediate directories (`Rtmp...`, `cache`, `degauss_cache`) directories are created, but the program seems to terminate prematurely.
+
+#### Solution
+
+Some of the DeGAUSS images require a large amount of system memory, or RAM, to complete the operation.  If insufficient memory is available to Docker, then the DeGAUSS image will fail without notifying the user.  This can be fixed by increasing the amount of RAM allocated to the virtual machine hosting Docker.  This can be done using the installation wizard, the Docker control panel, or settings in VirtualBox, all depending on the version of Docker and version of OS running Docker.
+
+![](https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/docker_settings_memory.PNG)
+
+## Proxy
+
+#### Problem:
+
+DeGAUSS (or `docker run hello-world`) returns an error along the lines of `x509: certificate signed by unknown authority`
+
+#### Solution
+
+DeGAUSS users from research institutions with networks that contact the internet through a proxy often face this problem.  The root problem is that the Docker virtual machine does not have access to the certificates installed on the host machine.
+
+A lot of institutions responsible for protecting PHI will “intercept” incoming and outgoing internet traffic by appending their own certificates in order to sniff the data that is traveling between a computer and the internet on their network.  Thus, when a user attempts to use the institution’s network to contact an HTTPS site with a computer that doesn’t have the right security certificates (such as is the case here with the virtual machine running Docker), the browser or download protocol will usually refuse because the mismatched certificates are a red flag that someone is trying to “man in the middle” attack the user.  This isn’t a problem unique to Docker — browsing any HTTPS site, e.g. google.com, will return the error if this is the case.
+
+The long fix is to update Docker to utilize the institution's proxy, either through environment variables passed at call time or in the Docker settings.  The short fix is to run the Docker commands while connected to a network not connected to a proxy.  Assuming this is compliant with the institution’s rules on PHI (it usually is), then you can do this by using your institution’s guest network, your own personal network at home, or another “public” wireless network.
+
+Note that this wouldn’t necessarily require any of the PHI to be on the computer when its connected to non-proxied network. A workaround could be to connect to a different network to `docker pull` the image and then `docker run` after switching to the institutional network and adding the data back to the machine. Once an image is pulled, the container can be successfully run without internet access.
+
+## Virtual Private Networks
+
+### Problem
+
+Docker container cannot read files from a host folder mounted via the volume (`-v`) flag. For DeGAUSS, this means that a container might not be able to find the input file and will error with `cannot open file 'my_address_file.csv': No such file or directory`.
+
+### Solution
+
+VPN clients (e.g., Cisco AnyConnect) disrupt the networking that Docker uses to talk to other containers and to the host file system, resulting in a failure to mount any host folders to any containers. Disable any Virtual Private Network (VPN) connection while running Docker and DeGAUSS to avoid this problem.
+
+## Windows Containers vs. Linux Containers
+
+### Problem 
+
+DeGAUSS (or `docker run hello-world`) returns an error along the lines of `no matching manifest for windows/amd64 in the manifest list entries`
+
+### Solution
+
+Switch Docker settings to use Linux Containers instead of Windows Containers. Follow these steps: 
+
+![](https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/switch_to_linux_containers.png)
+screenshot from this [stackoverflow post](https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries)
+
+## Microsoft Windows
+
+Please see the [page](https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Problems-and-Workarounds) dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.

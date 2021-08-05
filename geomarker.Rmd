@@ -1,0 +1,43 @@
+# Geomarker Assessment with DeGAUSS
+
+*Note: If you are using a Windows machine to run Docker, please review [this page](https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Troubleshooting-and-Workarounds) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
+
+## Geomarker Assessment with DeGAUSS
+
+The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  In a similar fashion as [before](https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS), navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
+
+Run:
+
+```
+docker run --rm -v "$PWD":/tmp degauss/<name-of-image> <name-of-geocoded-file>
+```
+
+Continuing with our usage example, if we wanted to calculate the distance to the nearest road and length of roads within a 400 m buffer for each subject, we could use the [degauss/roads](https://degauss.org/roads/) image:
+
+```
+docker run --rm -v "$PWD":/tmp degauss/roads my_address_file_geocoded.csv
+```
+
+Docker will emit some messages as it progresses through the calculations and will again write the file to the working directory with a descriptive name appended, in this case the distance to nearest primary (`dist_to_1100`) and secondary (`dist_to_1200`) roads and the length of primary (`length_1100`) and secondary (`length_1200`) roads within a 400 m buffer.
+
+Again, our output file will be written into the same directory as our input file.  In our example above, this will be called `my_address_file_geocoded_roads.csv`:
+
+| id  | address | lat | lon | dist_to_1100 | dist_to_1200 | length_1100 | length_1200 |
+| ------------- |-------------| -----| -----| -----| -----| -----| -----|
+| 131 | 1922 CATALINA AV CINCINNATI OH 45237 | 39.17112 | -84.46176 | 502.7 | 534.8 | 0 | 0 |
+| 540 | 5358 LILIBET CT DELHI TOWNSHIP OH 45238 | 39.11552 | -84.61902 | 5793.1 | 1654.7 | 0 | 0 |
+| 112 | 630 GREENWOOD AV CINCINNATI OH 45229 | 39.15321 | -84.49236 | 1453.0 | 548.5 | 0 | 0 |
+
+Please note that the geomarker assesment programs will return `NA` for geomarkers when coordinate values are missing.  Missing coordinate values are possible if the geocoding container failed to assign them, for example, when using a malformed address string. A user should verify that the address strings have been recorded correctly; however, geocoding sometimes fails even with a correctly supplied address due to inconsistencies and inaccuracies in the street range files provided by the census.
+
+## Deidentifying Data
+
+Now that we have our desired geomarkers, we can remove the addresses and coordinates from our output file, leaving only the geomarker information that will be associated with health outcomes in a downstream analysis:
+
+| id | dist_to_1100 | dist_to_1200 | length_1100 | length_1200 |
+| ------------- |-------------| -----| -----| -----| 
+| 131 | 502.7 | 534.8 | 0 | 0 |
+| 540 | 5793.1 | 1654.7 | 0 | 0 |
+| 112 | 1453.0 | 548.5 | 0 | 0 |
+
+Since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. (*Note: Here, we are applying the "Safe Harbor" method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together. Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies.*)

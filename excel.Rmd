@@ -1,0 +1,33 @@
+# Excel Formatting for DeGAUSS
+
+Opening an input CSV file in Microsoft Excel can change column formats resulting in incorrect results from DeGAUSS containers. If opening the CSV in Excel before feeding it to a container cannot be avoided, please follow the guidelines below for ensuring columns are formatted properly.
+
+## 1. dates
+
+Excel autoformats dates, usually as `MM/DD/YY`, regardless of the format in which the user supplied the date. Further, Excel will *display* a date in that format even if the actual *value* is stored in a different format. 
+
+DeGAUSS containers work best when dates are formatted as `YYYY-MM-DD`. You can change this format manually in Excel.
+
+Highlight your date column(s) and select "More Number Formats". Then, under **Date** formatting, select the `YYYY-MM-DD` format and click OK. 
+
+<img src="https://github.com/degauss-org/schwartz/blob/master/figs/format_columns.png" width="800" />
+
+<img src="https://github.com/degauss-org/schwartz/blob/master/figs/format_dates.png" width="400" />
+
+<br>
+
+## 2. large numbers
+
+Excel will often display large numbers in scientific notation. If large numbers do not remain formatted numerically, some digits could be stored as zeros, (e.g., the number 123456789 could be stored as 1.2E8, which could then be converted to 120000000). 
+
+Similar to formatting the dates, you can manually format large numbers in Excel. 
+
+<img src="https://github.com/degauss-org/schwartz/blob/master/figs/format_sitecode.png" width="800" />
+
+## Excel display vs. actual cell values
+
+Excel's display will probably not show these changes if the file is saved, closed, and re-opened. One way to see the actual values of the csv file, is to open with a simple text editor, like notepad or TextEdit. 
+
+<img src="https://github.com/degauss-org/schwartz/blob/master/figs/open_with.png" width="700" />
+
+<img src="https://github.com/degauss-org/schwartz/blob/master/figs/text_edit_view.png" width="500" />
