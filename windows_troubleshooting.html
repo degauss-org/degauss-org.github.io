@@ -250,6 +250,9 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
+  <a href="available_images.html">Available Images</a>
+</li>
+<li>
   <a href="background.html">Background</a>
 </li>
 <li class="dropdown">
@@ -263,7 +266,7 @@ $(document).ready(function () {
       <a href="installing_docker.html">Installing Docker</a>
     </li>
     <li>
-      <a href="https://degauss.org/geocoder/">Geocoding</a>
+      <a href="geocoding.html">Geocoding</a>
     </li>
     <li>
       <a href="geomarker.html">Geomarker Assessment</a>
@@ -373,7 +376,7 @@ Execution halted</code></pre>
 <div id="solution-2" class="section level3">
 <h3>Solution</h3>
 <p>This error occurs because some Windows platforms cannot support the R code used for parallel computing. Although this option is enabled by default and cannot be changed by the user, a workaround is to set the Docker host to use only 1 CPU. This can be done in the Docker settings panel and will force the container to use only a single thread.</p>
-<p><img src="https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/docker_settings_cpu.png" /></p>
+<p><img src="figs/docker_settings_cpu.png" /></p>
 </div>
 </div>
 <div id="insufficient-memory" class="section level2">
@@ -385,7 +388,7 @@ Execution halted</code></pre>
 <div id="solution-3" class="section level3">
 <h3>Solution</h3>
 <p>If using an older version of Docker built using the Hyper-V engine, you can allocate more memory to Docker to complete the task. From your Docker dashboard, navigate to the settings. Under “Resources” and “Advanced”, adjust the slider to increase the amount of memory available to Docker. More information is available <a href="https://docs.docker.com/docker-for-windows/">here</a>, under “Resources”.</p>
-<p><img src="https://docs.docker.com/docker-for-windows/images/settings-resources.png" /></p>
+<p><img src="https://docs.docker.com/desktop/windows/images/settings-resources.png" /></p>
 <p>However, if your Docker is built using the WSL 2 engine, these options are not available. If you do not see the above screen, you will have to manually allocate more memory to Docker using the instructions found <a href="https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig">here</a>, under “Configure global options with .wslconfig”.</p>
 <pre><code>[wsl2]
 kernel=C:\\temp\\myCustomKernel

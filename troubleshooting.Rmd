@@ -10,7 +10,7 @@ DeGAUSS seems to run without reporting any errors, but does not produce an outpu
 
 Some of the DeGAUSS images require a large amount of system memory, or RAM, to complete the operation.  If insufficient memory is available to Docker, then the DeGAUSS image will fail without notifying the user.  This can be fixed by increasing the amount of RAM allocated to the virtual machine hosting Docker.  This can be done using the installation wizard, the Docker control panel, or settings in VirtualBox, all depending on the version of Docker and version of OS running Docker.
 
-![](https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/docker_settings_memory.PNG)
+![](figs/docker_settings_memory.png)
 
 ## Proxy
 
@@ -48,9 +48,10 @@ DeGAUSS (or `docker run hello-world`) returns an error along the lines of `no ma
 
 Switch Docker settings to use Linux Containers instead of Windows Containers. Follow these steps: 
 
-![](https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/switch_to_linux_containers.png)
+![](figs/switch_to_linux_containers.png)
+
 screenshot from this [stackoverflow post](https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries)
 
 ## Microsoft Windows
 
-Please see the [page](https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Problems-and-Workarounds) dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.
+Please see the [page](https://degauss.org/windows_troubleshooting) dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.

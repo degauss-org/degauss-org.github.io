@@ -250,6 +250,9 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
+  <a href="available_images.html">Available Images</a>
+</li>
+<li>
   <a href="background.html">Background</a>
 </li>
 <li class="dropdown">
@@ -263,7 +266,7 @@ $(document).ready(function () {
       <a href="installing_docker.html">Installing Docker</a>
     </li>
     <li>
-      <a href="https://degauss.org/geocoder/">Geocoding</a>
+      <a href="geocoding.html">Geocoding</a>
     </li>
     <li>
       <a href="geomarker.html">Geomarker Assessment</a>
@@ -329,10 +332,8 @@ $(document).ready(function () {
 
 <div id="geomarker-assessment-with-degauss" class="section level1">
 <h1>Geomarker Assessment with DeGAUSS</h1>
-<p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Troubleshooting-and-Workarounds">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
-<div id="geomarker-assessment-with-degauss-1" class="section level2">
-<h2>Geomarker Assessment with DeGAUSS</h2>
-<p>The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named <code>lat</code> and <code>lon</code>). In a similar fashion as <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS">before</a>, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.</p>
+<p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://degauss.org/windows_troubleshooting">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
+<p>The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named <code>lat</code> and <code>lon</code>). Similar to the <a href="https://degauss.org/geocoding">geocoding</a> process, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.</p>
 <p>Run:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/&lt;name-of-image&gt; &lt;name-of-geocoded-file&gt;</code></pre>
 <p>Continuing with our usage example, if we wanted to calculate the distance to the nearest road and length of roads within a 400 m buffer for each subject, we could use the <a href="https://degauss.org/roads/">degauss/roads</a> image:</p>
@@ -396,7 +397,6 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>Please note that the geomarker assesment programs will return <code>NA</code> for geomarkers when coordinate values are missing. Missing coordinate values are possible if the geocoding container failed to assign them, for example, when using a malformed address string. A user should verify that the address strings have been recorded correctly; however, geocoding sometimes fails even with a correctly supplied address due to inconsistencies and inaccuracies in the street range files provided by the census.</p>
-</div>
 <div id="deidentifying-data" class="section level2">
 <h2>Deidentifying Data</h2>
 <p>Now that we have our desired geomarkers, we can remove the addresses and coordinates from our output file, leaving only the geomarker information that will be associated with health outcomes in a downstream analysis:</p>

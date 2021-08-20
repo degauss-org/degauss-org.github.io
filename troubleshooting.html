@@ -250,6 +250,9 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
+  <a href="available_images.html">Available Images</a>
+</li>
+<li>
   <a href="background.html">Background</a>
 </li>
 <li class="dropdown">
@@ -263,7 +266,7 @@ $(document).ready(function () {
       <a href="installing_docker.html">Installing Docker</a>
     </li>
     <li>
-      <a href="https://degauss.org/geocoder/">Geocoding</a>
+      <a href="geocoding.html">Geocoding</a>
     </li>
     <li>
       <a href="geomarker.html">Geomarker Assessment</a>
@@ -338,7 +341,7 @@ $(document).ready(function () {
 <div id="solution" class="section level4">
 <h4>Solution</h4>
 <p>Some of the DeGAUSS images require a large amount of system memory, or RAM, to complete the operation. If insufficient memory is available to Docker, then the DeGAUSS image will fail without notifying the user. This can be fixed by increasing the amount of RAM allocated to the virtual machine hosting Docker. This can be done using the installation wizard, the Docker control panel, or settings in VirtualBox, all depending on the version of Docker and version of OS running Docker.</p>
-<p><img src="https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/docker_settings_memory.PNG" /></p>
+<p><img src="figs/docker_settings_memory.png" /></p>
 </div>
 </div>
 <div id="proxy" class="section level2">
@@ -375,12 +378,13 @@ $(document).ready(function () {
 <div id="solution-3" class="section level3">
 <h3>Solution</h3>
 <p>Switch Docker settings to use Linux Containers instead of Windows Containers. Follow these steps:</p>
-<p><img src="https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/switch_to_linux_containers.png" /> screenshot from this <a href="https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries">stackoverflow post</a></p>
+<p><img src="figs/switch_to_linux_containers.png" /></p>
+<p>screenshot from this <a href="https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries">stackoverflow post</a></p>
 </div>
 </div>
 <div id="microsoft-windows" class="section level2">
 <h2>Microsoft Windows</h2>
-<p>Please see the <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Problems-and-Workarounds">page</a> dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.</p>
+<p>Please see the <a href="https://degauss.org/windows_troubleshooting">page</a> dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.</p>
 </div>
 </div>
 

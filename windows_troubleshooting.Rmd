@@ -58,7 +58,7 @@ Execution halted
 
 This error occurs because some Windows platforms cannot support the R code used for parallel computing.  Although this option is enabled by default and cannot be changed by the user, a workaround is to set the Docker host to use only 1 CPU.  This can be done in the Docker settings panel and will force the container to use only a single thread.
 
-![](https://github.com/degauss-org/PEPR_example_workflow/blob/master/images/docker_settings_cpu.png)
+![](figs/docker_settings_cpu.png)
 
 ## Insufficient Memory
 
@@ -70,7 +70,7 @@ DeGAUSS seems to run without reporting any errors, but does not produce an outpu
 
 If using an older version of Docker built using the Hyper-V engine, you can allocate more memory to Docker to complete the task. From your Docker dashboard, navigate to the settings. Under "Resources" and "Advanced", adjust the slider to increase the amount of memory available to Docker. More information is available [here](https://docs.docker.com/docker-for-windows/), under "Resources".
 
-![](https://docs.docker.com/docker-for-windows/images/settings-resources.png)
+![](https://docs.docker.com/desktop/windows/images/settings-resources.png)
 
 However, if your Docker is built using the WSL 2 engine, these options are not available. If you do not see the above screen, you will have to manually allocate more memory to Docker using the instructions found [here](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig), under "Configure global options with .wslconfig". 
 

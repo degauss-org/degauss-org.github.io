@@ -1,10 +1,8 @@
 # Geomarker Assessment with DeGAUSS
 
-*Note: If you are using a Windows machine to run Docker, please review [this page](https://github.com/degauss-org/degauss-org.github.io/wiki/Microsoft-Windows-Troubleshooting-and-Workarounds) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
+*Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
 
-## Geomarker Assessment with DeGAUSS
-
-The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  In a similar fashion as [before](https://github.com/degauss-org/degauss-org.github.io/wiki/Geocoding-with-DeGAUSS), navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
+The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  Similar to the [geocoding](https://degauss.org/geocoding) process, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
 
 Run:
 
