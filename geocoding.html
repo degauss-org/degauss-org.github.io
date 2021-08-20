@@ -11,7 +11,7 @@
 
 
 
-<title>index.utf8</title>
+<title>geocoding.utf8</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -330,38 +330,72 @@ $(document).ready(function () {
 </div>
 
 
-<div id="degauss" class="section level1">
-<h1>DeGAUSS <a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a></h1>
-<p><strong>De</strong>centralized <strong>G</strong>eomarker <strong>A</strong>ssessment for M<strong>u</strong>lti-<strong>S</strong>ite <strong>S</strong>tudies</p>
-<p><em>Questions? Problems? Please <a href="https://github.com/degauss-org/degauss-org.github.io/issues/new">file an issue</a> on GitHub and see our <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Troubleshooting">troubleshooting</a> guide.</em></p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
-<div id="about" class="section level2">
-<h2>About</h2>
-<p><img src='figs/DeG_flow.png' align="center" height="90.5" /></p>
-<p>DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization. This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine – it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study.</p>
-<div id="to-get-started-using-degauss-check-out-the-getting-started-tab-above-or-view-our-available-images." class="section level3">
-<h3>To get started using DeGAUSS, check out the ‘Getting Started’ tab above, or view our <a href="https://degauss.org/available_images">available images</a>.</h3>
-</div>
-</div>
-<div id="citation" class="section level2">
-<h2>Citation</h2>
-<p>If you use this software in a scientific publication, please consider citing one of our publications:</p>
+<div id="geocoding-with-degauss" class="section level1">
+<h1>Geocoding with DeGAUSS</h1>
+<blockquote>
+<p>The DeGAUSS geocoder relies on offline TIGER/Line data useful for geocoding private health information. View the <a href="https://degauss.org/geocoder">geocoder homepage</a> for more information.</p>
+</blockquote>
+<div id="input-address-data-formatting" class="section level3">
+<h3>Input address data formatting</h3>
+<p>Addresses must be stored as a <code>CSV</code> file and follow these formatting requirements:</p>
 <ul>
-<li>Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. <em>Journal of American Medical Informatics Association</em>. 25(3). 309-314. 2018. <a href="https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf"><em>Download</em></a>.</li>
-<li>Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. <em>Journal of Open Source Software</em>. 2018. <a href="https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf"><em>Download</em></a>.</li>
+<li>Other columns may be present, but it is recommended to only include <code>address</code> and an optional identifier column (e.g., <code>id</code>). Fewer columns will increase geocoding speed.</li>
+<li>Address data must be in one column called <code>address</code>.</li>
+<li>Separate the different address components with a space</li>
+<li>Do not include apartment numbers or “second address line” (but its okay if you can’t remove them)</li>
+<li>ZIP codes must be five digits (i.e. <code>32709</code>) and not “plus four” (i.e. <code>32709-0000</code>)</li>
+<li>Do not try to geocode addresses without a valid 5 digit zip code; this is used by the geocoder to complete its initial searches and if attempted, it will likely return incorrect matches</li>
+<li>Spelling should be as accurate as possible, but the program does complete “fuzzy matching” so an exact match is not necessary</li>
+<li>Capitalization does not affect results</li>
+<li>Abbreviations may be used (i.e. <code>St.</code> instead of <code>Street</code> or <code>OH</code> instead of <code>Ohio</code>)</li>
+<li>Use arabic numerals instead of written numbers (i.e. <code>13</code> instead of <code>thirteen</code>)</li>
+<li>Address strings with out of order items could return NA (i.e. <code>3333 Burnet Ave Cincinnati 45229 OH</code>)</li>
 </ul>
 </div>
-<div id="supported-by" class="section level2">
-<h2>Supported By</h2>
+<div id="using-the-degauss-geocoder" class="section level3">
+<h3>Using the DeGAUSS geocoder</h3>
+<ol style="list-style-type: decimal">
+<li><p>Start Docker.</p></li>
+<li><p>If using MacOS, open the terminal application. For Windows, use the command prompt or powershell.</p></li>
+<li><p>Navigate to the working directory where your address file is located. For example, if your file is saved to the Desktop, use <code>cd Desktop</code>. See <a href="https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management">here</a> for more information on file navigation.</p></li>
+<li><p>Enter the DeGAUSS command. See the example below:</p></li>
+</ol>
+<p>If <code>my_address_file.csv</code> is a file in the current working directory with an address column named <code>address</code>, then</p>
+<pre class="sh"><code>docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv</code></pre>
+<p>will produce <code>my_address_file_geocoded_v3.0.csv</code> with added columns including <code>lat</code>, <code>lon</code>, and geocoding diagnostic information.</p>
+<p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://degauss.org/windows_troubleshooting">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
+</div>
+<div id="interpreting-geocoding-results" class="section level3">
+<h3>Interpreting geocoding results</h3>
+<p>The geocoder’s output file includes the following columns:</p>
 <ul>
-<li>NIH 1R01LM013222-01A1</li>
-<li>NIH 1U2COD023375-04</li>
-<li>The Harmony Project</li>
+<li><p><code>matched_street</code>, <code>matched_city</code>, <code>matched_state</code>, <code>matched_zip</code>: matched address componets (e.g., <code>matched_street</code> is the street the geocoder matched with the input address); can be used to investigate input address misspellings, typos, etc.</p></li>
+<li><p><code>precision</code>: The qualitative precision of the geocode. The value will be one of:</p>
+<ul>
+<li><p><code>range</code>: interpolated based on address ranges from street segments</p></li>
+<li><p><code>street</code>: center of the matched street</p></li>
+<li><p><code>intersection</code>: intersection of two streets</p></li>
+<li><p><code>zip</code>: centroid of the matched zip code</p></li>
+<li><p><code>city</code>: centroid of the matched city</p></li>
+</ul></li>
+<li><p><code>score</code>: The percentage of text match between the given address and the geocoded result, expressed as a number between 0 and 1. A higher score indicates a closer match. Note that each score is relative within a precision method (i.e. a <code>score</code> of <code>0.8</code> with a <code>precision</code> of <code>range</code>is not the same as a <code>score</code> of <code>0.8</code> with a <code>precision</code> of <code>street</code>).</p></li>
+<li><p><code>lat</code> and <code>lon</code>: geocoded coordinates for matched address</p></li>
+<li><p><code>geocode_result</code>: A qualitative summary of the geocoding result. The value will be one of</p>
+<ul>
+<li><p><code>po_box</code>: the address was not geocoded because it is a PO Box</p></li>
+<li><p><code>cincy_inst_foster_addr</code>: the address was not geocoded because it is a known institutional address, not a residential address</p></li>
+<li><p><code>non_address_text</code>: the address was not geocoded because it was blank or listed as “foreign”, “verify”, or “unknown”</p></li>
+<li><p><code>imprecise_geocode</code>: the address was geocoded, but results were suppressed because the <code>precision</code> was <code>intersection</code>, <code>zip</code>, or <code>city</code> and/or the <code>score</code> was less than <code>0.5</code>.</p></li>
+<li><p><code>geocoded</code>: the address was geocoded with a <code>precision</code> of either <code>range</code> or <code>street</code> and a <code>score</code> of <code>0.5</code> or greater.</p></li>
+</ul></li>
 </ul>
 </div>
-<div id="used-and-trusted-by" class="section level2">
-<h2>Used and Trusted By</h2>
-<p><img align="center" src="figs/NIH_logo.png" width="100" /> <img align="center" src="figs/vandy2_logo.png" width="100" /> <img align="center" src="figs/ECHO_logo.jpg" width="100" /> <img align="center" src="figs/cchmc_logo.png" width="100" /> <img align="center" src="figs/childrens_philly_logo.png" width="100" /> <img align="center" src="figs/BCH_logo.png" width="100" /> <img align="center" src="figs/eMERGE_logo.png" width="100" /> <img align="center" src="figs/pepr_logo.png" width="100" /> <img align="center" src="figs/harvard_logo.jpg" width="100" /> <img align="center" src="figs/nw_logo.png" width="100" /> <img align="center" src="figs/columbia_logo.png" width="100" /> <img align="center" src="figs/weill_logo.png" width="100" /> <img align="center" src="figs/odh_logo.png" width="100" /> <img align="center" src="figs/jfs_logo.jpg" width="100" /> <img align="center" src="figs/stjude_logo.jpg" width="100" /> <img align="center" src="figs/mayo_logo.jpg" width="100" /></p>
+<div id="missing-geocoding-results" class="section level3">
+<h3>Missing geocoding results</h3>
+<ul>
+<li>Geocodes with a resulting precision of <code>intersection</code>, <code>zip</code>, or <code>city</code> are returned with a missing <code>lat</code> and <code>lon</code> because they are likely too inaccurate and/or too imprecise to be used for further analysis.</li>
+<li>By default, <code>lat</code> and <code>lon</code> are also returned as missing if the <code>score</code> is less than <code>0.5</code> (regardless of the precision). This threshold can be changed by including an optional argument in the docker call (<code>docker run --rm -v $PWD:/tmp degauss/geocoder:3.0 my_address_file.csv 0.4</code>).</li>
+</ul>
 </div>
 </div>
 

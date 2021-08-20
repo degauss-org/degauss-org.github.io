@@ -11,7 +11,7 @@
 
 
 
-<title>index.utf8</title>
+<title>available_images.utf8</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -330,39 +330,84 @@ $(document).ready(function () {
 </div>
 
 
-<div id="degauss" class="section level1">
-<h1>DeGAUSS <a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a></h1>
-<p><strong>De</strong>centralized <strong>G</strong>eomarker <strong>A</strong>ssessment for M<strong>u</strong>lti-<strong>S</strong>ite <strong>S</strong>tudies</p>
-<p><em>Questions? Problems? Please <a href="https://github.com/degauss-org/degauss-org.github.io/issues/new">file an issue</a> on GitHub and see our <a href="https://github.com/degauss-org/degauss-org.github.io/wiki/Troubleshooting">troubleshooting</a> guide.</em></p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
-<div id="about" class="section level2">
-<h2>About</h2>
-<p><img src='figs/DeG_flow.png' align="center" height="90.5" /></p>
-<p>DeGAUSS is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization. This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine – it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study.</p>
-<div id="to-get-started-using-degauss-check-out-the-getting-started-tab-above-or-view-our-available-images." class="section level3">
-<h3>To get started using DeGAUSS, check out the ‘Getting Started’ tab above, or view our <a href="https://degauss.org/available_images">available images</a>.</h3>
-</div>
-</div>
-<div id="citation" class="section level2">
-<h2>Citation</h2>
-<p>If you use this software in a scientific publication, please consider citing one of our publications:</p>
-<ul>
-<li>Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. <em>Journal of American Medical Informatics Association</em>. 25(3). 309-314. 2018. <a href="https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf"><em>Download</em></a>.</li>
-<li>Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. <em>Journal of Open Source Software</em>. 2018. <a href="https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf"><em>Download</em></a>.</li>
-</ul>
-</div>
-<div id="supported-by" class="section level2">
-<h2>Supported By</h2>
-<ul>
-<li>NIH 1R01LM013222-01A1</li>
-<li>NIH 1U2COD023375-04</li>
-<li>The Harmony Project</li>
-</ul>
-</div>
-<div id="used-and-trusted-by" class="section level2">
-<h2>Used and Trusted By</h2>
-<p><img align="center" src="figs/NIH_logo.png" width="100" /> <img align="center" src="figs/vandy2_logo.png" width="100" /> <img align="center" src="figs/ECHO_logo.jpg" width="100" /> <img align="center" src="figs/cchmc_logo.png" width="100" /> <img align="center" src="figs/childrens_philly_logo.png" width="100" /> <img align="center" src="figs/BCH_logo.png" width="100" /> <img align="center" src="figs/eMERGE_logo.png" width="100" /> <img align="center" src="figs/pepr_logo.png" width="100" /> <img align="center" src="figs/harvard_logo.jpg" width="100" /> <img align="center" src="figs/nw_logo.png" width="100" /> <img align="center" src="figs/columbia_logo.png" width="100" /> <img align="center" src="figs/weill_logo.png" width="100" /> <img align="center" src="figs/odh_logo.png" width="100" /> <img align="center" src="figs/jfs_logo.jpg" width="100" /> <img align="center" src="figs/stjude_logo.jpg" width="100" /> <img align="center" src="figs/mayo_logo.jpg" width="100" /></p>
-</div>
+<div id="available-degauss-images" class="section level1">
+<h1>Available DeGAUSS Images</h1>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="42%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>image</strong></th>
+<th><strong>description</strong></th>
+<th><strong>version</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://degauss.org/geocoder"><code>degauss/geocoder</code></a></td>
+<td>batch geocoding</td>
+<td><a href="https://github.com/degauss-org/geocoder"><img src="https://img.shields.io/github/v/tag/degauss-org/geocoder" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/dep_index"><code>degauss/dep_index</code></a></td>
+<td>census tract-level deprivation index</td>
+<td><a href="https://github.com/degauss-org/dep_index"><img src="https://img.shields.io/github/v/tag/degauss-org/dep_index" /></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://degauss.org/cchmc_batch_geocoder"><code>degauss/cchmc_batch_geocoder</code></a></td>
+<td>geocoding, census tract, deprivation index</td>
+<td><a href="https://github.com/degauss-org/cchmc_batch_geocoder"><img src="https://img.shields.io/github/v/tag/degauss-org/cchmc_batch_geocoder" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/census_block_group"><code>degauss/census_block_group</code></a></td>
+<td>census block group FIPS</td>
+<td><a href="https://github.com/degauss-org/census_block_group"><img src="https://img.shields.io/github/v/tag/degauss-org/census_block_group" /></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://degauss.org/roads"><code>degauss/roads</code></a></td>
+<td>proximity and length of major roads</td>
+<td><a href="https://github.com/degauss-org/roads"><img src="https://img.shields.io/github/v/tag/degauss-org/roads" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/greenspace"><code>degauss/greenspace</code></a></td>
+<td>enhanced vegetation index</td>
+<td><a href="https://github.com/degauss-org/greenspace"><img src="https://img.shields.io/github/v/tag/degauss-org/greenspace" /></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://degauss.org/PEPR_drivetime"><code>degauss/PEPR_drivetime</code></a></td>
+<td>distance and drive time to PEPR study sites</td>
+<td><a href="https://github.com/degauss-org/PEPR_drivetime"><img src="https://img.shields.io/github/v/tag/degauss-org/PEPR_drivetime" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/schwartz_grid_lookup"><code>degauss/schwartz_grid_lookup</code></a></td>
+<td>schwartz grid for spatiotemporal pollutant models</td>
+<td><a href="https://github.com/degauss-org/schwartz_grid_lookup"><img src="https://img.shields.io/github/v/tag/degauss-org/schwartz_grid_lookup" /></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://degauss.org/schwartz"><code>degauss/schwartz</code></a></td>
+<td>daily PM2.5, NO2, and O3 concentrations</td>
+<td><a href="https://github.com/degauss-org/schwartz"><img src="https://img.shields.io/github/v/tag/degauss-org/schwartz" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/narr"><code>degauss/narr</code></a></td>
+<td>daily weather data (air temperature, humidity, etc)</td>
+<td><a href="https://github.com/degauss-org/narr"><img src="https://img.shields.io/github/v/tag/degauss-org/narr" /></a></td>
+</tr>
+<tr class="odd">
+<td><a href="https://degauss.org/nlcd"><code>degauss/nlcd</code></a></td>
+<td>land cover data (imperviousness, land use, greenness)</td>
+<td><a href="https://github.com/degauss-org/nlcd"><img src="https://img.shields.io/github/v/tag/degauss-org/nlcd" /></a></td>
+</tr>
+<tr class="even">
+<td><a href="https://degauss.org/pm"><code>degauss/pm</code></a></td>
+<td>daily PM2.5</td>
+<td><a href="https://github.com/degauss-org/pm"><img src="https://img.shields.io/github/v/tag/degauss-org/pm" /></a></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 

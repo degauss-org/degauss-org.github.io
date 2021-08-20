@@ -5,6 +5,8 @@ navbar:
   left:
     - icon: fa-home fa-lg
       href: index.html
+    - text: "Available Images"
+      href: available_images.html
     - text: "Background"
       href: background.html
     - text: "Getting Started"
@@ -12,7 +14,7 @@ navbar:
         - text: "Installing Docker"
           href: installing_docker.html
         - text: "Geocoding"
-          href: https://degauss.org/geocoder/
+          href: geocoding.html
         - text: "Geomarker Assessment"
           href: geomarker.html
     - text: "Troubleshooting"
