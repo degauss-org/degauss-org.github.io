@@ -29,6 +29,8 @@ navbar:
       menu:
         - text: "CREW"
           href: crew.html
+        - text: "PEPR"
+          href: pepr.html
     - text: "More"
       menu:
         - text: "Reproducibility and Versioning"
