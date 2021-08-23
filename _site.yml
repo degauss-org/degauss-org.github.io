@@ -25,6 +25,10 @@ navbar:
           href: windows_troubleshooting.html
         - text: "Excel Formatting"
           href: excel.html
+    - text: "Cohort Guides"
+      menu:
+        - text: "CREW"
+          href: crew.html
     - text: "More"
       menu:
         - text: "Reproducibility and Versioning"

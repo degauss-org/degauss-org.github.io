@@ -2,7 +2,7 @@
 
 **De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite **S**tudies  
 
-*Questions? Problems? Please [file an issue](https://github.com/degauss-org/degauss-org.github.io/issues/new) on GitHub and see our [troubleshooting](https://github.com/degauss-org/degauss-org.github.io/wiki/Troubleshooting) guide.*
+*Questions? Problems? Please [file an issue](https://github.com/degauss-org/degauss-org.github.io/issues/new) on GitHub and see our [troubleshooting](https://degauss.org/troubleshooting) guide.*
 
 If you have used DeGAUSS, would you mind providing us some feedback and completing a short [survey](https://redcap.link/gvhbxfjd)?
 
