@@ -1,0 +1,29 @@
+---
+title: "DeGAUSS"
+---
+
+### About <a href='https://degauss-org.github.io'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a>
+
+
+DeGAUSS (**De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite **S**tudies) is a decentralized method for geocoding and deriving community and individual level environmental characteristics while maintaining the privacy of protected health information. It is a standalone and versatile software application based on containerization.  This means that geomarker assessment is reproducible, standardized, and can be computed on at scale. Importantly, DeGAUSS is executable on a local machine -- it does not require extensive computational resources and PHI is never exposed to a third party or the internet, making it ideal for geomarker assessment in a multi-site study. 
+
+<img src='figs/DeG_flow.png' align="center" height="90.5" />
+
+To get started using DeGAUSS, check out the 'Getting Started' tab above, or view our [available images](https://degauss.org/available_images). If you have any questions or problems, please first see our [troubleshooting](https://degauss.org/troubleshooting) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org).
+
+### Citation
+
+If you use this software in a scientific publication, please consider citing one of our publications:
+
+- Cole Brokamp, Chris Wolfe, Todd Lingren, John Harley, Patrick Ryan. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf).
+- Cole Brokamp. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. *Journal of Open Source Software*. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf).
+
+### Supported By
+   * NIH 1R01LM013222-01A1
+   * NIH 1U2COD023375-04
+   * The Harmony Project
+
+
+### Used and Trusted By 
+  <img align="center" src="figs/NIH_logo.png" width="100" /> <img align="center" src="figs/vandy2_logo.png" width="100" /> <img align="center" src="figs/ECHO_logo.jpg" width="100" /> <img align="center" src="figs/cchmc_logo.png" width="100" /> <img align="center" src="figs/childrens_philly_logo.png" width="100" /> <img align="center" src="figs/BCH_logo.png" width="100" /> <img align="center" src="figs/eMERGE_logo.png" width="100" /> <img align="center" src="figs/pepr_logo.png" width="100" /> <img align="center" src="figs/harvard_logo.jpg" width="100" /> <img align="center" src="figs/nw_logo.png" width="100" /> <img align="center" src="figs/columbia_logo.png" width="100" /> <img align="center" src="figs/weill_logo.png" width="100" /> <img align="center" src="figs/odh_logo.png" width="100" /> <img align="center" src="figs/jfs_logo.jpg" width="100" /> <img align="center" src="figs/stjude_logo.jpg" width="100" /> <img align="center" src="figs/mayo_logo.jpg" width="100" /> 
+
