@@ -5,10 +5,10 @@ navbar:
   left:
     - icon: fa-home fa-lg
       href: index.html
-    - text: "Available Images"
-      href: available_images.html
     - text: "Background"
       href: background.html
+    - text: "Available Images"
+      href: available_images.html
     - text: "Getting Started"
       menu:
         - text: "Installing Docker"
@@ -27,8 +27,8 @@ navbar:
           href: excel.html
     - text: "Cohort Guides"
       menu:
-        - text: "CREW"
-          href: crew.html
+        - text: "Schwartz"
+          href: schwartz.html
         - text: "PEPR"
           href: pepr.html
     - text: "More"

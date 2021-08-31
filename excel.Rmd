@@ -1,4 +1,6 @@
-# Excel Formatting for DeGAUSS
+---
+title: "Excel Formatting for DeGAUSS"
+---
 
 Opening an input CSV file in Microsoft Excel can change column formats resulting in incorrect results from DeGAUSS containers. If opening the CSV in Excel before feeding it to a container cannot be avoided, please follow the guidelines below for ensuring columns are formatted properly.
 

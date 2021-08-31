@@ -1,4 +1,6 @@
-# Background
+---
+title: "Background"
+---
 
 Scientific studies often examine the relationships between place-based information and health outcomes; for example, air pollution and asthma, neighborhood crime and mental health, or community greenspace and IQ. Study subjects with location information, most commonly a residential mailing address, are linked to databases of place-based information, or "geomarkers" in order to conduct these studies. Defined formally, a "geomarker" is any objective, contextual or geographic measure that influences or predicts the incidence of outcome or disease. "Geocoding" is the process of translating a string of text referring to a location (most often a mailing address) into coordinates on the earth's surface (most often latitude and longitude). These coordinates are required to link participants to their estimated exposures to geomarkers -- a process we call "geomarker assessment". Some examples of geomarker assessment commonly performed in health studies using people include distance to the nearest major roadway -- a commonly used as a measure of estimated exposure to traffic related air pollution that is associated with increased risk of asthma -- or  neighborhood median household income -- a commonly used as a measure of community deprivation associated with increased bed days spent in the hospital.
 

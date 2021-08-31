@@ -1,4 +1,6 @@
-# Installing Docker
+---
+title: "Installing Docker"
+---
 
 #### Installing
 

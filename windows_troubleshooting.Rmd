@@ -1,4 +1,6 @@
-# Microsoft Windows Troubleshooting and Workarounds
+---
+title: "Microsoft Windows Troubleshooting and Workarounds"
+---
 
 Compared to running DeGAUSS on a macOS or linux system, there are a few known issues and workarounds for using DeGAUSS on Microsoft Windows:
 

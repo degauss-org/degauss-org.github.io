@@ -1,4 +1,6 @@
-# Using DeGAUSS as a Geocoding API
+---
+title: "Using DeGAUSS as a Geocoding API"
+---
 
 For users wanting more control over the raw geocoding results and address formatting, the geocoding "engine" behind the batch processing in `degauss/geocoder` can be programmatically called one address at a time:
 

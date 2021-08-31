@@ -1,4 +1,6 @@
-# Geomarker Assessment with DeGAUSS
+---
+title: "Geomarker Assessment with DeGAUSS"
+---
 
 *Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
 

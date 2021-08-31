@@ -11,9 +11,9 @@
 
 
 
-<title>geomarker.utf8</title>
+<title>Geomarker Assessment with DeGAUSS</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -245,15 +245,15 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="available_images.html">Available Images</a>
+  <a href="background.html">Background</a>
 </li>
 <li>
-  <a href="background.html">Background</a>
+  <a href="available_images.html">Available Images</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -299,7 +299,10 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="crew.html">CREW</a>
+      <a href="schwartz.html">Schwartz</a>
+    </li>
+    <li>
+      <a href="pepr.html">PEPR</a>
     </li>
   </ul>
 </li>
@@ -325,7 +328,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/degauss-org">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -338,12 +341,11 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Geomarker Assessment with DeGAUSS</h1>
 
 </div>
 
 
-<div id="geomarker-assessment-with-degauss" class="section level1">
-<h1>Geomarker Assessment with DeGAUSS</h1>
 <p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://degauss.org/windows_troubleshooting">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
 <p>The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named <code>lat</code> and <code>lon</code>). Similar to the <a href="https://degauss.org/geocoding">geocoding</a> process, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.</p>
 <p>Run:</p>
@@ -447,7 +449,6 @@ $(document).ready(function () {
 </tbody>
 </table>
 <p>Since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. (<em>Note: Here, we are applying the “Safe Harbor” method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together. Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies.</em>)</p>
-</div>
 </div>
 
 

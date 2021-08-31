@@ -1,4 +1,6 @@
-# Manual Geocoder Installation
+---
+title: "Manual Geocoder Installation"
+---
 
 Using the `degauss/geocoder` image allows the user to bypass this manual installation. Below are the manual instructions as an alternative to [`degauss/geocoder`](https://degauss.org/geocoder/).
 

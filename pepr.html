@@ -11,9 +11,9 @@
 
 
 
-<title>pepr.utf8</title>
+<title>DeGAUSS PEPR Guide</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -247,15 +247,15 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="available_images.html">Available Images</a>
+  <a href="background.html">Background</a>
 </li>
 <li>
-  <a href="background.html">Background</a>
+  <a href="available_images.html">Available Images</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -301,7 +301,10 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="crew.html">CREW</a>
+      <a href="schwartz.html">Schwartz</a>
+    </li>
+    <li>
+      <a href="pepr.html">PEPR</a>
     </li>
   </ul>
 </li>
@@ -327,7 +330,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/degauss-org">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -340,12 +343,12 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">DeGAUSS PEPR Guide</h1>
 
 </div>
 
 
-<div id="degauss-pepr-guide" class="section level1">
-<h1>DeGAUSS PEPR Guide <a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a></h1>
+<p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
 <p>This is an example of the workflow a PEPR study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
 <p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
 <p>In steps 2 through 6:</p>
@@ -353,7 +356,6 @@ $(document).ready(function () {
 <li>A DeGAUSS container is used to add geomarker(s) to the input file (columns added in each step are highlighted in gray).</li>
 <li>The input file is the CSV created in the previous step, and the output file will be the input in the next step.</li>
 </ul>
-</div>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
 <p>See <a href="https://degauss.org/installing_docker">Installing Docker</a>.</p>

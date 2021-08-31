@@ -1,4 +1,6 @@
-# Geocoding with DeGAUSS
+---
+title: "Geocoding with DeGAUSS"
+---
 
 > The DeGAUSS geocoder relies on offline TIGER/Line data useful for geocoding private health information.  View the [geocoder homepage](https://degauss.org/geocoder) for more information.
 

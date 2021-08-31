@@ -1,4 +1,6 @@
-# General Troubleshooting
+---
+title: "General Troubleshooting"
+---
 
 ## Insufficient Memory
 

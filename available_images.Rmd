@@ -1,4 +1,6 @@
-# Available DeGAUSS Images
+---
+title: "Available DeGAUSS Images"
+---
 
 | **image** |  **description** | **version** |
 |-----------|------------------|-------------|

@@ -11,9 +11,9 @@
 
 
 
-<title>installing_docker.utf8</title>
+<title>Installing Docker</title>
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -245,15 +245,15 @@ $(document).ready(function () {
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="available_images.html">Available Images</a>
+  <a href="background.html">Background</a>
 </li>
 <li>
-  <a href="background.html">Background</a>
+  <a href="available_images.html">Available Images</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -299,7 +299,10 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="crew.html">CREW</a>
+      <a href="schwartz.html">Schwartz</a>
+    </li>
+    <li>
+      <a href="pepr.html">PEPR</a>
     </li>
   </ul>
 </li>
@@ -325,7 +328,7 @@ $(document).ready(function () {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/degauss-org">
-    <span class="fas fa-github"></span>
+    <span class="fa fa-github"></span>
      
   </a>
 </li>
@@ -338,12 +341,11 @@ $(document).ready(function () {
 
 
 
+<h1 class="title toc-ignore">Installing Docker</h1>
 
 </div>
 
 
-<div id="installing-docker" class="section level1">
-<h1>Installing Docker</h1>
 <div id="installing" class="section level4">
 <h4>Installing</h4>
 <p>Docker can be installed on Linux, Microsoft Windows, or MacOS machines. Docker “Community Engine”, or Docker CE, is the free and open source version of Docker that can be used to run DeGAUSS containers. Follow instructions specific to your operating system found on the <a href="https://hub.docker.com/search/?type=edition&amp;offering=community">Docker CE page on dockerhub</a>. Docker can also be installed to cloud platforms, such as AWS or Azure.</p>
@@ -381,7 +383,6 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ...</code></pre>
 <p>Notice that after asking Docker to run a container, if it does not find the image locally, it downloads it from an online repository. This is only necessary the first time you run a container from each image. Once downloaded, Docker will continue to use the same local image to create containers.</p>
-</div>
 </div>
 
 
