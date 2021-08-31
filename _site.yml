@@ -43,4 +43,6 @@ navbar:
     - icon: fa-github
       href: https://github.com/degauss-org
 output:
-  html_document
+  html_document:
+    includes:
+      in_header: header.html
