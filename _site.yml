@@ -33,8 +33,6 @@ navbar:
           href: pepr.html
     - text: "More"
       menu:
-        - text: "Reproducibility and Versioning"
-          href: versioning.html
         - text: "Using DeGAUSS as a Geocoding API"
           href: geocoding_api.html
         - text: "Manual Geocoder Installation"
