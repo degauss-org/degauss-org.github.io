@@ -4,15 +4,18 @@ title: "Available DeGAUSS Images"
 
 | **image** |  **description** | **version** |
 |-----------|------------------|-------------|
-[`degauss/geocoder`](https://degauss.org/geocoder) | batch geocoding | [![](https://img.shields.io/github/v/tag/degauss-org/geocoder)](https://github.com/degauss-org/geocoder)
-[`degauss/dep_index`](https://degauss.org/dep_index) | census tract-level deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/dep_index)](https://github.com/degauss-org/dep_index)
-[`degauss/cchmc_batch_geocoder`](https://degauss.org/cchmc_batch_geocoder) | geocoding, census tract, deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/cchmc_batch_geocoder)](https://github.com/degauss-org/cchmc_batch_geocoder)
-[`degauss/census_block_group`](https://degauss.org/census_block_group) | census block group FIPS | [![](https://img.shields.io/github/v/tag/degauss-org/census_block_group)](https://github.com/degauss-org/census_block_group)
-[`degauss/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/github/v/tag/degauss-org/roads)](https://github.com/degauss-org/roads)
-[`degauss/greenspace`](https://degauss.org/greenspace) | enhanced vegetation index | [![](https://img.shields.io/github/v/tag/degauss-org/greenspace)](https://github.com/degauss-org/greenspace)
-[`degauss/PEPR_drivetime`](https://degauss.org/PEPR_drivetime) | distance and drive time to PEPR study sites | [![](https://img.shields.io/github/v/tag/degauss-org/PEPR_drivetime)](https://github.com/degauss-org/PEPR_drivetime)
-[`degauss/schwartz_grid_lookup`](https://degauss.org/schwartz_grid_lookup) | schwartz grid for spatiotemporal pollutant models | [![](https://img.shields.io/github/v/tag/degauss-org/schwartz_grid_lookup)](https://github.com/degauss-org/schwartz_grid_lookup)
-[`degauss/schwartz`](https://degauss.org/schwartz) | daily PM2.5, NO2, and O3 concentrations | [![](https://img.shields.io/github/v/tag/degauss-org/schwartz)](https://github.com/degauss-org/schwartz)
-[`degauss/narr`](https://degauss.org/narr) | daily weather data (air temperature, humidity, etc) | [![](https://img.shields.io/github/v/tag/degauss-org/narr)](https://github.com/degauss-org/narr)
-[`degauss/nlcd`](https://degauss.org/nlcd) | land cover data (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/tag/degauss-org/nlcd)](https://github.com/degauss-org/nlcd)
-[`degauss/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/tag/degauss-org/pm)](https://github.com/degauss-org/pm)
+[`degauss/geocoder`](https://degauss.org/geocoder) | batch geocoding | [![](https://img.shields.io/github/v/tag/degauss-org/geocoder)](https://github.com/degauss-org/geocoder/releases)
+[`degauss/dep_index`](https://degauss.org/dep_index) | census tract-level deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/dep_index)](https://github.com/degauss-org/dep_index/releases)
+[`degauss/cchmc_batch_geocoder`](https://degauss.org/cchmc_batch_geocoder) | geocoding, census tract, deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/cchmc_batch_geocoder)](https://github.com/degauss-org/cchmc_batch_geocoder/releases)
+[`degauss/census_block_group`](https://degauss.org/census_block_group) | census block group FIPS | [![](https://img.shields.io/github/v/tag/degauss-org/census_block_group)](https://github.com/degauss-org/census_block_group/releases)
+[`degauss/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/github/v/tag/degauss-org/roads)](https://github.com/degauss-org/roads/releases)
+[`degauss/greenspace`](https://degauss.org/greenspace) | enhanced vegetation index | [![](https://img.shields.io/github/v/tag/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
+[`degauss/PEPR_drivetime`](https://degauss.org/PEPR_drivetime) | distance and drive time to PEPR study sites | [![](https://img.shields.io/github/v/tag/degauss-org/PEPR_drivetime)](https://github.com/degauss-org/PEPR_drivetime/releases)
+[`degauss/schwartz_grid_lookup`](https://degauss.org/schwartz_grid_lookup) | schwartz grid for spatiotemporal pollutant models | [![](https://img.shields.io/github/v/tag/degauss-org/schwartz_grid_lookup)](https://github.com/degauss-org/schwartz_grid_lookup/releases)
+[`degauss/schwartz`](https://degauss.org/schwartz) | daily PM2.5, NO2, and O3 concentrations | [![](https://img.shields.io/github/v/tag/degauss-org/schwartz)](https://github.com/degauss-org/schwartz/releases)
+[`degauss/narr`](https://degauss.org/narr) | daily weather data (air temperature, humidity, etc) | [![](https://img.shields.io/github/v/tag/degauss-org/narr)](https://github.com/degauss-org/narr/releases)
+[`degauss/nlcd`](https://degauss.org/nlcd) | land cover data (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/tag/degauss-org/nlcd)](https://github.com/degauss-org/nlcd/releases)
+[`degauss/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/tag/degauss-org/pm)](https://github.com/degauss-org/pm/releases)
+
+The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `degauss/geocoder:v2.2`.  
+
