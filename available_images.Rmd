@@ -6,8 +6,8 @@ title: "Available DeGAUSS Images"
 |-----------|------------------|-------------|
 [`degauss/geocoder`](https://degauss.org/geocoder) | batch geocoding | [![](https://img.shields.io/github/v/tag/degauss-org/geocoder)](https://github.com/degauss-org/geocoder/releases)
 [`degauss/dep_index`](https://degauss.org/dep_index) | census tract-level deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/dep_index)](https://github.com/degauss-org/dep_index/releases)
-[`degauss/cchmc_batch_geocoder`](https://degauss.org/cchmc_batch_geocoder) | geocoding, census tract, deprivation index | [![](https://img.shields.io/github/v/tag/degauss-org/cchmc_batch_geocoder)](https://github.com/degauss-org/cchmc_batch_geocoder/releases)
-[`degauss/census_block_group`](https://degauss.org/census_block_group) | census block group FIPS | [![](https://img.shields.io/github/v/tag/degauss-org/census_block_group)](https://github.com/degauss-org/census_block_group/releases)
+[`degauss/census_block_group`](https://degauss.org/census_block_group) | census block group and tract FIPS | [![](https://img.shields.io/github/v/tag/degauss-org/census_block_group)](https://github.com/degauss-org/census_block_group/releases)
+[`degauss/st_census_tract`](https://degauss.org/st_census_tract) | spatiotemporal census tract FIPS 1970 - 2020 | [![](https://img.shields.io/github/v/tag/degauss-org/st_census_tract)](https://github.com/degauss-org/st_census_tract/releases)
 [`degauss/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/github/v/tag/degauss-org/roads)](https://github.com/degauss-org/roads/releases)
 [`degauss/greenspace`](https://degauss.org/greenspace) | enhanced vegetation index | [![](https://img.shields.io/github/v/tag/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
 [`degauss/drivetime`](https://degauss.org/drivetime) | distance and drive time to various care sites | [![](https://img.shields.io/github/v/tag/degauss-org/drivetime)](https://github.com/degauss-org/drivetime/releases)
@@ -17,5 +17,5 @@ title: "Available DeGAUSS Images"
 [`degauss/nlcd`](https://degauss.org/nlcd) | land cover data (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/tag/degauss-org/nlcd)](https://github.com/degauss-org/nlcd/releases)
 [`degauss/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/tag/degauss-org/pm)](https://github.com/degauss-org/pm/releases)
 
-The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `degauss/geocoder:v2.2`.  
+The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `degauss/geocoder:3.0.1`.  
 
