@@ -16,6 +16,7 @@ title: "Available DeGAUSS Images"
 [`degauss/narr`](https://degauss.org/narr) | daily weather data (air temperature, humidity, etc) | [![](https://img.shields.io/github/v/tag/degauss-org/narr)](https://github.com/degauss-org/narr/releases)
 [`degauss/nlcd`](https://degauss.org/nlcd) | land cover data (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/tag/degauss-org/nlcd)](https://github.com/degauss-org/nlcd/releases)
 [`degauss/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/tag/degauss-org/pm)](https://github.com/degauss-org/pm/releases)
+[`degauss/aadt`](https://degauss.org/aadt) | average annual daily traffic | [![](https://img.shields.io/github/v/tag/degauss-org/aadt)](https://github.com/degauss-org/aadt/releases)
 
 The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `degauss/geocoder:3.0.1`.  
 
