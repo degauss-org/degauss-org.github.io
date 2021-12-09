@@ -401,6 +401,21 @@ $(document).ready(function () {
 <p>screenshot from this <a href="https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries">stackoverflow post</a></p>
 </div>
 </div>
+<div id="specifying-the-container-registry" class="section level2">
+<h2>Specifying the Container Registry</h2>
+<div id="problem-4" class="section level3">
+<h3>Problem</h3>
+<p>A DeGAUSS <code>docker run</code> command returns an error such as</p>
+<pre><code>Unable to find image &#39;degauss/aadt:0.1.1&#39; locally
+docker: Error response from daemon: manifest for degauss/aadt:0.1.1 not found: manifest unknown: manifest unknown.</code></pre>
+</div>
+</div>
+<div id="solution-4" class="section level2">
+<h2>Solution</h2>
+<p>Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using <code>degauss/&lt;geomarker_name&gt;:&lt;version&gt;</code>. Most DeGAUSS images (including current and previous versions) are now <em>also</em> hosted via the GitHub Container Registry. All new images will <em>only</em> be available on GitHub Container Registry and must be called using the full naming structure, as shown below:</p>
+<p><code>ghcr.io/degauss-org/&lt;geomarker_name&gt;:&lt;version&gt;</code></p>
+<p>Refer to our list of <a href="https://degauss.org/available_images">available images</a> for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the availble images table to the image’s README page.</p>
+</div>
 <div id="microsoft-windows" class="section level2">
 <h2>Microsoft Windows</h2>
 <p>Please see the <a href="https://degauss.org/windows_troubleshooting">page</a> dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.</p>

@@ -54,6 +54,25 @@ Switch Docker settings to use Linux Containers instead of Windows Containers. Fo
 
 screenshot from this [stackoverflow post](https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries)
 
+## Specifying the Container Registry
+
+### Problem 
+
+A DeGAUSS `docker run` command returns an error such as
+
+```
+Unable to find image 'degauss/aadt:0.1.1' locally
+docker: Error response from daemon: manifest for degauss/aadt:0.1.1 not found: manifest unknown: manifest unknown.
+```
+
+## Solution
+
+Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using `degauss/<geomarker_name>:<version>`. Most DeGAUSS images (including current and previous versions) are now *also* hosted via the GitHub Container Registry. All new images will *only* be available on GitHub Container Registry and must be called using the full naming structure, as shown below:
+
+`ghcr.io/degauss-org/<geomarker_name>:<version>`
+
+Refer to our list of [available images](https://degauss.org/available_images) for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the availble images table to the image's README page.
+
 ## Microsoft Windows
 
 Please see the [page](https://degauss.org/windows_troubleshooting) dedicated to known issues and workarounds for using DeGAUSS on Microsoft Windows.
