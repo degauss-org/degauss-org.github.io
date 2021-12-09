@@ -18,5 +18,7 @@ title: "Available DeGAUSS Images"
 [`ghcr.io/degauss-org/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/tag/degauss-org/pm)](https://github.com/degauss-org/pm/releases)
 [`ghcr.io/degauss-org/aadt`](https://degauss.org/aadt) | average annual daily traffic | [![](https://img.shields.io/github/v/tag/degauss-org/aadt)](https://github.com/degauss-org/aadt/releases)
 
-The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `degauss/geocoder:3.0.1`.  
+The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. `ghcr.io/degauss-org/geocoder:3.0.1`.  
+
+The most recent version, as well as most older versions, of images prefixed with `ghcr.io` are avaialable via GitHub Container Registry. Some older versions are still available on Docker Hub.
 
