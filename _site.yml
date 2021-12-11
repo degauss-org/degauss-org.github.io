@@ -13,6 +13,8 @@ navbar:
       menu:
         - text: "Installing Docker"
           href: installing_docker.html
+        - text: "DeGAUSS Docker Commands"
+          href: anatomy_of_degauss_command.html
         - text: "Geocoding"
           href: geocoding.html
         - text: "Geomarker Assessment"
