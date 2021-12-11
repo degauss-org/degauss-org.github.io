@@ -412,9 +412,9 @@ docker: Error response from daemon: manifest for degauss/aadt:0.1.1 not found: m
 </div>
 <div id="solution-4" class="section level2">
 <h2>Solution</h2>
-<p>Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using <code>degauss/&lt;geomarker_name&gt;:&lt;version&gt;</code>. Most DeGAUSS images (including current and previous versions) are now <em>also</em> hosted via the GitHub Container Registry. All new images will <em>only</em> be available on GitHub Container Registry and must be called using the full naming structure, as shown below:</p>
+<p>Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using <code>degauss/&lt;geomarker_name&gt;:&lt;version&gt;</code>. Most DeGAUSS images (including current and previous versions) are now <em>also</em> hosted via the GitHub Container Registry. Beginning in December 2021, all newly created images will <em>only</em> be available on GitHub Container Registry and must be called using the full naming structure:</p>
 <p><code>ghcr.io/degauss-org/&lt;geomarker_name&gt;:&lt;version&gt;</code></p>
-<p>Refer to our list of <a href="https://degauss.org/available_images">available images</a> for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the availble images table to the image’s README page.</p>
+<p>Refer to our list of <a href="https://degauss.org/available_images">available images</a> for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the available images table to the image’s README page.</p>
 </div>
 <div id="microsoft-windows" class="section level2">
 <h2>Microsoft Windows</h2>

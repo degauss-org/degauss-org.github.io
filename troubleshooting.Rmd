@@ -67,11 +67,11 @@ docker: Error response from daemon: manifest for degauss/aadt:0.1.1 not found: m
 
 ## Solution
 
-Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using `degauss/<geomarker_name>:<version>`. Most DeGAUSS images (including current and previous versions) are now *also* hosted via the GitHub Container Registry. All new images will *only* be available on GitHub Container Registry and must be called using the full naming structure, as shown below:
+Until December 2021, all DeGAUSS images were hosted using DockerHub and could be called using `degauss/<geomarker_name>:<version>`. Most DeGAUSS images (including current and previous versions) are now *also* hosted via the GitHub Container Registry. Beginning in December 2021, all newly created images will *only* be available on GitHub Container Registry and must be called using the full naming structure:
 
 `ghcr.io/degauss-org/<geomarker_name>:<version>`
 
-Refer to our list of [available images](https://degauss.org/available_images) for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the availble images table to the image's README page.
+Refer to our list of [available images](https://degauss.org/available_images) for proper naming of each image. To see a full docker command with the appropriate image naming convention, follow the link from the available images table to the image's README page.
 
 ## Microsoft Windows
 
