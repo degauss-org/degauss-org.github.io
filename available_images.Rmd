@@ -1,22 +1,20 @@
----
-title: "Available DeGAUSS Images"
----
+&nbsp;
 
-| **image\*** |  **description** | **version\*\*** |
+| image\* |  description | version\*\* |
 |:-----------|:------------------:|:-------------:|
-[`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder) | batch geocoding | [![](https://img.shields.io/github/v/release/degauss-org/geocoder?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/geocoder/releases)
-[`ghcr.io/degauss-org/census_block_group`](https://degauss.org/census_block_group) | census block group and tract FIPS | [![](https://img.shields.io/github/v/release/degauss-org/census_block_group?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/census_block_group/releases)
-[`ghcr.io/degauss-org/st_census_tract`](https://degauss.org/st_census_tract) | spatiotemporal census tract FIPS 1970 - 2020 | [![](https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/st_census_tract/releases)
-[`ghcr.io/degauss-org/dep_index`](https://degauss.org/dep_index) | census tract-level deprivation index | [![](https://img.shields.io/github/v/release/degauss-org/dep_index?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/dep_index/releases)
-[`ghcr.io/degauss-org/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/github/v/release/degauss-org/roads?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/roads/releases)
-[`ghcr.io/degauss-org/aadt`](https://degauss.org/aadt) | average annual daily traffic | [![](https://img.shields.io/github/v/release/degauss-org/aadt?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/aadt/releases)
-[`ghcr.io/degauss-org/greenspace`](https://degauss.org/greenspace) | enhanced vegetation index | [![](https://img.shields.io/github/v/release/degauss-org/greenspace?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/greenspace/releases)
-[`ghcr.io/degauss-org/nlcd`](https://degauss.org/nlcd) | land cover (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/release/degauss-org/nlcd?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/nlcd/releases)
-[`ghcr.io/degauss-org/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/release/degauss-org/pm?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/pm/releases)
-[`ghcr.io/degauss-org/narr`](https://degauss.org/narr) | daily weather data (air temperature, humidity, etc) | [![](https://img.shields.io/github/v/release/degauss-org/narr?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/narr/releases)
-[`ghcr.io/degauss-org/drivetime`](https://degauss.org/drivetime) | distance and drive time to various care sites | [![](https://img.shields.io/github/v/release/degauss-org/drivetime?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/drivetime/releases)
-[`degauss/schwartz_grid_lookup`](https://degauss.org/schwartz_grid_lookup) | schwartz grid for spatiotemporal pollutant models | [![](https://img.shields.io/github/v/release/degauss-org/schwartz_grid_lookup?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/schwartz_grid_lookup/releases)
-[`degauss/schwartz`](https://degauss.org/schwartz) | daily PM2.5, NO2, and O3 concentrations | [![](https://img.shields.io/github/v/release/degauss-org/schwartz?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/schwartz/releases)
+[`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder) | geocode | [![](https://img.shields.io/github/v/release/degauss-org/geocoder?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/geocoder/releases)
+[`ghcr.io/degauss-org/census_block_group`](https://degauss.org/census_block_group) | census block group and tract | [![](https://img.shields.io/github/v/release/degauss-org/census_block_group?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/census_block_group/releases)
+[`ghcr.io/degauss-org/st_census_tract`](https://degauss.org/st_census_tract) | spatiotemporal census tract 1970 - 2020 | [![](https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/st_census_tract/releases)
+[`ghcr.io/degauss-org/dep_index`](https://degauss.org/dep_index) | census tract-level deprivation index | [![](https://img.shields.io/github/v/release/degauss-org/dep_index?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/dep_index/releases)
+[`ghcr.io/degauss-org/roads`](https://degauss.org/roads) | proximity and length of major roads | [![](https://img.shields.io/github/v/release/degauss-org/roads?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/roads/releases)
+[`ghcr.io/degauss-org/aadt`](https://degauss.org/aadt) | average annual daily traffic | [![](https://img.shields.io/github/v/release/degauss-org/aadt?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/aadt/releases)
+[`ghcr.io/degauss-org/greenspace`](https://degauss.org/greenspace) | enhanced vegetation index | [![](https://img.shields.io/github/v/release/degauss-org/greenspace?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/greenspace/releases)
+[`ghcr.io/degauss-org/nlcd`](https://degauss.org/nlcd) | land cover (imperviousness, land use, greenness) | [![](https://img.shields.io/github/v/release/degauss-org/nlcd?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/nlcd/releases)
+[`ghcr.io/degauss-org/pm`](https://degauss.org/pm) | daily PM2.5 | [![](https://img.shields.io/github/v/release/degauss-org/pm?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/pm/releases)
+[`ghcr.io/degauss-org/narr`](https://degauss.org/narr) | daily weather data (temperature, humidity, etc) | [![](https://img.shields.io/github/v/release/degauss-org/narr?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/narr/releases)
+[`ghcr.io/degauss-org/drivetime`](https://degauss.org/drivetime) | distance and drive time to care sites | [![](https://img.shields.io/github/v/release/degauss-org/drivetime?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/drivetime/releases)
+[`degauss/schwartz_grid_lookup`](https://degauss.org/schwartz_grid_lookup) | schwartz 1 x 1 km grid identifier | [![](https://img.shields.io/github/v/release/degauss-org/schwartz_grid_lookup?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/schwartz_grid_lookup/releases)
+[`degauss/schwartz`](https://degauss.org/schwartz) | daily PM2.5, NO2, and O3 concentrations | [![](https://img.shields.io/github/v/release/degauss-org/schwartz?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/schwartz/releases)
 
 **\*** Recent versions of DeGAUSS containers are hosted on the GitHub Container Registry and now require the `ghcr.io` prefix in a [DeGAUSS command](anatomy_of_degauss_command.html) to specify this. Older DeGAUSS images were hosted on [Docker Hub](https://hub.docker.com/u/degauss) and many are still available there. 
 

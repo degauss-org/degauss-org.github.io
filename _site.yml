@@ -1,6 +1,7 @@
 name: "degauss"
-output_dir: "."
+output_dir: "docs"
 navbar:
+  bg: light
   title: "DeGAUSS"
   left:
     - icon: fa-home fa-lg
@@ -44,5 +45,13 @@ navbar:
       href: https://github.com/degauss-org
 output:
   html_document:
+    theme:
+      version: "4"
+      bg: "#FFFFFF"
+      fg: "#072B67"
+      primary: "#C2326B"
     includes:
       in_header: header.html
+exclude: ["Makefile", "README.md", "renv.lock", "renv", "renv/*"]
+include: []
+new_session: true
