@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Geocoding with DeGAUSS</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DeGAUSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="background.html">Background</a>
+</li>
+<li>
+  <a href="available_images.html">Available Images</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Getting Started
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="installing_docker.html">Installing Docker</a>
+    </li>
+    <li>
+      <a href="anatomy_of_degauss_command.html">DeGAUSS Docker Commands</a>
+    </li>
+    <li>
+      <a href="geocoding.html">Geocoding</a>
+    </li>
+    <li>
+      <a href="geomarker.html">Geomarker Assessment</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Troubleshooting
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="troubleshooting.html">General</a>
+    </li>
+    <li>
+      <a href="windows_troubleshooting.html">Windows</a>
+    </li>
+    <li>
+      <a href="excel.html">Excel Formatting</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cohort Guides
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="crew.html">CREW</a>
+    </li>
+    <li>
+      <a href="pepr.html">PEPR</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    More
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="geocoding_api.html">Using DeGAUSS as a Geocoding API</a>
+    </li>
+    <li>
+      <a href="manual_install.html">Manual Geocoder Installation</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/degauss-org">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Geocoding with DeGAUSS</h1>
+
+</div>
+
+
+<blockquote>
+<p>The DeGAUSS geocoder relies on offline TIGER/Line data useful for geocoding private health information. View the <a href="https://degauss.org/geocoder">geocoder homepage</a> for more information.</p>
+</blockquote>
+<div id="input-address-data-formatting" class="section level3">
+<h3>Input address data formatting</h3>
+<p>Addresses must be stored as a <code>CSV</code> file and follow these formatting requirements:</p>
+<ul>
+<li>Other columns may be present, but it is recommended to only include <code>address</code> and an optional identifier column (e.g., <code>id</code>). Fewer columns will increase geocoding speed.</li>
+<li>Address data must be in one column called <code>address</code>.</li>
+<li>Separate the different address components with a space</li>
+<li>Do not include apartment numbers or “second address line” (but its okay if you can’t remove them)</li>
+<li>ZIP codes must be five digits (i.e. <code>32709</code>) and not “plus four” (i.e. <code>32709-0000</code>)</li>
+<li>Do not try to geocode addresses without a valid 5 digit zip code; this is used by the geocoder to complete its initial searches and if attempted, it will likely return incorrect matches</li>
+<li>Spelling should be as accurate as possible, but the program does complete “fuzzy matching” so an exact match is not necessary</li>
+<li>Capitalization does not affect results</li>
+<li>Abbreviations may be used (i.e. <code>St.</code> instead of <code>Street</code> or <code>OH</code> instead of <code>Ohio</code>)</li>
+<li>Use arabic numerals instead of written numbers (i.e. <code>13</code> instead of <code>thirteen</code>)</li>
+<li>Address strings with out of order items could return NA (i.e. <code>3333 Burnet Ave Cincinnati 45229 OH</code>)</li>
+</ul>
+</div>
+<div id="using-the-degauss-geocoder" class="section level3">
+<h3>Using the DeGAUSS geocoder</h3>
+<ol style="list-style-type: decimal">
+<li><p>Start Docker.</p></li>
+<li><p>If using MacOS, open the terminal application. For Windows, use the command prompt or powershell.</p></li>
+<li><p>Navigate to the working directory where your address file is located. For example, if your file is saved to the Desktop, use <code>cd Desktop</code>. See <a href="https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management">here</a> for more information on file navigation.</p></li>
+<li><p>Enter the DeGAUSS command. See the example below:</p></li>
+</ol>
+<p>If <code>my_address_file.csv</code> is a file in the current working directory with an address column named <code>address</code>, then</p>
+<pre class="sh"><code>docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv</code></pre>
+<p>will produce <code>my_address_file_geocoded_v3.0.csv</code> with added columns including <code>lat</code>, <code>lon</code>, and geocoding diagnostic information.</p>
+<p><em>Note: If you are using a Windows machine to run Docker, please review <a href="https://degauss.org/windows_troubleshooting">this page</a> for Windows-specific changes that likely need to be made to successfully use DeGAUSS. You can ignore this if you are using macOS or linux.</em></p>
+</div>
+<div id="interpreting-geocoding-results" class="section level3">
+<h3>Interpreting geocoding results</h3>
+<p>The geocoder’s output file includes the following columns:</p>
+<ul>
+<li><p><code>matched_street</code>, <code>matched_city</code>, <code>matched_state</code>, <code>matched_zip</code>: matched address componets (e.g., <code>matched_street</code> is the street the geocoder matched with the input address); can be used to investigate input address misspellings, typos, etc.</p></li>
+<li><p><code>precision</code>: The qualitative precision of the geocode. The value will be one of:</p>
+<ul>
+<li><p><code>range</code>: interpolated based on address ranges from street segments</p></li>
+<li><p><code>street</code>: center of the matched street</p></li>
+<li><p><code>intersection</code>: intersection of two streets</p></li>
+<li><p><code>zip</code>: centroid of the matched zip code</p></li>
+<li><p><code>city</code>: centroid of the matched city</p></li>
+</ul></li>
+<li><p><code>score</code>: The percentage of text match between the given address and the geocoded result, expressed as a number between 0 and 1. A higher score indicates a closer match. Note that each score is relative within a precision method (i.e. a <code>score</code> of <code>0.8</code> with a <code>precision</code> of <code>range</code>is not the same as a <code>score</code> of <code>0.8</code> with a <code>precision</code> of <code>street</code>).</p></li>
+<li><p><code>lat</code> and <code>lon</code>: geocoded coordinates for matched address</p></li>
+<li><p><code>geocode_result</code>: A qualitative summary of the geocoding result. The value will be one of</p>
+<ul>
+<li><p><code>po_box</code>: the address was not geocoded because it is a PO Box</p></li>
+<li><p><code>cincy_inst_foster_addr</code>: the address was not geocoded because it is a known institutional address, not a residential address</p></li>
+<li><p><code>non_address_text</code>: the address was not geocoded because it was blank or listed as “foreign”, “verify”, or “unknown”</p></li>
+<li><p><code>imprecise_geocode</code>: the address was geocoded, but results were suppressed because the <code>precision</code> was <code>intersection</code>, <code>zip</code>, or <code>city</code> and/or the <code>score</code> was less than <code>0.5</code>.</p></li>
+<li><p><code>geocoded</code>: the address was geocoded with a <code>precision</code> of either <code>range</code> or <code>street</code> and a <code>score</code> of <code>0.5</code> or greater.</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="missing-geocoding-results" class="section level3">
+<h3>Missing geocoding results</h3>
+<ul>
+<li>Geocodes with a resulting precision of <code>intersection</code>, <code>zip</code>, or <code>city</code> are returned with a missing <code>lat</code> and <code>lon</code> because they are likely too inaccurate and/or too imprecise to be used for further analysis.</li>
+<li>By default, <code>lat</code> and <code>lon</code> are also returned as missing if the <code>score</code> is less than <code>0.5</code> (regardless of the precision). This threshold can be changed by including an optional argument in the docker call (<code>docker run --rm -v $PWD:/tmp degauss/geocoder:3.0 my_address_file.csv 0.4</code>).</li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

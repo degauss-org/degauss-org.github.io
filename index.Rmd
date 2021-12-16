@@ -1,6 +1,4 @@
----
-title: "DeGAUSS"
----
+&nbsp;
 
 ### About <a href='https://degauss-org.github.io'><img src='figs/degauss_hex.png' align="right" height="138.5" /></a>
 

@@ -4,4 +4,4 @@ title: "The Anatomy of a DeGAUSS Command"
 
 DeGAUSS commands are essentially Docker commands with some specified arguments. Below, an example command is broken into color-coded annotated sections. To use this generally for any DeGAUSS application, `my_address_file.csv` would be replaced by the name of your csv file located in the current working directory of your shell. `geocoder` and `3.0.2` would be replaced by the name and version, respectively, of the [degauss container](https://degauss.org/available_images) you would like to run. 
 
-![](https://github.com/degauss-org/anatomy_of_degauss_command/raw/main/PNG/command_colored_descriptions.png)
+![](figs/command_colored_descriptions.png)
