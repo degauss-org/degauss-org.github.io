@@ -274,6 +274,9 @@ $(document).ready(function () {
       <a href="installing_docker.html">Installing Docker</a>
     </li>
     <li>
+      <a href="anatomy_of_degauss_command.html">DeGAUSS Docker Commands</a>
+    </li>
+    <li>
       <a href="geocoding.html">Geocoding</a>
     </li>
     <li>
@@ -353,86 +356,87 @@ $(document).ready(function () {
 
 <table>
 <colgroup>
-<col width="26%" />
+<col width="25%" />
 <col width="42%" />
-<col width="30%" />
+<col width="31%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th><strong>image</strong></th>
-<th><strong>description</strong></th>
-<th><strong>version</strong></th>
+<th align="left"><strong>image*</strong></th>
+<th align="center"><strong>description</strong></th>
+<th align="center"><strong>version**</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="https://degauss.org/geocoder"><code>degauss/geocoder</code></a></td>
-<td>batch geocoding</td>
-<td><a href="https://github.com/degauss-org/geocoder/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/geocoder" /></a></td>
+<td align="left"><a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a></td>
+<td align="center">batch geocoding</td>
+<td align="center"><a href="https://github.com/degauss-org/geocoder/releases"><img src="https://img.shields.io/github/v/release/degauss-org/geocoder?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/dep_index"><code>degauss/dep_index</code></a></td>
-<td>census tract-level deprivation index</td>
-<td><a href="https://github.com/degauss-org/dep_index/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/dep_index" /></a></td>
+<td align="left"><a href="https://degauss.org/census_block_group"><code>ghcr.io/degauss-org/census_block_group</code></a></td>
+<td align="center">census block group and tract FIPS</td>
+<td align="center"><a href="https://github.com/degauss-org/census_block_group/releases"><img src="https://img.shields.io/github/v/release/degauss-org/census_block_group?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/census_block_group"><code>degauss/census_block_group</code></a></td>
-<td>census block group and tract FIPS</td>
-<td><a href="https://github.com/degauss-org/census_block_group/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/census_block_group" /></a></td>
+<td align="left"><a href="https://degauss.org/st_census_tract"><code>ghcr.io/degauss-org/st_census_tract</code></a></td>
+<td align="center">spatiotemporal census tract FIPS 1970 - 2020</td>
+<td align="center"><a href="https://github.com/degauss-org/st_census_tract/releases"><img src="https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/st_census_tract"><code>degauss/st_census_tract</code></a></td>
-<td>spatiotemporal census tract FIPS 1970 - 2020</td>
-<td><a href="https://github.com/degauss-org/st_census_tract/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/st_census_tract" /></a></td>
+<td align="left"><a href="https://degauss.org/dep_index"><code>ghcr.io/degauss-org/dep_index</code></a></td>
+<td align="center">census tract-level deprivation index</td>
+<td align="center"><a href="https://github.com/degauss-org/dep_index/releases"><img src="https://img.shields.io/github/v/release/degauss-org/dep_index?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/roads"><code>degauss/roads</code></a></td>
-<td>proximity and length of major roads</td>
-<td><a href="https://github.com/degauss-org/roads/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/roads" /></a></td>
+<td align="left"><a href="https://degauss.org/roads"><code>ghcr.io/degauss-org/roads</code></a></td>
+<td align="center">proximity and length of major roads</td>
+<td align="center"><a href="https://github.com/degauss-org/roads/releases"><img src="https://img.shields.io/github/v/release/degauss-org/roads?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/greenspace"><code>degauss/greenspace</code></a></td>
-<td>enhanced vegetation index</td>
-<td><a href="https://github.com/degauss-org/greenspace/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/greenspace" /></a></td>
+<td align="left"><a href="https://degauss.org/aadt"><code>ghcr.io/degauss-org/aadt</code></a></td>
+<td align="center">average annual daily traffic</td>
+<td align="center"><a href="https://github.com/degauss-org/aadt/releases"><img src="https://img.shields.io/github/v/release/degauss-org/aadt?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/drivetime"><code>degauss/drivetime</code></a></td>
-<td>distance and drive time to various care sites</td>
-<td><a href="https://github.com/degauss-org/drivetime/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/drivetime" /></a></td>
+<td align="left"><a href="https://degauss.org/greenspace"><code>ghcr.io/degauss-org/greenspace</code></a></td>
+<td align="center">enhanced vegetation index</td>
+<td align="center"><a href="https://github.com/degauss-org/greenspace/releases"><img src="https://img.shields.io/github/v/release/degauss-org/greenspace?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/schwartz_grid_lookup"><code>degauss/schwartz_grid_lookup</code></a></td>
-<td>schwartz grid for spatiotemporal pollutant models</td>
-<td><a href="https://github.com/degauss-org/schwartz_grid_lookup/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/schwartz_grid_lookup" /></a></td>
+<td align="left"><a href="https://degauss.org/nlcd"><code>ghcr.io/degauss-org/nlcd</code></a></td>
+<td align="center">land cover (imperviousness, land use, greenness)</td>
+<td align="center"><a href="https://github.com/degauss-org/nlcd/releases"><img src="https://img.shields.io/github/v/release/degauss-org/nlcd?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/schwartz"><code>degauss/schwartz</code></a></td>
-<td>daily PM2.5, NO2, and O3 concentrations</td>
-<td><a href="https://github.com/degauss-org/schwartz/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/schwartz" /></a></td>
+<td align="left"><a href="https://degauss.org/pm"><code>ghcr.io/degauss-org/pm</code></a></td>
+<td align="center">daily PM2.5</td>
+<td align="center"><a href="https://github.com/degauss-org/pm/releases"><img src="https://img.shields.io/github/v/release/degauss-org/pm?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/narr"><code>degauss/narr</code></a></td>
-<td>daily weather data (air temperature, humidity, etc)</td>
-<td><a href="https://github.com/degauss-org/narr/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/narr" /></a></td>
+<td align="left"><a href="https://degauss.org/narr"><code>ghcr.io/degauss-org/narr</code></a></td>
+<td align="center">daily weather data (air temperature, humidity, etc)</td>
+<td align="center"><a href="https://github.com/degauss-org/narr/releases"><img src="https://img.shields.io/github/v/release/degauss-org/narr?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/nlcd"><code>degauss/nlcd</code></a></td>
-<td>land cover data (imperviousness, land use, greenness)</td>
-<td><a href="https://github.com/degauss-org/nlcd/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/nlcd" /></a></td>
+<td align="left"><a href="https://degauss.org/drivetime"><code>ghcr.io/degauss-org/drivetime</code></a></td>
+<td align="center">distance and drive time to various care sites</td>
+<td align="center"><a href="https://github.com/degauss-org/drivetime/releases"><img src="https://img.shields.io/github/v/release/degauss-org/drivetime?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="even">
-<td><a href="https://degauss.org/pm"><code>degauss/pm</code></a></td>
-<td>daily PM2.5</td>
-<td><a href="https://github.com/degauss-org/pm/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/pm" /></a></td>
+<td align="left"><a href="https://degauss.org/schwartz_grid_lookup"><code>degauss/schwartz_grid_lookup</code></a></td>
+<td align="center">schwartz grid for spatiotemporal pollutant models</td>
+<td align="center"><a href="https://github.com/degauss-org/schwartz_grid_lookup/releases"><img src="https://img.shields.io/github/v/release/degauss-org/schwartz_grid_lookup?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://degauss.org/aadt"><code>degauss/aadt</code></a></td>
-<td>average annual daily traffic</td>
-<td><a href="https://github.com/degauss-org/aadt/releases"><img src="https://img.shields.io/github/v/tag/degauss-org/aadt" /></a></td>
+<td align="left"><a href="https://degauss.org/schwartz"><code>degauss/schwartz</code></a></td>
+<td align="center">daily PM2.5, NO2, and O3 concentrations</td>
+<td align="center"><a href="https://github.com/degauss-org/schwartz/releases"><img src="https://img.shields.io/github/v/release/degauss-org/schwartz?color=469FC2&amp;label=version&amp;sort=semver" /></a></td>
 </tr>
 </tbody>
 </table>
-<p>The badges in the table above indicate the most recently released version of each DeGAUSS image. Clicking each badge links to a GitHub releases page with notes about changes made in each version release. It is possible to specify an older version by adding the tag onto the repo/image name, e.g. <code>degauss/geocoder:3.0.1</code>.</p>
+<p><strong>*</strong> Recent versions of DeGAUSS containers are hosted on the GitHub Container Registry and now require the <code>ghcr.io</code> prefix in a <a href="anatomy_of_degauss_command.html">DeGAUSS command</a> to specify this. Older DeGAUSS images were hosted on <a href="https://hub.docker.com/u/degauss">Docker Hub</a> and many are still available there.</p>
+<p><strong>**</strong> The badges display the most recent version of each DeGAUSS image. Click the badge to visit the GitHub releases page with notes about changes made in each version. When running a DeGAUSS container image, it is possible to specify an older version by changing the tag at the end of the repo/image name, e.g. <code>ghcr.io/degauss-org/geocoder:3.0.1</code>.</p>
 
 
 
