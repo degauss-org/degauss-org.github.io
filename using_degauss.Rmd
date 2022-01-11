@@ -1,0 +1,193 @@
+---
+title: "Using DeGAUSS"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Installing Docker
+
+#### Installing
+
+Docker can be installed on Linux, Microsoft Windows, or MacOS machines.  Docker "Community Engine", or Docker CE, is the free and open source version of Docker that can be used to run DeGAUSS containers. Follow instructions specific to your operating system found on the [Docker CE page on dockerhub](https://hub.docker.com/search/?type=edition&offering=community). Docker can also be installed to cloud platforms, such as AWS or Azure.
+
+#### MacOS
+
+- [detailed installation instructions](https://docs.docker.com/docker-for-mac/install/)
+- [troubleshooting](https://docs.docker.com/docker-for-mac/troubleshoot/)
+- [FAQs](https://docs.docker.com/docker-for-mac/faqs/)
+- [Getting Started](https://docs.docker.com/docker-for-mac/)
+
+#### Microsoft Windows
+
+- [detailed installation instructions](https://docs.docker.com/docker-for-windows/install/)
+- [troubleshooting](https://docs.docker.com/docker-for-windows/troubleshoot/)
+- [FAQs](https://docs.docker.com/docker-for-windows/faqs/)
+- [Getting Started](https://docs.docker.com/docker-for-windows/)
+
+#### Testing the Installation
+
+To test your installation, open a shell (e.g. "Terminal" on macOS or "cmd" on Microsoft Windows) and run `docker run hello-world`. You should see some output describing what Docker did and that it is working correctly:
+
+```
+$ docker run hello-world
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+ca4f61b1923c: Pull complete
+Digest: sha256:ca0eeb6fb05351dfc8759c20733c91def84cb8007aa89a5bf606bc8b315b9fc7
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...
+```
+
+Notice that after asking Docker to run a container, if it does not find the image locally, it downloads it from an online repository. This is only necessary the first time you run a container from each image.  Once downloaded, Docker will continue to use the same local image to create containers. 
+
+# Using the Command Line
+
+>If you are comfortable using the command line, please move on to "The Anatomy of a DeGAUSS Command"
+
+DeGAUSS is operated through a command line interface. If using MacOS, access the command line by opening the terminal application. For Windows, use the command prompt or PowerShell.
+
+## Command Line Navigation
+
+- The most important command when navigating using the command line is 'cd'. Use 'cd /filepath/' to change your directory, or folder. This is the same for both MacOS and Windows.
+- To show your current working directory and filepath, use the 'pwd' command on a Mac and 'cd'
+- To display the contents of your current working directory, use the 'ls' command on a Mac or 'dir' on Windows
+
+For a useful MacOS tutorial, click here: [Link](https://www.taniarascia.com/how-to-use-the-command-line-for-apple-macos-and-linux/)
+<br>
+For a Windows tutorial, click here: [Link](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/)
+
+- Once you are able to successfully navigate to your desired folder, you will be able to use DeGAUSS
+
+# The Anatomy of a DeGAUSS Command
+
+DeGAUSS commands are essentially Docker commands with some specified arguments. Below, an example command is broken into color-coded annotated sections. To use this generally for any DeGAUSS application, `my_address_file.csv` would be replaced by the name of your csv file located in the current working directory of your shell. `geocoder` and `3.0.2` would be replaced by the name and version, respectively, of the [degauss container](https://degauss.org/available_images) you would like to run. 
+
+![](figs/command_colored_descriptions.png)
+
+# Geocoding with DeGAUSS
+
+> The DeGAUSS geocoder relies on offline TIGER/Line data useful for geocoding private health information.  View the [geocoder homepage](https://degauss.org/geocoder) for more information.
+
+### Input address data formatting
+
+Addresses must be stored as a `CSV` file and follow these formatting requirements:
+
+- Other columns may be present, but it is recommended to only include `address` and an optional identifier column (e.g., `id`). Fewer columns will increase geocoding speed.
+- Address data must be in one column called `address`. 
+- Separate the different address components with a space
+- Do not include apartment numbers or "second address line" (but its okay if you can't remove them)
+- ZIP codes must be five digits (i.e. `32709`) and not "plus four" (i.e. `32709-0000`)
+- Do not try to geocode addresses without a valid 5 digit zip code; this is used by the geocoder to complete its initial searches and if attempted, it will likely return incorrect matches
+- Spelling should be as accurate as possible, but the program does complete "fuzzy matching" so an exact match is not necessary
+- Capitalization does not affect results
+- Abbreviations may be used (i.e. `St.` instead of `Street` or `OH` instead of `Ohio`)
+- Use arabic numerals instead of written numbers (i.e. `13` instead of `thirteen`)
+- Address strings with out of order items could return NA (i.e. `3333 Burnet Ave Cincinnati 45229 OH`)
+
+### Using the DeGAUSS geocoder
+
+1. Start Docker.
+
+2. Navigate to the working directory where your address file is located. For example, if your file is saved to the Desktop, use `cd Desktop`. See [here](https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management) for more information on file navigation. 
+
+3. Enter the DeGAUSS command. See the example below:
+
+If `my_address_file.csv` is a file in the current working directory with an address column named `address`, then
+
+```sh
+docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv
+```
+
+will produce `my_address_file_geocoded_v3.0.csv` with added columns including `lat`, `lon`, and geocoding diagnostic information.
+
+*Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
+
+
+### Interpreting geocoding results
+
+The geocoder's output file includes the following columns: 
+
+- `matched_street`, `matched_city`, `matched_state`, `matched_zip`: matched address componets (e.g., `matched_street` is the street the geocoder matched with the input address); can be used to investigate input address misspellings, typos, etc.
+
+
+- `precision`: The qualitative precision of the geocode. The value will be one of:
+
+    * `range`: interpolated based on address ranges from street segments
+
+    * `street`:  center of the matched street
+
+    * `intersection`: intersection of two streets
+
+    * `zip`: centroid of the matched zip code
+
+    * `city`: centroid of the matched city
+      
+    
+- `score`: The percentage of text match between the given address and the geocoded result, expressed as a number between 0 and 1. A higher score indicates a closer match. Note that each score is relative within a precision method (i.e. a `score` of `0.8` with a `precision` of `range `is not the same as a `score` of `0.8` with a `precision` of `street`). 
+
+- `lat` and `lon`: geocoded coordinates for matched address
+
+
+- `geocode_result`: A qualitative summary of the geocoding result. The value will be one of
+
+    * `po_box`: the address was not geocoded because it is a PO Box
+    * `cincy_inst_foster_addr`: the address was not geocoded because it is a known institutional address, not a residential address
+      
+    * `non_address_text`: the address was not geocoded because it was blank or listed as "foreign", "verify", or "unknown" 
+      
+    * `imprecise_geocode`: the address was geocoded, but results were suppressed because the `precision` was `intersection`, `zip`, or `city` and/or the `score` was less than `0.5`.
+      
+    * `geocoded`: the address was geocoded with a `precision` of either `range` or `street` and a `score` of `0.5` or greater.
+	
+### Missing geocoding results
+
+- Geocodes with a resulting precision of `intersection`, `zip`, or `city` are returned with a missing `lat` and `lon` because they are likely too inaccurate and/or too imprecise to be used for further analysis.
+- By default, `lat` and `lon` are also returned as missing if the `score` is less than `0.5` (regardless of the precision). This threshold can be changed by including an optional argument in the docker call (`docker run --rm -v $PWD:/tmp degauss/geocoder:3.0 my_address_file.csv 0.4`).
+
+# Geomarker Assessment with DeGAUSS
+
+*Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
+
+The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  Similar to the [geocoding](https://degauss.org/geocoding) process, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
+
+Run:
+
+```
+docker run --rm -v "$PWD":/tmp degauss/<name-of-image> <name-of-geocoded-file>
+```
+
+Continuing with our usage example, if we wanted to calculate the distance to the nearest road and length of roads within a 400 m buffer for each subject, we could use the [degauss/roads](https://degauss.org/roads/) image:
+
+```
+docker run --rm -v "$PWD":/tmp degauss/roads my_address_file_geocoded.csv
+```
+
+Docker will emit some messages as it progresses through the calculations and will again write the file to the working directory with a descriptive name appended, in this case the distance to nearest primary (`dist_to_1100`) and secondary (`dist_to_1200`) roads and the length of primary (`length_1100`) and secondary (`length_1200`) roads within a 400 m buffer.
+
+Again, our output file will be written into the same directory as our input file.  In our example above, this will be called `my_address_file_geocoded_roads.csv`:
+
+| id  | address | lat | lon | dist_to_1100 | dist_to_1200 | length_1100 | length_1200 |
+| ------------- |-------------| -----| -----| -----| -----| -----| -----|
+| 131 | 1922 CATALINA AV CINCINNATI OH 45237 | 39.17112 | -84.46176 | 502.7 | 534.8 | 0 | 0 |
+| 540 | 5358 LILIBET CT DELHI TOWNSHIP OH 45238 | 39.11552 | -84.61902 | 5793.1 | 1654.7 | 0 | 0 |
+| 112 | 630 GREENWOOD AV CINCINNATI OH 45229 | 39.15321 | -84.49236 | 1453.0 | 548.5 | 0 | 0 |
+
+Please note that the geomarker assesment programs will return `NA` for geomarkers when coordinate values are missing.  Missing coordinate values are possible if the geocoding container failed to assign them, for example, when using a malformed address string. A user should verify that the address strings have been recorded correctly; however, geocoding sometimes fails even with a correctly supplied address due to inconsistencies and inaccuracies in the street range files provided by the census.
+
+## Deidentifying Data
+
+Now that we have our desired geomarkers, we can remove the addresses and coordinates from our output file, leaving only the geomarker information that will be associated with health outcomes in a downstream analysis:
+
+| id | dist_to_1100 | dist_to_1200 | length_1100 | length_1200 |
+| ------------- |-------------| -----| -----| -----| 
+| 131 | 502.7 | 534.8 | 0 | 0 |
+| 540 | 5793.1 | 1654.7 | 0 | 0 |
+| 112 | 1453.0 | 548.5 | 0 | 0 |
+
+Since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. (*Note: Here, we are applying the "Safe Harbor" method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together. Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies.*)
