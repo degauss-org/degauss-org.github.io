@@ -10,31 +10,35 @@ navbar:
       href: background.html
     - text: "Available Images"
       href: available_images.html
-    - text: "Getting Started"
-      menu:
-        - text: "Installing Docker"
-          href: installing_docker.html
-        - text: "DeGAUSS Docker Commands"
-          href: anatomy_of_degauss_command.html
-        - text: "Geocoding"
-          href: geocoding.html
-        - text: "Geomarker Assessment"
-          href: geomarker.html
+    - text: "Using DeGAUSS"
+      href: using_degauss.html
+      # menu:
+      #   - text: "Installing Docker"
+      #     href: installing_docker.html
+      #   - text: "DeGAUSS Docker Commands"
+      #     href: anatomy_of_degauss_command.html
+      #   - text: "Geocoding"
+      #     href: geocoding.html
+      #   - text: "Geomarker Assessment"
+      #     href: geomarker.html
     - text: "Troubleshooting"
-      menu:
-        - text: "General"
-          href: troubleshooting.html
-        - text: "Windows"
-          href: windows_troubleshooting.html
-        - text: "Excel Formatting"
-          href: excel.html
+      href: troubleshooting_all.html
+      # menu:
+      #   - text: "General"
+      #     href: troubleshooting.html
+      #   - text: "Windows"
+      #     href: windows_troubleshooting.html
+      #   - text: "Excel Formatting"
+      #     href: excel.html
     - text: "Cohort Guides"
       menu:
+        - text: "Sample Workflow"
+          href: sample_workflow.html
         - text: "CREW"
           href: crew.html
         - text: "PEPR"
           href: pepr.html
-    - text: "More"
+    - text: "Advanced Uses"
       menu:
         - text: "Using DeGAUSS as a Geocoding API"
           href: geocoding_api.html

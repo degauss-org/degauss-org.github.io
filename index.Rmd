@@ -6,9 +6,9 @@ DeGAUSS (**De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite *
 
 <img src='figs/degauss_multisite_study-degauss_flow.png'/>
 
-### Getting Started
+### Using DeGAUSS
 
-To get started using DeGAUSS, check out the 'Getting Started' tab above, or view our [available images](https://degauss.org/available_images). If you have any questions or problems, please first see our [troubleshooting](https://degauss.org/troubleshooting) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org).
+To get started using DeGAUSS, check out the 'Using DeGAUSS' tab above, or view our [available images](https://degauss.org/available_images). If you have any questions or problems, please first see our [troubleshooting](https://degauss.org/troubleshooting) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org).
 
 ### Citation
 
