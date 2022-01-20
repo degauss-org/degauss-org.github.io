@@ -21,7 +21,7 @@ or DeGAUSS complains that it cannot find the `my_address.csv` file within the wo
 
 **Solution**
 
-In a DeGAUSS command, the `-v` argument is tells Docker to bind the current directory to the `/tmp` directory inside a container so that it can read the input file and write the output file back to the current working directory on the host platform.
+In a DeGAUSS command, the `-v` argument tells Docker to bind the current directory to the `/tmp` directory inside a container so that it can read the input file and write the output file back to the current working directory on the host platform.
 
 The Windows Command Line (`CMD`) does not support the `$PWD` environment variable and so instead of using that to specify the bind point (`-v $PWD:/tmp`) you will have to use a Command Line variable, `%cd`, for example: `-v %cd%:/tmp` or 
 
