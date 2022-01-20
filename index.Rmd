@@ -8,7 +8,7 @@ DeGAUSS (**De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite *
 
 ### Using DeGAUSS
 
-To get started using DeGAUSS, check out the 'Using DeGAUSS' tab above, or view our [available images](https://degauss.org/available_images). If you have any questions or problems, please first see our [troubleshooting](https://degauss.org/troubleshooting) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org).
+Get started using DeGAUSS with the [Using DeGAUSS](using_degauss.html) guide. If you have any questions or problems, please first see our [troubleshooting](troubleshooting.html) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org). DeGAUSS is developed as free and open software and we encourage community contributions!
 
 ### Citation
 

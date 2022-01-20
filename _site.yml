@@ -4,32 +4,14 @@ navbar:
   bg: light
   title: "DeGAUSS"
   left:
-    - icon: fa-home fa-lg
-      href: index.html
     - text: "Background"
       href: background.html
     - text: "Available Images"
       href: available_images.html
     - text: "Using DeGAUSS"
       href: using_degauss.html
-      # menu:
-      #   - text: "Installing Docker"
-      #     href: installing_docker.html
-      #   - text: "DeGAUSS Docker Commands"
-      #     href: anatomy_of_degauss_command.html
-      #   - text: "Geocoding"
-      #     href: geocoding.html
-      #   - text: "Geomarker Assessment"
-      #     href: geomarker.html
     - text: "Troubleshooting"
-      href: troubleshooting_all.html
-      # menu:
-      #   - text: "General"
-      #     href: troubleshooting.html
-      #   - text: "Windows"
-      #     href: windows_troubleshooting.html
-      #   - text: "Excel Formatting"
-      #     href: excel.html
+      href: troubleshooting.html
     - text: "Cohort Guides"
       menu:
         - text: "Sample Workflow"

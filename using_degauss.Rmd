@@ -1,34 +1,17 @@
 ---
-title: "Using DeGAUSS"
 output: 
   html_document:
     toc: true
     toc_float: true
+    toc_depth: 2
 ---
 
-# Installing Docker
+## Installing Docker
 
-#### Installing
+Getting started with Docker requires installing "Docker Desktop" on a Windows or macOS machine or a "Docker Engine" on a Linux operating system. Follow the [official installation instructions](https://hub.docker.com/search/?type=edition&offering=community) specific to your operating system.
+Docker also has detailed installation guides, user manuals, and troubleshooting for both [macOS](https://docs.docker.com/desktop/mac/install/) and [Windows](https://docs.docker.com/desktop/windows/install/).
 
-Docker can be installed on Linux, Microsoft Windows, or MacOS machines.  Docker "Community Engine", or Docker CE, is the free and open source version of Docker that can be used to run DeGAUSS containers. Follow instructions specific to your operating system found on the [Docker CE page on dockerhub](https://hub.docker.com/search/?type=edition&offering=community). Docker can also be installed to cloud platforms, such as AWS or Azure.
-
-#### MacOS
-
-- [detailed installation instructions](https://docs.docker.com/docker-for-mac/install/)
-- [troubleshooting](https://docs.docker.com/docker-for-mac/troubleshoot/)
-- [FAQs](https://docs.docker.com/docker-for-mac/faqs/)
-- [Getting Started](https://docs.docker.com/docker-for-mac/)
-
-#### Microsoft Windows
-
-- [detailed installation instructions](https://docs.docker.com/docker-for-windows/install/)
-- [troubleshooting](https://docs.docker.com/docker-for-windows/troubleshoot/)
-- [FAQs](https://docs.docker.com/docker-for-windows/faqs/)
-- [Getting Started](https://docs.docker.com/docker-for-windows/)
-
-#### Testing the Installation
-
-To test your installation, open a shell (e.g. "Terminal" on macOS or "cmd" on Microsoft Windows) and run `docker run hello-world`. You should see some output describing what Docker did and that it is working correctly:
+To test your installation, open a shell and run `docker run hello-world`. (See the next section for details on using a shell for command line instructions if you are unfamiliar.) You should see some output describing what Docker did and that it is working correctly:
 
 ```
 $ docker run hello-world
@@ -46,35 +29,33 @@ This message shows that your installation appears to be working correctly.
 
 Notice that after asking Docker to run a container, if it does not find the image locally, it downloads it from an online repository. This is only necessary the first time you run a container from each image.  Once downloaded, Docker will continue to use the same local image to create containers. 
 
-# Using the Command Line
+## Command Line
 
->If you are comfortable using the command line, please move on to "The Anatomy of a DeGAUSS Command"
+>If you are comfortable using the command line, please [skip to DeGAUSS Commands](using_degauss.html#DeGAUSS_Commands).
 
-DeGAUSS is operated through a command line interface. If using MacOS, access the command line by opening the terminal application. For Windows, use the command prompt or PowerShell.
+DeGAUSS is operated through a command line interface by using a [shell](https://en.wikipedia.org/wiki/Shell_%28computing%29) to issue Docker commands. If using macOS, access the command line by opening the "Terminal" application. For Windows, use the "Command Prompt" (sometimes abbreviated as "CMD") or "Windows Powershell".  An alternative on Windows is to use a Linux shell through the [Windows Subsystem for Linux](https://www.makeuseof.com/tag/linux-bash-shell-on-windows-10/).
 
-## Command Line Navigation
+Commands typed into a shell operate relative to a "working directory".  This allows us to access the input file by specifying its name without the full path including all parent folders/directories, *but* this requires us to first navigate to the directory on our computer where the input file is located.
 
-- The most important command when navigating using the command line is 'cd'. Use 'cd /filepath/' to change your directory, or folder. This is the same for both MacOS and Windows.
-- To show your current working directory and filepath, use the 'pwd' command on a Mac and 'cd'
-- To display the contents of your current working directory, use the 'ls' command on a Mac or 'dir' on Windows
+After opening a new shell, navigate to the folder/directory where the input file is stored by using the `cd` command (for **c**hange **d**irectory). For example, use `cd Users/Alice/Documents/my_project` to change to the `my_project` directory in `Alice`'s `Documents` folder. (File/folder browsers in macOS and Windows often have a secondary click contextual menu option to copy the path to the current folder, which is usefuly for constructing `cd` commands in a shell.)
 
-For a useful MacOS tutorial, click here: [Link](https://www.taniarascia.com/how-to-use-the-command-line-for-apple-macos-and-linux/)
-<br>
-For a Windows tutorial, click here: [Link](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/)
+For more information on the command line, see these useful tuturials for [macOS](https://www.taniarascia.com/how-to-use-the-command-line-for-apple-macos-and-linux/) and [Windows](https://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/).
 
-- Once you are able to successfully navigate to your desired folder, you will be able to use DeGAUSS
+After succesfully navigating to the folder where the input file is stored, you are ready to use a DeGAUSS command.
 
-# The Anatomy of a DeGAUSS Command
+## DeGAUSS Commands
 
-DeGAUSS commands are essentially Docker commands with some specified arguments. Below, an example command is broken into color-coded annotated sections. To use this generally for any DeGAUSS application, `my_address_file.csv` would be replaced by the name of your csv file located in the current working directory of your shell. `geocoder` and `3.0.2` would be replaced by the name and version, respectively, of the [degauss container](https://degauss.org/available_images) you would like to run. 
+DeGAUSS commands are essentially Docker commands with some specified arguments. Below, an example command is broken into color-coded annotated sections.
 
 ![](figs/command_colored_descriptions.png)
 
-# Geocoding with DeGAUSS
+To use this generally for any DeGAUSS application, `my_address_file.csv` would be replaced by the name of your csv file located in the current working directory of your shell. `geocoder` and `3.0.2` would be replaced by the name and version, respectively, of the [degauss container](available_images.html) you would like to run. 
 
-> The DeGAUSS geocoder relies on offline TIGER/Line data useful for geocoding private health information.  View the [geocoder homepage](https://degauss.org/geocoder) for more information.
+One caveat for using DeGAUSS commands on Windows is the use of the `$PWD` variable, which relies on the convention that the shell will evaluate this as the current working directory. If using Windows Command Prompt (but not Windows Powershell or Windows Subsystem for Linux), this variable is not present and instead must be changed to `%cd%`. Windows Powershell users may have to use `${PWD}`, please see [here](troubleshooting.html#Windows) for more details on `$PWD` for different Windows operating systems.
 
-### Input address data formatting
+## Geocoding
+
+#### Input address data formatting
 
 Addresses must be stored as a `CSV` file and follow these formatting requirements:
 
@@ -90,11 +71,11 @@ Addresses must be stored as a `CSV` file and follow these formatting requirement
 - Use arabic numerals instead of written numbers (i.e. `13` instead of `thirteen`)
 - Address strings with out of order items could return NA (i.e. `3333 Burnet Ave Cincinnati 45229 OH`)
 
-### Using the DeGAUSS geocoder
+#### Using the DeGAUSS geocoder
 
-1. Start Docker.
+1. Make sure Docker is running and open a new shell.
 
-2. Navigate to the working directory where your address file is located. For example, if your file is saved to the Desktop, use `cd Desktop`. See [here](https://www.digitalocean.com/community/tutorials/basic-linux-navigation-and-file-management) for more information on file navigation. 
+2. Navigate to the directory where your address file is located. 
 
 3. Enter the DeGAUSS command. See the example below:
 
@@ -106,10 +87,7 @@ docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv
 
 will produce `my_address_file_geocoded_v3.0.csv` with added columns including `lat`, `lon`, and geocoding diagnostic information.
 
-*Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
-
-
-### Interpreting geocoding results
+#### Interpreting geocoding results
 
 The geocoder's output file includes the following columns: 
 
@@ -145,16 +123,14 @@ The geocoder's output file includes the following columns:
       
     * `geocoded`: the address was geocoded with a `precision` of either `range` or `street` and a `score` of `0.5` or greater.
 	
-### Missing geocoding results
+#### Missing geocoding results
 
 - Geocodes with a resulting precision of `intersection`, `zip`, or `city` are returned with a missing `lat` and `lon` because they are likely too inaccurate and/or too imprecise to be used for further analysis.
 - By default, `lat` and `lon` are also returned as missing if the `score` is less than `0.5` (regardless of the precision). This threshold can be changed by including an optional argument in the docker call (`docker run --rm -v $PWD:/tmp degauss/geocoder:3.0 my_address_file.csv 0.4`).
 
-# Geomarker Assessment with DeGAUSS
+## Geomarker Assessment
 
-*Note: If you are using a Windows machine to run Docker, please review [this page](https://degauss.org/windows_troubleshooting) for Windows-specific changes that likely need to be made to successfully use DeGAUSS.  You can ignore this if you are using macOS or linux.*
-
-The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  Similar to the [geocoding](https://degauss.org/geocoding) process, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
+The geomarker assessment images will only work with the output of the geocoding docker image (or a CSV file with columns named `lat` and `lon`).  Similar to before, navigate to the directory where the geocoded CSV file is located. If you are running geomarker assessment right after geocoding and using the same shell, the files will be in the same location, so no further navigation is necessary.
 
 Run:
 
@@ -180,7 +156,7 @@ Again, our output file will be written into the same directory as our input file
 
 Please note that the geomarker assesment programs will return `NA` for geomarkers when coordinate values are missing.  Missing coordinate values are possible if the geocoding container failed to assign them, for example, when using a malformed address string. A user should verify that the address strings have been recorded correctly; however, geocoding sometimes fails even with a correctly supplied address due to inconsistencies and inaccuracies in the street range files provided by the census.
 
-## Deidentifying Data
+## Removing PHI
 
 Now that we have our desired geomarkers, we can remove the addresses and coordinates from our output file, leaving only the geomarker information that will be associated with health outcomes in a downstream analysis:
 
@@ -190,4 +166,4 @@ Now that we have our desired geomarkers, we can remove the addresses and coordin
 | 540 | 5793.1 | 1654.7 | 0 | 0 |
 | 112 | 1453.0 | 548.5 | 0 | 0 |
 
-Since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. (*Note: Here, we are applying the "Safe Harbor" method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together. Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies.*)
+In theory, since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. In reality, we are applying the "Safe Harbor" method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together.  Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies around sharing data.
