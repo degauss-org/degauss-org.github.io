@@ -1,0 +1,171 @@
+---
+title: "PAC3 Guide"
+---
+
+<a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/degauss_hex.png' align="right" height="138.5" /></a> 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+# Introduction
+
+This is an example of the workflow a PAC3 study site might use to add geomarkers to their data with [DeGAUSS](https://degauss.org/). 
+
+If you have used DeGAUSS, would you mind providing us some feedback and completing a short [survey](https://redcap.link/gvhbxfjd)?
+
+In steps 2 through 6: 
+
++ A DeGAUSS container is used to add geomarker(s) to the input file (columns added in each step are highlighted in gray).
++ The input file is the CSV created in the previous step, and the output file will be the input in the next step.
+
+# Step 0: Install Docker
+
+See the [Installing Docker](https://degauss.org/using_degauss.html#Installing_Docker) webpage.
+
+ > <font size="3.5"> **_Note about Docker Settings:_** </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to **Docker Settings > Advanced** and change **memory** to greater than 4000 MB (or 4 GiB) <br> <center> <img width=75% src="figs/docker_settings_memory.PNG"> </center> <br> If you are using a Windows computer, also set **CPUs** to 1. <br> <center> <img width=75% src="figs/docker_settings_cpu.png"> </center> Click **Apply** and wait for Docker to restart. </font>
+
+# Step 1: Preparing Your Input File
+
+The input file must be a CSV file with one column called `address` containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.
+
+An example input CSV file (called `my_address_file.csv`) might look like:
+
+```{r}
+my_adds <- read_csv("example_data/my_address_file_short.csv")
+
+my_adds %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
+
+
+Refer to the DeGAUSS [geocoding](https://degauss.org/using_degauss.html#Geocoding) webpage for more information about the input file and address string formatting.
+
+# Step 2: Navigating the Shell
+
+Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.
+
+Navigate to the directory where the CSV file to be geocoded is located. See [here](http://linuxcommand.org/lc3_lts0020.php) for help navigating a filesystem using the command line.
+
+For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command `cd Desktop`.
+
+# Step 3: Geocoding
+
+After navigating to your working directory, use the [`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder) to geocode your addresses.
+
+Example call:
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv
+```
+
+Replace `my_address_file.csv` with the name of the CSV file to be geocoded and run the call in the shell. 
+
+<br>
+
+> **_Note for Windows Users:_** <br> In this and all following docker calls in this example, replace `"$PWD"` with `"%cd%"`. Refer to the DeGAUSS [Troubleshooting](https://degauss.org/troubleshooting.html#PWD) page for more information.
+
+See [here](https://degauss.org/using_degauss.html#DeGAUSS_Commands) for more information on the anatomy of a degauss command.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_v3.0.2.csv`.
+
+Example output:
+
+```{r}
+my_adds_geo <- read_csv('example_data/my_address_file_short_geocoded_v3.0.2.csv')
+
+my_adds_geo %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(
+    3:11, 
+    bold = T,
+    color = "white", 
+    background = "gray"
+   ) %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+For more information on interpreting geocoder output, see [here](https://degauss.org/geocoder/#interpreting-geocoding-results).
+
+# Step 4: Deprivation Index
+
+Example call:
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv
+```
+
+Replace `my_address_file_geocoded_v3.0.2.csv` with the name of the geocoded CSV file created in Step 3 and run.
+
+The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv`.
+
+Example output:
+
+```{r}
+my_adds_dep <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_dep_index_v0.1.csv")
+
+my_adds_dep%>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(12:19, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on the [deprivation index](https://geomarker.io/dep_index)
+
+More information on the [dep_index container](https://degauss.org/dep_index)
+
+# Step 5: Drive Time and Distance to Care Center
+
+Example call: 
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
+```
+
+Replace `my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv` with the name of the CSV file created in Step 4, and replace `cchmc` with the abbrevation for your care center from this list:
+
+```{r}
+read_csv('example_data/centers.csv') %>% 
+  select(center_name, abbreviation) %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
+
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(20:21, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [drivetime](https://degauss.org/drivetime/)
+
+# Step 6: Removing PHI
+
+Before sharing your data, remove the following columns:
+
++ `address`
++ `matched_street`
++ `matched_city`
++ `matched_zip`
++ `matched_state`
++ `lat`
++ `lon`
++ `fips_tract_id`
