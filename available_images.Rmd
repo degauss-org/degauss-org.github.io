@@ -16,7 +16,7 @@
 [`degauss/schwartz_grid_lookup`](https://degauss.org/schwartz_grid_lookup) | schwartz 1 x 1 km grid identifier | [![](https://img.shields.io/github/v/release/degauss-org/schwartz_grid_lookup?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/schwartz_grid_lookup/releases)
 [`degauss/schwartz`](https://degauss.org/schwartz) | daily PM2.5, NO2, and O3 concentrations | [![](https://img.shields.io/github/v/release/degauss-org/schwartz?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/schwartz/releases)
 
-**\*** Recent versions of DeGAUSS containers are hosted on the GitHub Container Registry and now require the `ghcr.io` prefix in a [DeGAUSS command](anatomy_of_degauss_command.html) to specify this. Older DeGAUSS images were hosted on [Docker Hub](https://hub.docker.com/u/degauss) and many are still available there. 
+**\*** Recent versions of DeGAUSS containers are hosted on the GitHub Container Registry and now require the `ghcr.io` prefix in a [DeGAUSS command](using_degauss.html#DeGAUSS_Commands) to specify this. Older DeGAUSS images were hosted on [Docker Hub](https://hub.docker.com/u/degauss) and many are still available there. 
 
 **\*\*** The badges display the most recent version of each DeGAUSS image. Click the badge to visit the GitHub releases page with notes about changes made in each version. When running a DeGAUSS container image, it is possible to specify an older version by changing the tag at the end of the repo/image name, e.g. `ghcr.io/degauss-org/geocoder:3.0.1`.
 
