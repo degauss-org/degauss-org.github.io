@@ -60,10 +60,16 @@ For those unfamiliar with the command line, a simple approach is to save the fil
 
 After navigating to your working directory, use the [`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder) to geocode your addresses.
 
-Example call:
+macOS example call:
 
 ```
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv
+```
+
+Windows example call:
+
+```
+docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv
 ```
 
 Replace `my_address_file.csv` with the name of the CSV file to be geocoded and run the call in the shell. 
@@ -97,10 +103,16 @@ For more information on interpreting geocoder output, see [here](https://degauss
 
 # Step 4: Deprivation Index
 
-Example call:
+macOS example call:
 
 ```
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv
+```
+
+Windows example call:
+
+```
+docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv
 ```
 
 Replace `my_address_file_geocoded_v3.0.2.csv` with the name of the geocoded CSV file created in Step 3 and run.
@@ -125,10 +137,16 @@ More information on the [dep_index container](https://degauss.org/dep_index)
 
 # Step 5: Drive Time and Distance to Care Center
 
-Example call: 
+macOS example call: 
 
 ```
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
+```
+
+Windows example call: 
+
+```
+docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
 ```
 
 Replace `my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv` with the name of the CSV file created in Step 4, and replace `cchmc` with the abbrevation for your care center from this list:
