@@ -399,8 +399,10 @@ address
 <div id="step-3-geocoding" class="section level1">
 <h1>Step 3: Geocoding</h1>
 <p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
-<p>Example call:</p>
+<p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
+<p>Windows example call:</p>
+<pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
 <p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
 <p><br></p>
 <blockquote>
@@ -561,8 +563,10 @@ geocoded
 </div>
 <div id="step-4-deprivation-index" class="section level1">
 <h1>Step 4: Deprivation Index</h1>
-<p>Example call:</p>
+<p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
+<p>Windows example call:</p>
+<pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
 <p>Replace <code>my_address_file_geocoded_v3.0.2.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
 <p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code>.</p>
 <p>Example output:</p>
@@ -815,8 +819,10 @@ geocoded
 </div>
 <div id="step-5-drive-time-and-distance-to-care-center" class="section level1">
 <h1>Step 5: Drive Time and Distance to Care Center</h1>
-<p>Example call:</p>
+<p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
+<p>Windows example call:</p>
+<pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
 <p>Replace <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code> with the name of the CSV file created in Step 4, and replace <code>cchmc</code> with the abbrevation for your care center from this list:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
