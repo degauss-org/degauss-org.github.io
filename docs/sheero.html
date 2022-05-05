@@ -1,0 +1,2918 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>SHEERO Guide</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<script type="text/javascript">
+$(function() {
+$('.navbar-right').before($('.logo'));
+})
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">DeGAUSS</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="background.html">Background</a>
+</li>
+<li>
+  <a href="available_images.html">Available Images</a>
+</li>
+<li>
+  <a href="using_degauss.html">Using DeGAUSS</a>
+</li>
+<li>
+  <a href="troubleshooting.html">Troubleshooting</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cohort Guides
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample_workflow.html">Sample Workflow</a>
+    </li>
+    <li>
+      <a href="crew.html">CREW</a>
+    </li>
+    <li>
+      <a href="pepr.html">PEPR</a>
+    </li>
+    <li>
+      <a href="pac3.html">PAC3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Advanced Uses
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="geocoding_api.html">Using DeGAUSS as a Geocoding API</a>
+    </li>
+    <li>
+      <a href="manual_install.html">Manual Geocoder Installation</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/degauss-org">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">SHEERO Guide</h1>
+
+</div>
+
+
+<p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This is an example of the workflow a SHEERO study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p><strong>Overview:</strong></p>
+<ul>
+<li><p>Steps 0 through 2: Install Software and Prepare Data</p></li>
+<li><p>Steps 3 through 7: Use DeGAUSS to geocode addresses add geomarkers (columns added in each step are highlighted in gray). Note that in each step, the input file is the CSV created in the previous step.</p></li>
+<li><p>Step 8: Link to Census Data</p></li>
+<li><p>Step 9: Use DeGAUSS to add daily air pollution data.</p></li>
+<li><p>Step 10: Remove PHI before sharing.</p></li>
+</ul>
+</div>
+<div id="step-0-install-docker" class="section level1">
+<h1>Step 0: Install Docker</h1>
+<p>See the <a href="https://degauss.org/using_degauss.html#Installing_Docker">Installing Docker</a> webpage.</p>
+<blockquote>
+<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong> </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to <strong>Docker Settings &gt; Advanced</strong> and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB) <br>
+<center>
+<img width=75% src="figs/docker_settings_memory.png">
+</center>
+<br> If you are using a Windows computer, also set <strong>CPUs</strong> to 1. <br>
+<center>
+<img width=75% src="figs/docker_settings_cpu.png">
+</center>
+<p>Click <strong>Apply</strong> and wait for Docker to restart. </font></p>
+</blockquote>
+</div>
+<div id="step-1-preparing-your-input-file" class="section level1">
+<h1>Step 1: Preparing Your Input File</h1>
+<p>The input file must be a CSV file with one column called <code>address</code> containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.</p>
+<p>An example input CSV file (called <code>my_address_file.csv</code>) might look like:</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:left;">
+address
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI, OH 45237
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP, OH 45238
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI, OH 45229
+</td>
+</tr>
+</tbody>
+</table>
+<p>Refer to the DeGAUSS <a href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a> webpage for more information about the input file and address string formatting.</p>
+<div id="working-with-home-and-school-addresses" class="section level3">
+<h3>Working with <em>home</em> and <em>school</em> addresses</h3>
+<p>Because the geocoder requires one address column named <code>address</code>, we suggest that home addresses and school addresses be stored in separate CSV files and geocoded separately. This means that steps 3 through 10 will be done twice– once for home addresses and once for school addresses. Alternatively, home and school addresses can be in the same file in long format (i.e., with a column that defines the <em>type</em> of address as <code>home</code> or <code>school</code> and one column that contains the <code>address</code>).</p>
+</div>
+</div>
+<div id="step-2-navigating-the-shell" class="section level1">
+<h1>Step 2: Navigating the Shell</h1>
+<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.</p>
+<p>Navigate to the directory where the CSV file to be geocoded is located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a> for help navigating a filesystem using the command line.</p>
+<p>For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command <code>cd Desktop</code>.</p>
+</div>
+<div id="step-3-geocoding" class="section level1">
+<h1>Step 3: Geocoding</h1>
+<p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv</code></pre>
+<p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
+<p><br></p>
+<blockquote>
+<p><strong><em>Note for Windows Users:</em></strong> <br> In this and all following docker calls in this example, replace <code>"$PWD"</code> with <code>"%cd%"</code>. Refer to the DeGAUSS <a href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a> page for more information.</p>
+</blockquote>
+<p>See <a href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a> for more information on the anatomy of a degauss command.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+start_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+end_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-05
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-06
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Lilibet Ct
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+45238
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Delhi Hills
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+OH
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39.11552
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+-84.61902
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-07
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-08
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Catalina Ave
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+45237
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Cincinnati
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+OH
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39.17112
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+-84.46176
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-08
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-09
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Greenwood Ave
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+45229
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+Cincinnati
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+OH
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39.15321
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+-84.49236
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For more information on interpreting geocoder output, see <a href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
+</div>
+<div id="step-4-census-block-group" class="section level1">
+<h1>Step 4: Census Block Group</h1>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_block_group:0.5.0 my_address_file_geocoded_3.2.0.csv 2010</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
+<p><strong>Note</strong>: The CCAAPS cohort should repeat this step, replacing <code>2010</code> with <code>2000</code>, resulting in a file with both 2010 census identifiers <em>and</em> 2000 census identifiers.</p>
+<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_block_group_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_tract_id_2010
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+390610213032
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39061021303
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+390610063004
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39061006300
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+390610068003
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+39061006800
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on the <a href="https://degauss.org/census_block_group">census_block_group container</a></p>
+</div>
+<div id="step-5-average-annual-daily-traffic" class="section level1">
+<h1>Step 5: Average Annual Daily Traffic</h1>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.1.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv </code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv</code> with the name of the CSV file created in Step 4 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_block_group_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_tract_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_moving
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610213032
+</td>
+<td style="text-align:right;">
+39061021303
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+900
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+12120535
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610063004
+</td>
+<td style="text-align:right;">
+39061006300
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+350
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2098249
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610068003
+</td>
+<td style="text-align:right;">
+39061006800
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/aadt/">aadt</a></p>
+</div>
+<div id="step-6-distance-to-roadway" class="section level1">
+<h1>Step 6: Distance to Roadway</h1>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_block_group_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_tract_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1200
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1200
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610213032
+</td>
+<td style="text-align:right;">
+39061021303
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12120535
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+15436
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+165399
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610063004
+</td>
+<td style="text-align:right;">
+39061006300
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2098249
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+6143
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+165509
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610068003
+</td>
+<td style="text-align:right;">
+39061006800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+7532
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+165509
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/roads/">roads</a></p>
+</div>
+<div id="step-7-greenspace" class="section level1">
+<h1>Step 7: Greenspace</h1>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.2 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 6 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer_greenspace.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_block_group_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fips_tract_id_2010
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1200
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1200
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_500
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_1500
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_2500
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610213032
+</td>
+<td style="text-align:right;">
+39061021303
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12120535
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15436
+</td>
+<td style="text-align:right;">
+165399
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.4182615
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.4350124
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.4295556
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610063004
+</td>
+<td style="text-align:right;">
+39061006300
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2098249
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+6143
+</td>
+<td style="text-align:right;">
+165509
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3356100
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3556324
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3863916
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+390610068003
+</td>
+<td style="text-align:right;">
+39061006800
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+7532
+</td>
+<td style="text-align:right;">
+165509
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.4157077
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.4082887
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3774101
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/greenspace/">greenspace</a></p>
+</div>
+<div id="step-8-census-data" class="section level1">
+<h1>Step 8: Census Data</h1>
+<p>Using the software of your choice, join the census data file to the file created in Step 7 using the <code>fips_tract_id_2010</code> column. If you are unfamiliar with merging data, try following this <a href="https://www.daveondata.com/blog/introduction-to-sql-for-excel-users-part-15-basic-left-joins/">introduction</a> in Excel.</p>
+<p>Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CSV is opened in Excel then saved, the leading zeros will be truncated (e.g., <code>01234567891</code> will become <code>1234567891</code>).</p>
+</div>
+<div id="step-9-air-pollution" class="section level1">
+<h1>Step 9: Air Pollution</h1>
+<p>For this simplicity, we suggest using your original address file after geocoding (the output of Step 3) for this step. This file must also included columns called <code>start_date</code> and <code>end_date</code>. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between <code>start_date</code> and <code>end_date</code> for each individual <code>lat</code> and <code>lon</code> location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.</p>
+<div id="step-9a-schwartz_grid_lookup" class="section level2">
+<h2>Step 9a: schwartz_grid_lookup</h2>
+<p>This step finds the nearest grid cell with Schwartz pollutant estimates for each input <code>lat</code> and <code>lon</code>.</p>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz_grid_lookup:0.4.1  my_address_file_geocoded_3.2.0.csv</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the CSV file created in <strong>Step 3</strong> and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+start_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+end_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+site_index
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+sitecode
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+2015-05-05
+</td>
+<td style="text-align:left;">
+2015-05-06
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+9596220
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+211050625307
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+2010-06-07
+</td>
+<td style="text-align:left;">
+2010-06-08
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+9614001
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+211050650500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+2019-07-08
+</td>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+9609779
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+211050644503
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/schwartz_grid_lookup/">schwartz_grid_lookup</a></p>
+</div>
+<div id="step-9b-schwartz" class="section level2">
+<h2>Step 9b: schwartz</h2>
+<p>This step adds daily Schwartz pollutant estimates based on the grid identifiers added in Step 9a and <code>start_date</code> and <code>end_date</code> columns.</p>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz:0.5.5  my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code> with the name of the CSV file created in <strong>Step 9a</strong> and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_schwartz_site_index_schwartz_v0.5.5.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+start_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+end_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+site_index
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+sitecode
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+date
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+year
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+gh6
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+gh3
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+gh3_combined
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PM25
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+NO2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+O3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+2019-07-08
+</td>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9609779
+</td>
+<td style="text-align:right;">
+211050644503
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-08
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2019
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+2019-07-08
+</td>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9609779
+</td>
+<td style="text-align:right;">
+211050644503
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-09
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2019
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+2010-06-07
+</td>
+<td style="text-align:left;">
+2010-06-08
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9614001
+</td>
+<td style="text-align:right;">
+211050650500
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-07
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2010
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dngyvg
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+5.6
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+19.1
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+47.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+2010-06-07
+</td>
+<td style="text-align:left;">
+2010-06-08
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9614001
+</td>
+<td style="text-align:right;">
+211050650500
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-08
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2010
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dngyvg
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+12.2
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+22.5
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+50.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+2015-05-05
+</td>
+<td style="text-align:left;">
+2015-05-06
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9596220
+</td>
+<td style="text-align:right;">
+211050625307
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-05
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2015
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dngyd2
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+16.1
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+42.5
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+49.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+2015-05-05
+</td>
+<td style="text-align:left;">
+2015-05-06
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;">
+9596220
+</td>
+<td style="text-align:right;">
+211050625307
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-06
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2015
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dngyd2
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+dng
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+20.8
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+56.5
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+46.9
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/schwartz/">schwartz</a></p>
+</div>
+<div id="ureca-only-step-9c-pm" class="section level2">
+<h2><strong>(URECA only)</strong> Step 9c: pm</h2>
+<p>Note that the Schwartz model covers the years 2000 - 2016. To obtain PM<span class="math inline">\({_2.5}\)</span> estimates beyond 2016, please use our <code>pm</code> container. <strong>If your data ends before 2016, you can skip this step.</strong></p>
+<p>Again, we suggest using your original address file after geocoding (the output of Step 3) for this step, and your file must also included columns called <code>start_date</code> and <code>end_date</code>. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between <code>start_date</code> and <code>end_date</code> for each individual <code>lat</code> and <code>lon</code> location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.</p>
+<p>macOS example call:</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/pm:0.2.0 my_address_file_geocoded_3.2.0.csv</code></pre>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the CSV file created in <strong>Step 3</strong> and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_pm_0.2.0.csv</code>.</p>
+<p>Example output:</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+start_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+end_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_street
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+matched_zip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_city
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+matched_state
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lat
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+lon
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+precision
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+geocode_result
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+.row
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+date
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+year
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+h3
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+h3_3
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pm_pred
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pm_se
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+2015-05-05
+</td>
+<td style="text-align:left;">
+2015-05-06
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+1
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-05
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2015
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9308a9fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+16.130
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2.9480
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54000600136
+</td>
+<td style="text-align:left;">
+5358 LILIBET CT DELHI TOWNSHIP OH 45238
+</td>
+<td style="text-align:left;">
+2015-05-05
+</td>
+<td style="text-align:left;">
+2015-05-06
+</td>
+<td style="text-align:left;">
+Lilibet Ct
+</td>
+<td style="text-align:right;">
+45238
+</td>
+<td style="text-align:left;">
+Delhi Hills
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.11552
+</td>
+<td style="text-align:right;">
+-84.61902
+</td>
+<td style="text-align:right;">
+0.754
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+1
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-06
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2015
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9308a9fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+18.110
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2.5140
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+2010-06-07
+</td>
+<td style="text-align:left;">
+2010-06-08
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-07
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2010
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9301c9fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+5.485
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3087
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13100070229
+</td>
+<td style="text-align:left;">
+1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;">
+2010-06-07
+</td>
+<td style="text-align:left;">
+2010-06-08
+</td>
+<td style="text-align:left;">
+Catalina Ave
+</td>
+<td style="text-align:right;">
+45237
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.17112
+</td>
+<td style="text-align:right;">
+-84.46176
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-08
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2010
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9301c9fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+10.740
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2.8420
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+2019-07-08
+</td>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+3
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-08
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2019
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9301e3fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+12.240
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.9182
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11200020024
+</td>
+<td style="text-align:left;">
+630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;">
+2019-07-08
+</td>
+<td style="text-align:left;">
+2019-07-09
+</td>
+<td style="text-align:left;">
+Greenwood Ave
+</td>
+<td style="text-align:right;">
+45229
+</td>
+<td style="text-align:left;">
+Cincinnati
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+39.15321
+</td>
+<td style="text-align:right;">
+-84.49236
+</td>
+<td style="text-align:right;">
+0.922
+</td>
+<td style="text-align:left;">
+range
+</td>
+<td style="text-align:left;">
+geocoded
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+3
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-09
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2019
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+882a9301e3fffff
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+832a93fffffffff
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+11.330
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+2.0150
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>More information on <a href="https://degauss.org/pm/">pm</a></p>
+</div>
+</div>
+<div id="step-10-removing-phi" class="section level1">
+<h1>Step 10: Removing PHI</h1>
+<p>Before sharing your data, remove the following columns from both the air pollution output file and the file created by Step 8:</p>
+<ul>
+<li><code>address</code></li>
+<li><code>matched_street</code></li>
+<li><code>matched_city</code></li>
+<li><code>matched_zip</code></li>
+<li><code>matched_state</code></li>
+<li><code>lat</code></li>
+<li><code>lon</code></li>
+<li><code>fips_block_group_id_2010</code></li>
+<li><code>fips_tract_id_2010</code></li>
+<li><code>site_index</code></li>
+<li><code>sitecode</code></li>
+<li><code>gh6</code></li>
+<li><code>gh3</code></li>
+<li><code>gh3_combined</code></li>
+<li><code>h3</code></li>
+<li><code>h3_3</code></li>
+</ul>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
