@@ -114,14 +114,15 @@ For more information on interpreting geocoder output, see [here](https://degauss
 macOS example call:
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_block_group:0.5.0 my_address_file_geocoded_3.2.0.csv 2010
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_block_group:0.5.1 my_address_file_geocoded_3.2.0.csv 2010
 ```
 
 Replace `my_address_file_geocoded_3.2.0.csv` with the name of the geocoded CSV file created in Step 3 and run.
 
 **Note**: The CCAAPS cohort should repeat this step, replacing `2010` with `2000`, resulting in a file with both 2010 census identifiers *and* 2000 census identifiers.
 
-The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv`.
+The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv`.
+
 
 Example output:
 
@@ -142,12 +143,12 @@ More information on the [census_block_group container](https://degauss.org/censu
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.1.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv 
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv 
 ```
 
-Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv ` with the name of the CSV file created in Step 4 and run.
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv ` with the name of the CSV file created in Step 4 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv`.
 
 Example output:
 
@@ -168,12 +169,12 @@ More information on [aadt](https://degauss.org/aadt/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv`.
 
 Example output:
 
@@ -194,12 +195,12 @@ More information on [roads](https://degauss.org/roads/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.2 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer_greenspace.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv`.
 
 Example output:
 
