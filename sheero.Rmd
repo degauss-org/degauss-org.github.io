@@ -1,0 +1,333 @@
+---
+title: "SHEERO Guide"
+output:
+  html_document:
+    self_contained: yes
+    mode: selfcontained
+---
+
+<a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/degauss_hex.png' align="right" height="138.5" /></a> 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+# Introduction
+
+This is an example of the workflow a SHEERO study site might use to add geomarkers to their data with [DeGAUSS](https://degauss.org/). 
+
+If you have used DeGAUSS, would you mind providing us some feedback and completing a short [survey](https://redcap.link/gvhbxfjd)?
+
+**Overview:**
+
+- Steps 0 through 2: Install Software and Prepare Data
+
+- Steps 3 through 7: Use DeGAUSS to geocode addresses add geomarkers (columns added in each step are highlighted in gray). Note that in each step, the input file is the CSV created in the previous step.
+
+- Step 8: Link to Census Data
+
+- Step 9: Use DeGAUSS to add daily air pollution data.
+
+- Step 10: Remove PHI before sharing.
+
+# Step 0: Install Docker
+
+See the [Installing Docker](https://degauss.org/using_degauss.html#Installing_Docker) webpage.
+
+ > <font size="3.5"> **_Note about Docker Settings:_** </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to **Docker Settings > Advanced** and change **memory** to greater than 4000 MB (or 4 GiB) <br> <center> <img width=75% src="figs/docker_settings_memory.PNG"> </center> <br> If you are using a Windows computer, also set **CPUs** to 1. <br> <center> <img width=75% src="figs/docker_settings_cpu.png"> </center> Click **Apply** and wait for Docker to restart. </font>
+
+# Step 1: Preparing Your Input File
+
+The input file must be a CSV file with one column called `address` containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.
+
+An example input CSV file (called `my_address_file.csv`) might look like:
+
+```{r}
+my_adds <- read_csv("example_data/my_address_file_short.csv")
+
+my_adds %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped")
+```
+
+Refer to the DeGAUSS [geocoding](https://degauss.org/using_degauss.html#Geocoding) webpage for more information about the input file and address string formatting.
+
+### Working with *home* and *school* addresses
+
+Because the geocoder requires one address column named `address`, we suggest that home addresses and school addresses be stored in separate CSV files and geocoded separately. This means that steps 3 through 10 will be done twice-- once for home addresses and once for school addresses. Alternatively, home and school addresses can be in the same file in long format (i.e., with a column that defines the *type* of address as `home` or `school` and one column that contains the `address`). 
+
+# Step 2: Navigating the Shell
+
+Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.
+
+Navigate to the directory where the CSV file to be geocoded is located. See [here](http://linuxcommand.org/lc3_lts0020.php) for help navigating a filesystem using the command line.
+
+For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command `cd Desktop`.
+
+# Step 3: Geocoding
+
+After navigating to your working directory, use the [`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder) to geocode your addresses.
+
+macOS example call:
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
+```
+
+Replace `my_address_file.csv` with the name of the CSV file to be geocoded and run the call in the shell. 
+
+<br>
+
+> **_Note for Windows Users:_** <br> In this and all following docker calls in this example, replace `"$PWD"` with `"%cd%"`. Refer to the DeGAUSS [Troubleshooting](https://degauss.org/troubleshooting.html#PWD) page for more information.
+
+See [here](https://degauss.org/using_degauss.html#DeGAUSS_Commands) for more information on the anatomy of a degauss command.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0.csv`.
+
+Example output:
+
+```{r, cache = TRUE}
+my_adds_geo <- read_csv('example_data/my_address_file_short_geocoded_v3.0.2.csv')
+
+my_adds_geo %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(
+    3:11, 
+    bold = T,
+    color = "white", 
+    background = "gray"
+   ) %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+For more information on interpreting geocoder output, see [here](https://degauss.org/geocoder/#interpreting-geocoding-results).
+
+# Step 4: Census Block Group
+
+macOS example call:
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_block_group:0.5.0 my_address_file_geocoded_3.2.0.csv 2010
+```
+
+Replace `my_address_file_geocoded_3.2.0.csv` with the name of the geocoded CSV file created in Step 3 and run.
+
+**Note**: The CCAAPS cohort should repeat this step, replacing `2010` with `2000`, resulting in a file with both 2010 census identifiers *and* 2000 census identifiers.
+
+The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv`.
+
+Example output:
+
+```{r}
+my_adds_cbg <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_census_block_group_0.5.0_2010.csv")
+
+my_adds_cbg %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(12:13, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on the [census_block_group container](https://degauss.org/census_block_group)
+
+# Step 5: Average Annual Daily Traffic
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.1.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv 
+```
+
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010.csv ` with the name of the CSV file created in Step 4 and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv`.
+
+Example output:
+
+```{r}
+aadt <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv")
+
+aadt %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(14:19, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [aadt](https://degauss.org/aadt/)
+
+# Step 6: Distance to Roadway
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv
+```
+
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(20:23, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [roads](https://degauss.org/roads/)
+
+# Step 7: Greenspace
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.2 my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv
+```
+
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer_greenspace.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_census_block_group_0.5.0_2010_aadt_v0.1.1_400m_buffer_roads_0.2.0_400m_buffer_greenspace.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(24:26, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [greenspace](https://degauss.org/greenspace/)
+
+# Step 8: Census Data
+
+Using the software of your choice, join the census data file to the file created in Step 7 using the `fips_tract_id_2010` column. If you are unfamiliar with merging data, try following this [introduction](https://www.daveondata.com/blog/introduction-to-sql-for-excel-users-part-15-basic-left-joins/) in Excel.
+
+Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CSV is opened in Excel then saved, the leading zeros will be truncated (e.g., `01234567891` will become `1234567891`). 
+
+# Step 9: Air Pollution
+
+For this simplicity, we suggest using  your original address file after geocoding (the output of Step 3) for this step. This file must also included columns called `start_date` and `end_date`. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between `start_date` and `end_date` for each individual `lat` and `lon` location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.
+
+## Step 9a: schwartz_grid_lookup
+
+This step finds the nearest grid cell with Schwartz pollutant estimates for each input `lat` and `lon`. 
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp degauss/schwartz_grid_lookup:0.4.1  my_address_file_geocoded_3.2.0.csv
+```
+
+Replace `my_address_file_geocoded_3.2.0.csv` with the name of the CSV file created in **Step 3** and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_schwartz_site_index.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_schwartz_site_index.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(14:15, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [schwartz_grid_lookup](https://degauss.org/schwartz_grid_lookup/)
+
+## Step 9b: schwartz
+
+This step adds daily Schwartz pollutant estimates based on the grid identifiers added in Step 9a and `start_date` and `end_date` columns. 
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp degauss/schwartz:0.5.5  my_address_file_geocoded_3.2.0_schwartz_site_index.csv
+```
+
+Replace `my_address_file_geocoded_3.2.0_schwartz_site_index.csv` with the name of the CSV file created in **Step 9a** and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_schwartz_site_index_schwartz_v0.5.5.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_schwartz_site_index_schwartz_v0.5.5.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(16:23, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [schwartz](https://degauss.org/schwartz/)
+
+## **(URECA only)** Step 9c: pm
+
+Note that the Schwartz model covers the years 2000 - 2016. To obtain PM${_2.5}$ estimates beyond 2016, please use our `pm` container. **If your data ends before 2016, you can skip this step.**
+
+Again, we suggest using  your original address file after geocoding (the output of Step 3) for this step, and your file must also included columns called `start_date` and `end_date`. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between `start_date` and `end_date` for each individual `lat` and `lon` location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.
+
+macOS example call: 
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/pm:0.2.0 my_address_file_geocoded_3.2.0.csv
+```
+
+Replace `my_address_file_geocoded_3.2.0.csv` with the name of the CSV file created in **Step 3** and run.
+
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_pm_0.2.0.csv`.
+
+Example output:
+
+```{r}
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_pm_0.2.0.csv")
+
+drivetime %>% 
+  kable() %>% 
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+  column_spec(14:20, bold = T, color = "white", background = "gray") %>% 
+  scroll_box(width = "900px", height = "300px")
+```
+
+More information on [pm](https://degauss.org/pm/)
+
+# Step 10: Removing PHI
+
+Before sharing your data, remove the following columns from both the air pollution output file and the file created by Step 8:
+
++ `address`
++ `matched_street`
++ `matched_city`
++ `matched_zip`
++ `matched_state`
++ `lat`
++ `lon`
++ `fips_block_group_id_2010`
++ `fips_tract_id_2010`
++ `site_index`
++ `sitecode`
++ `gh6`
++ `gh3`
++ `gh3_combined`
++ `h3`
++ `h3_3`
