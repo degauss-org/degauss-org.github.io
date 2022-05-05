@@ -281,6 +281,9 @@ $(document).ready(function () {
     <li>
       <a href="pac3.html">PAC3</a>
     </li>
+    <li>
+      <a href="sheero.html">SHEERO</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -401,7 +404,7 @@ address
 <p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
-<p>Windows example call:</p>
+<p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
 <p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
 <p><br></p>
@@ -420,6 +423,12 @@ id
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 address
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+start_date
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+end_date
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 matched_street
@@ -459,6 +468,12 @@ geocode_result
 5358 LILIBET CT DELHI TOWNSHIP OH 45238
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-05
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2015-05-06
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Lilibet Ct
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
@@ -479,10 +494,10 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.754
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 range
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 geocoded
 </td>
 </tr>
@@ -492,6 +507,12 @@ geocoded
 </td>
 <td style="text-align:left;">
 1922 CATALINA AV CINCINNATI OH 45237
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-07
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2010-06-08
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Catalina Ave
@@ -514,10 +535,10 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.922
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 range
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 geocoded
 </td>
 </tr>
@@ -527,6 +548,12 @@ geocoded
 </td>
 <td style="text-align:left;">
 630 GREENWOOD AV CINCINNATI OH 45229
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-08
+</td>
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+2019-07-09
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Greenwood Ave
@@ -549,10 +576,10 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.922
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 range
 </td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
+<td style="text-align:left;">
 geocoded
 </td>
 </tr>
@@ -565,7 +592,7 @@ geocoded
 <h1>Step 4: Deprivation Index</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
-<p>Windows example call:</p>
+<p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
 <p>Replace <code>my_address_file_geocoded_v3.0.2.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
 <p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code>.</p>
@@ -821,7 +848,7 @@ geocoded
 <h1>Step 5: Drive Time and Distance to Care Center</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
-<p>Windows example call:</p>
+<p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
 <p>Replace <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code> with the name of the CSV file created in Step 4, and replace <code>cchmc</code> with the abbrevation for your care center from this list:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">

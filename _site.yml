@@ -22,6 +22,8 @@ navbar:
           href: pepr.html
         - text: "PAC3"
           href: pac3.html
+        - text: "SHEERO"
+          href: sheero.html
     - text: "Advanced Uses"
       menu:
         - text: "Using DeGAUSS as a Geocoding API"
