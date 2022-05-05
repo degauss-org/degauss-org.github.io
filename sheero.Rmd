@@ -123,6 +123,7 @@ Replace `my_address_file_geocoded_3.2.0.csv` with the name of the geocoded CSV f
 
 The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv`.
 
+
 Example output:
 
 ```{r}
