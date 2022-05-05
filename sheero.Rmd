@@ -148,7 +148,7 @@ docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_ge
 
 Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv ` with the name of the CSV file created in Step 4 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv`.
 
 Example output:
 
@@ -169,12 +169,12 @@ More information on [aadt](https://degauss.org/aadt/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv`.
 
 Example output:
 
@@ -195,12 +195,12 @@ More information on [roads](https://degauss.org/roads/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
+Replace `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_v0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv`.
 
 Example output:
 
