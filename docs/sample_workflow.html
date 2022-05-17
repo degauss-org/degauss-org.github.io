@@ -322,30 +322,57 @@ $(document).ready(function () {
 
 
 <blockquote>
-<p>Below is a step-by-step workflow used to estimate the length and proximity of major roadways as well as nearby greenness for a set of addresses</p>
+<p>Below is a step-by-step workflow used to estimate the length and
+proximity of major roadways as well as nearby greenness for a set of
+addresses</p>
 </blockquote>
 <ol style="list-style-type: decimal">
-<li>Start with your addresses in a .csv file, with the complete address in one column called “address”. For this example, that file will be called “sample_addresses.csv”.</li>
+<li>Start with your addresses in a .csv file, with the complete address
+in one column called “address”. For this example, that file will be
+called “sample_addresses.csv”.</li>
 </ol>
 <p><img src="figs/sample/step1.png" style="width:40.0%" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Use a DeGAUSS Docker command to geocode the addresses using version 3.0.2 of “degauss/geocoder”:</li>
+<li>Use a DeGAUSS Docker command to geocode the addresses using version
+3.0.2 of “degauss/geocoder”:</li>
 </ol>
 <pre class="sh"><code>docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.2 sample_addresses.csv</code></pre>
-<p>&amp;nbsp- If you have not previously used this version of this image, Docker will first download it, which can take several minutes, depending on the size of the image and internet speeds. Docker will then create and run a container to geocode the addresses.</p>
+<p>&amp;nbsp- If you have not previously used this version of this
+image, Docker will first download it, which can take several minutes,
+depending on the size of the image and internet speeds. Docker will then
+create and run a container to geocode the addresses.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>The results file, called “sample_addresses_geocoded_v3.0.2.csv”, will be written to the same folder where the input CSV file is located. &amp;nbsp- This file is the same as the input CSV file, but with appended columns for matched address components, geocoding score and precision, latitude, longitude, and a categorical geocoding result. See <a href="https://degauss.org/using_degauss.html#Interpreting_geocoding_results">Interpretting geocoding results</a> for more information on the geocoding results.</li>
+<li>The results file, called “sample_addresses_geocoded_v3.0.2.csv”,
+will be written to the same folder where the input CSV file is located.
+&amp;nbsp- This file is the same as the input CSV file, but with
+appended columns for matched address components, geocoding score and
+precision, latitude, longitude, and a categorical geocoding result. See
+<a
+href="https://degauss.org/using_degauss.html#Interpreting_geocoding_results">Interpretting
+geocoding results</a> for more information on the geocoding
+results.</li>
 </ol>
 <p><img src="figs/sample/step3.png" /></p>
 <ol start="4" style="list-style-type: decimal">
-<li>Now that we have geocoded addresses, we can use DeGAUSS to add a geomarker. In this example we will use the DeGAUSS images for the proximity to major roadways and greenspace, DeGAUSS/roads version 0.1 and DeGAUSS/greenspace version 0.2. The programs can either be run in parallel on the geocoded file or they can be run sequentially, creating one file with both geomarkers. Here, we first added the roadway geomarker and then add greenspace to that result. This is done using the following commands while in the directory of the geocoded .csv file:</li>
+<li>Now that we have geocoded addresses, we can use DeGAUSS to add a
+geomarker. In this example we will use the DeGAUSS images for the
+proximity to major roadways and greenspace, DeGAUSS/roads version 0.1
+and DeGAUSS/greenspace version 0.2. The programs can either be run in
+parallel on the geocoded file or they can be run sequentially, creating
+one file with both geomarkers. Here, we first added the roadway
+geomarker and then add greenspace to that result. This is done using the
+following commands while in the directory of the geocoded .csv
+file:</li>
 </ol>
 <pre class="sh"><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/roads:0.1 sample_addresses_geocoded_v3.0.2.csv</code></pre>
 <p><img src="figs/sample/step4a.png" /></p>
 <pre class="sh"><code>docker run --rm -v $PWD:/tmp degauss/greenspace:0.2 sample_addresses_geocoded_v3.0.2_roads_400m_buffer.csv</code></pre>
 <p><img src="figs/sample/step4b.png" /></p>
 <ol start="5" style="list-style-type: decimal">
-<li>These two DeGAUSS containers append new columns to our dataset with their respective geomarkers, while keeping intact our original dataset. Now that we have added our geomarkers, we can remove the addresses to create a geomarker dataset without geographic PHI.</li>
+<li>These two DeGAUSS containers append new columns to our dataset with
+their respective geomarkers, while keeping intact our original dataset.
+Now that we have added our geomarkers, we can remove the addresses to
+create a geomarker dataset without geographic PHI.</li>
 </ol>
 <p><img src="figs/sample/step5.png" /></p>
 
