@@ -24,6 +24,8 @@ navbar:
           href: pac3.html
         - text: "SHEERO"
           href: sheero.html
+        - text: "NASH CRN"
+          href: nashcrn.html
     - text: "Advanced Uses"
       menu:
         - text: "Using DeGAUSS as a Geocoding API"
