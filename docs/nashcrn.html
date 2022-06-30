@@ -330,7 +330,7 @@ $(document).ready(function () {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>This is an example of the workflow a NASH CRN study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://degauss.org/survey">survey</a>?</p>
 </div>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
@@ -2390,6 +2390,17 @@ geocoded
 <li><code>fips_tract_id</code></li>
 <li><code>nlcd_cell</code></li>
 </ul>
+</div>
+<div id="code-summary" class="section level1">
+<h1>Code Summary</h1>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
 </div>
 
 

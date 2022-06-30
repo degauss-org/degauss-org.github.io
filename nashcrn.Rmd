@@ -22,7 +22,7 @@ library(kableExtra)
 
 This is an example of the workflow a NASH CRN study site might use to add geomarkers to their data with [DeGAUSS](https://degauss.org/). 
 
-If you have used DeGAUSS, would you mind providing us some feedback and completing a short [survey](https://redcap.link/gvhbxfjd)?
+If you have used DeGAUSS, would you mind providing us some feedback and completing a short [survey](https://degauss.org/survey)?
 
 # Step 0: Install Docker
 
@@ -275,3 +275,17 @@ Before sharing your data, remove the following columns from both the air polluti
 + `lon`
 + `fips_tract_id`
 + `nlcd_cell`
+
+# Code Summary
+
+```
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
+```
+
