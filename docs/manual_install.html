@@ -355,9 +355,9 @@ sudo su - -c &quot;R -e \&quot;install.packages(&#39;argparser&#39;, repos=&#39;
 <p>Download the git repo to the home directory and then compile the
 SQLite3 extension and the Geocoder-US Ruby gem:</p>
 <pre><code>cd ~
-git clone https://github.com/cole-brokamp/geocoder
+git clone https://github.com/degauss-org/geocoder
 cd geocoder
-sudo make install
+sudo make -f Makefile.ruby install
 sudo gem install Geocoder-US-2.0.4.gem</code></pre>
 </div>
 <div id="tigerline-database" class="section level3">
