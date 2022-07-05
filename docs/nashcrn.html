@@ -11,7 +11,7 @@
 
 
 
-<title>SHEERO Guide</title>
+<title>NASH CRN Guide</title>
 
 <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -321,7 +321,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">SHEERO Guide</h1>
+<h1 class="title toc-ignore">NASH CRN Guide</h1>
 
 </div>
 
@@ -329,55 +329,29 @@ $(document).ready(function () {
 <p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>This is an example of the workflow a SHEERO study site might use to
-add geomarkers to their data with <a
-href="https://degauss.org/">DeGAUSS</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback
-and completing a short <a
-href="https://redcap.link/gvhbxfjd">survey</a>?</p>
-<p><strong>Overview:</strong></p>
-<ul>
-<li><p>Steps 0 through 2: Install Software and Prepare Data</p></li>
-<li><p>Steps 3 through 7: Use DeGAUSS to geocode addresses add
-geomarkers (columns added in each step are highlighted in gray). Note
-that in each step, the input file is the CSV created in the previous
-step.</p></li>
-<li><p>Step 8: Link to Census Data</p></li>
-<li><p>Step 9: Use DeGAUSS to add daily air pollution data.</p></li>
-<li><p>Step 10: Remove PHI before sharing.</p></li>
-</ul>
+<p>This is an example of the workflow a NASH CRN study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://degauss.org/survey">survey</a>?</p>
 </div>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
-<p>See the <a
-href="https://degauss.org/using_degauss.html#Installing_Docker">Installing
-Docker</a> webpage.</p>
+<p>See the <a href="https://degauss.org/using_degauss.html#Installing_Docker">Installing Docker</a> webpage.</p>
+<p><strong>This step is noted as part of the Docker Installation instructions, but is worth mentioning again here. If your computer is managed by your institution’s IT deparment, your admin account is likely different from your user account. In this case, someone with admin credentials must add your user account to the docker-users group. To do this, they should run Computer Management as an administrator and navigate to Local Users and Groups &gt; Groups &gt; docker-users. Then right-click to add the user to the group, and log out and log back in for the changes to take effect.</strong></p>
 <blockquote>
-<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong>
-</font> <br> <font size="2.75"> After installing Docker, but before
-running containers, go to <strong>Docker Settings &gt; Advanced</strong>
-and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB)
-<br>
+<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong> </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to <strong>Docker Settings &gt; Advanced</strong> and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB) <br>
 <center>
 <img width=75% src="figs/docker_settings_memory.png">
 </center>
-<br> If you are using a Windows computer, also set <strong>CPUs</strong>
-to 1. <br>
+<br> If you are using a Windows computer, also set <strong>CPUs</strong> to 1. <br>
 <center>
 <img width=75% src="figs/docker_settings_cpu.png">
 </center>
-<p>Click <strong>Apply</strong> and wait for Docker to restart.
-</font></p>
+<p>Click <strong>Apply</strong> and wait for Docker to restart. </font></p>
 </blockquote>
 </div>
 <div id="step-1-preparing-your-input-file" class="section level1">
 <h1>Step 1: Preparing Your Input File</h1>
-<p>The input file must be a CSV file with one column called
-<code>address</code> containing all address components. Other columns
-may be present and will be returned in the output file, but should be
-kept to a minimum to reduce file size.</p>
-<p>An example input CSV file (called <code>my_address_file.csv</code>)
-might look like:</p>
+<p>The input file must be a CSV file with one column called <code>address</code> containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.</p>
+<p>An example input CSV file (called <code>my_address_file.csv</code>) might look like:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -416,60 +390,28 @@ address
 </tr>
 </tbody>
 </table>
-<p>Refer to the DeGAUSS <a
-href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a>
-webpage for more information about the input file and address string
-formatting.</p>
-<div id="working-with-home-and-school-addresses" class="section level3">
-<h3>Working with <em>home</em> and <em>school</em> addresses</h3>
-<p>Because the geocoder requires one address column named
-<code>address</code>, we suggest that home addresses and school
-addresses be stored in separate CSV files and geocoded separately. This
-means that steps 3 through 10 will be done twice– once for home
-addresses and once for school addresses. Alternatively, home and school
-addresses can be in the same file in long format (i.e., with a column
-that defines the <em>type</em> of address as <code>home</code> or
-<code>school</code> and one column that contains the
-<code>address</code>).</p>
-</div>
+<p>Refer to the DeGAUSS <a href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a> webpage for more information about the input file and address string formatting.</p>
 </div>
 <div id="step-2-navigating-the-shell" class="section level1">
 <h1>Step 2: Navigating the Shell</h1>
-<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use
-this shell for the rest of the steps in this example.</p>
-<p>Navigate to the directory where the CSV file to be geocoded is
-located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a>
-for help navigating a filesystem using the command line.</p>
-<p>For those unfamiliar with the command line, a simple approach is to
-save the file to be geocoded to the Desktop, then navigate to your
-Desktop folder with the command <code>cd Desktop</code>.</p>
+<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.</p>
+<p>Navigate to the directory where the CSV file to be geocoded is located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a> for help navigating a filesystem using the command line.</p>
+<p>For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command <code>cd Desktop</code>.</p>
 </div>
 <div id="step-3-geocoding" class="section level1">
 <h1>Step 3: Geocoding</h1>
-<p>After navigating to your working directory, use the <a
-href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a>
-to geocode your addresses.</p>
+<p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv</code></pre>
-<p>Replace <code>my_address_file.csv</code> with the name of the CSV
-file to be geocoded and run the call in the shell.</p>
+<p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
 <p><br></p>
 <blockquote>
-<p><strong><em>Note for Windows Users:</em></strong> <br> In this and
-all following docker calls in this example, replace <code>"$PWD"</code>
-with <code>"%cd%"</code>. Refer to the DeGAUSS <a
-href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a>
-page for more information.</p>
+<p><strong><em>Note for Windows Users:</em></strong> <br> In this and all following docker calls in this example, replace <code>"$PWD"</code> with <code>"%cd%"</code>. Refer to the DeGAUSS <a href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a> page for more information.</p>
 </blockquote>
-<p>See <a
-href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a>
-for more information on the anatomy of a degauss command.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0.csv</code>.</p>
+<p>See <a href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a> for more information on the anatomy of a degauss command.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -478,12 +420,6 @@ id
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 address
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-start_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-end_date
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 matched_street
@@ -523,12 +459,6 @@ geocode_result
 5358 LILIBET CT DELHI TOWNSHIP OH 45238
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-05
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-06
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Lilibet Ct
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
@@ -549,10 +479,10 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.754
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 range
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 geocoded
 </td>
 </tr>
@@ -562,12 +492,6 @@ geocoded
 </td>
 <td style="text-align:left;">
 1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-07
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-08
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Catalina Ave
@@ -590,10 +514,10 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.922
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 range
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 geocoded
 </td>
 </tr>
@@ -603,12 +527,6 @@ geocoded
 </td>
 <td style="text-align:left;">
 630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-08
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-09
 </td>
 <td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 Greenwood Ave
@@ -631,35 +549,26 @@ OH
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0.922
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 range
 </td>
-<td style="text-align:left;">
+<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
 geocoded
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>For more information on interpreting geocoder output, see <a
-href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
+<p>For more information on interpreting geocoder output, see <a href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
 </div>
-<div id="step-4-census-block-group" class="section level1">
-<h1>Step 4: Census Block Group</h1>
+<div id="step-4-deprivation-index" class="section level1">
+<h1>Step 4: Deprivation Index</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_block_group:0.5.1 my_address_file_geocoded_3.2.0.csv 2010</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
-of the geocoded CSV file created in Step 3 and run.</p>
-<p><strong>Note</strong>: The CCAAPS cohort should repeat this step,
-replacing <code>2010</code> with <code>2000</code>, resulting in a file
-with both 2010 census identifiers <em>and</em> 2000 census
-identifiers.</p>
-<p>The <strong>output file</strong> is written to the same directory
-and, in our example, will be called
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -697,10 +606,28 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_block_group_id_2010
+fips_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id_2010
+fraction_assisted_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_high_school_edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+median_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_no_health_ins
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_poverty
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_vacant_housing
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dep_index
 </th>
 </tr>
 </thead>
@@ -738,13 +665,31 @@ range
 </td>
 <td style="text-align:left;">
 geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-390610213032
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 39061021303
 </td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0380034
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.9396114
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+83385
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0236515
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0250104
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0128779
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.2087159
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -781,10 +726,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-390610063004
+39061006300
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-39061006300
+0.1149033
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.8787645
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+38395
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0391429
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.1641705
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.1284085
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3569748
 </td>
 </tr>
 <tr>
@@ -822,32 +785,44 @@ range
 geocoded
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-390610068003
+39061006800
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-39061006800
+0.3517316
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.8051400
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+19783
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.0579212
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3901274
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.2309613
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.5527528
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>More information on the <a
-href="https://degauss.org/census_block_group">census_block_group
-container</a></p>
+<p>More information on the <a href="https://degauss.org/dep_index">dep_index container</a></p>
+<p>More information on the <a href="https://geomarker.io/dep_index">deprivation index</a></p>
 </div>
 <div id="step-5-average-annual-daily-traffic" class="section level1">
 <h1>Step 5: Average Annual Daily Traffic</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv </code></pre>
-<p>Replace
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code>
-with the name of the CSV file created in Step 4 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv </code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv</code> with the name of the CSV file created in Step 4 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -885,10 +860,28 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_block_group_id_2010
+fips_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id_2010
+fraction_assisted_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_high_school_edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+median_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_no_health_ins
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_poverty
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_vacant_housing
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dep_index
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 length_stop_go
@@ -946,10 +939,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610213032
+39061021303
 </td>
 <td style="text-align:right;">
-39061021303
+0.0380034
+</td>
+<td style="text-align:right;">
+0.9396114
+</td>
+<td style="text-align:right;">
+83385
+</td>
+<td style="text-align:right;">
+0.0236515
+</td>
+<td style="text-align:right;">
+0.0250104
+</td>
+<td style="text-align:right;">
+0.0128779
+</td>
+<td style="text-align:right;">
+0.2087159
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 900
@@ -958,7 +969,7 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-12120535
+12118633
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0
@@ -1005,10 +1016,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610063004
+39061006300
 </td>
 <td style="text-align:right;">
-39061006300
+0.1149033
+</td>
+<td style="text-align:right;">
+0.8787645
+</td>
+<td style="text-align:right;">
+38395
+</td>
+<td style="text-align:right;">
+0.0391429
+</td>
+<td style="text-align:right;">
+0.1641705
+</td>
+<td style="text-align:right;">
+0.1284085
+</td>
+<td style="text-align:right;">
+0.3569748
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 350
@@ -1064,10 +1093,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610068003
+39061006800
 </td>
 <td style="text-align:right;">
-39061006800
+0.3517316
+</td>
+<td style="text-align:right;">
+0.8051400
+</td>
+<td style="text-align:right;">
+19783
+</td>
+<td style="text-align:right;">
+0.0579212
+</td>
+<td style="text-align:right;">
+0.3901274
+</td>
+<td style="text-align:right;">
+0.2309613
+</td>
+<td style="text-align:right;">
+0.5527528
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0
@@ -1093,19 +1140,14 @@ geocoded
 </div>
 <p>More information on <a href="https://degauss.org/aadt/">aadt</a></p>
 </div>
-<div id="step-6-distance-to-roadway" class="section level1">
-<h1>Step 6: Distance to Roadway</h1>
+<div id="step-6-proximity-to-roads" class="section level1">
+<h1>Step 6: Proximity to Roads</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code></pre>
-<p>Replace
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code>
-with the name of the CSV file created in Step 5 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1143,10 +1185,28 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_block_group_id_2010
+fips_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id_2010
+fraction_assisted_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_high_school_edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+median_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_no_health_ins
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_poverty
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_vacant_housing
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dep_index
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 length_stop_go
@@ -1216,10 +1276,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610213032
+39061021303
 </td>
 <td style="text-align:right;">
-39061021303
+0.0380034
+</td>
+<td style="text-align:right;">
+0.9396114
+</td>
+<td style="text-align:right;">
+83385
+</td>
+<td style="text-align:right;">
+0.0236515
+</td>
+<td style="text-align:right;">
+0.0250104
+</td>
+<td style="text-align:right;">
+0.0128779
+</td>
+<td style="text-align:right;">
+0.2087159
 </td>
 <td style="text-align:right;">
 900
@@ -1228,7 +1306,7 @@ geocoded
 0
 </td>
 <td style="text-align:right;">
-12120535
+12118633
 </td>
 <td style="text-align:right;">
 0
@@ -1240,10 +1318,10 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-15436
+5793.1013
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-165399
+1654.8006
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0
@@ -1287,10 +1365,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610063004
+39061006300
 </td>
 <td style="text-align:right;">
-39061006300
+0.1149033
+</td>
+<td style="text-align:right;">
+0.8787645
+</td>
+<td style="text-align:right;">
+38395
+</td>
+<td style="text-align:right;">
+0.0391429
+</td>
+<td style="text-align:right;">
+0.1641705
+</td>
+<td style="text-align:right;">
+0.1284085
+</td>
+<td style="text-align:right;">
+0.3569748
 </td>
 <td style="text-align:right;">
 350
@@ -1311,10 +1407,10 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-6143
+502.7043
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-165509
+534.7928
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0
@@ -1358,12 +1454,30 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610068003
-</td>
-<td style="text-align:right;">
 39061006800
 </td>
 <td style="text-align:right;">
+0.3517316
+</td>
+<td style="text-align:right;">
+0.8051400
+</td>
+<td style="text-align:right;">
+19783
+</td>
+<td style="text-align:right;">
+0.0579212
+</td>
+<td style="text-align:right;">
+0.3901274
+</td>
+<td style="text-align:right;">
+0.2309613
+</td>
+<td style="text-align:right;">
+0.5527528
+</td>
+<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -1382,10 +1496,10 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-7532
+1453.0147
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-165509
+548.5412
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
 0
@@ -1397,22 +1511,16 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on <a
-href="https://degauss.org/roads/">roads</a></p>
+<p>More information on <a href="https://degauss.org/roads/">roads</a></p>
 </div>
 <div id="step-7-greenspace" class="section level1">
 <h1>Step 7: Greenspace</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code></pre>
-<p>Replace
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>
-with the name of the CSV file created in Step 6 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code> with the name of the CSV file created in Step 6 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1450,10 +1558,28 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_block_group_id_2010
+fips_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id_2010
+fraction_assisted_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_high_school_edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+median_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_no_health_ins
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_poverty
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_vacant_housing
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dep_index
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 length_stop_go
@@ -1532,10 +1658,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610213032
+39061021303
 </td>
 <td style="text-align:right;">
-39061021303
+0.0380034
+</td>
+<td style="text-align:right;">
+0.9396114
+</td>
+<td style="text-align:right;">
+83385
+</td>
+<td style="text-align:right;">
+0.0236515
+</td>
+<td style="text-align:right;">
+0.0250104
+</td>
+<td style="text-align:right;">
+0.0128779
+</td>
+<td style="text-align:right;">
+0.2087159
 </td>
 <td style="text-align:right;">
 900
@@ -1544,7 +1688,7 @@ geocoded
 0
 </td>
 <td style="text-align:right;">
-12120535
+12118633
 </td>
 <td style="text-align:right;">
 0
@@ -1556,10 +1700,10 @@ geocoded
 0
 </td>
 <td style="text-align:right;">
-15436
+5793.1013
 </td>
 <td style="text-align:right;">
-165399
+1654.8006
 </td>
 <td style="text-align:right;">
 0
@@ -1568,13 +1712,13 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.4182615
+0.4183
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.4350124
+0.4350
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.4295556
+0.4296
 </td>
 </tr>
 <tr>
@@ -1612,10 +1756,28 @@ range
 geocoded
 </td>
 <td style="text-align:right;">
-390610063004
+39061006300
 </td>
 <td style="text-align:right;">
-39061006300
+0.1149033
+</td>
+<td style="text-align:right;">
+0.8787645
+</td>
+<td style="text-align:right;">
+38395
+</td>
+<td style="text-align:right;">
+0.0391429
+</td>
+<td style="text-align:right;">
+0.1641705
+</td>
+<td style="text-align:right;">
+0.1284085
+</td>
+<td style="text-align:right;">
+0.3569748
 </td>
 <td style="text-align:right;">
 350
@@ -1636,25 +1798,25 @@ geocoded
 0
 </td>
 <td style="text-align:right;">
-6143
+502.7043
 </td>
 <td style="text-align:right;">
-165509
-</td>
-<td style="text-align:right;">
-0
+534.7928
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.3356100
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.3556324
+0.3356
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.3863916
+0.3556
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+0.3864
 </td>
 </tr>
 <tr>
@@ -1690,15 +1852,30 @@ range
 </td>
 <td style="text-align:left;">
 geocoded
-</td>
-<td style="text-align:right;">
-390610068003
 </td>
 <td style="text-align:right;">
 39061006800
 </td>
 <td style="text-align:right;">
-0
+0.3517316
+</td>
+<td style="text-align:right;">
+0.8051400
+</td>
+<td style="text-align:right;">
+19783
+</td>
+<td style="text-align:right;">
+0.0579212
+</td>
+<td style="text-align:right;">
+0.3901274
+</td>
+<td style="text-align:right;">
+0.2309613
+</td>
+<td style="text-align:right;">
+0.5527528
 </td>
 <td style="text-align:right;">
 0
@@ -1716,10 +1893,13 @@ geocoded
 0
 </td>
 <td style="text-align:right;">
-7532
+0
 </td>
 <td style="text-align:right;">
-165509
+1453.0147
+</td>
+<td style="text-align:right;">
+548.5412
 </td>
 <td style="text-align:right;">
 0
@@ -1728,59 +1908,29 @@ geocoded
 0
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.4157077
+0.4157
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.4082887
+0.4083
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.3774101
+0.3774
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>More information on <a
-href="https://degauss.org/greenspace/">greenspace</a></p>
+<p>More information on <a href="https://degauss.org/greenspace/">greenspace</a></p>
 </div>
-<div id="step-8-census-data" class="section level1">
-<h1>Step 8: Census Data</h1>
-<p>Using the software of your choice, join the census data file to the
-file created in Step 7 using the <code>fips_tract_id_2010</code> column.
-If you are unfamiliar with merging data, try following this <a
-href="https://www.daveondata.com/blog/introduction-to-sql-for-excel-users-part-15-basic-left-joins/">introduction</a>
-in Excel.</p>
-<p>Note that any CSV opened in Microsoft Excel will not show leading
-zeros. If a CSV is opened in Excel then saved, the leading zeros will be
-truncated (e.g., <code>01234567891</code> will become
-<code>1234567891</code>).</p>
-</div>
-<div id="step-9-air-pollution" class="section level1">
-<h1>Step 9: Air Pollution</h1>
-<p>For this simplicity, we suggest using your original address file
-after geocoding (the output of Step 3) for this step. This file must
-also included columns called <code>start_date</code> and
-<code>end_date</code>. The result of this step will be daily air
-pollution estimates in long format. In other words, the output file will
-contain one row per day between <code>start_date</code> and
-<code>end_date</code> for each individual <code>lat</code> and
-<code>lon</code> location. This means that the output file will likely
-contain many more rows than the input file, so using identifiers with
-this container is useful for merging its output with other sources.</p>
-<div id="step-9a-schwartz_grid_lookup" class="section level2">
-<h2>Step 9a: schwartz_grid_lookup</h2>
-<p>This step finds the nearest grid cell with Schwartz pollutant
-estimates for each input <code>lat</code> and <code>lon</code>.</p>
+<div id="step-8-drive-time" class="section level1">
+<h1>Step 8: Drive Time</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz_grid_lookup:0.4.1  my_address_file_geocoded_3.2.0.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
-of the CSV file created in <strong>Step 3</strong> and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code> with the name of the CSV file created in Step 7 <strong>and</strong> replace <code>cchmc</code> with the abbrevation for your site and run.</p>
+<p><a href="https://degauss.org/drivetime/#required-argument">List of site abbrevations</a></p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code>.</p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1789,12 +1939,6 @@ id
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 address
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-start_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-end_date
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 matched_street
@@ -1824,10 +1968,73 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-site_index
+fips_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-sitecode
+fraction_assisted_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_high_school_edu
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+median_income
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_no_health_ins
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_poverty
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+fraction_vacant_housing
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dep_index
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+vehicle_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_stop_go
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+truck_meters_moving
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+dist_to_1200
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1100
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+length_1200
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_500
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_1500
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+evi_2500
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+drive_time
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+distance
 </th>
 </tr>
 </thead>
@@ -1838,12 +2045,6 @@ sitecode
 </td>
 <td style="text-align:left;">
 5358 LILIBET CT DELHI TOWNSHIP OH 45238
-</td>
-<td style="text-align:left;">
-2015-05-05
-</td>
-<td style="text-align:left;">
-2015-05-06
 </td>
 <td style="text-align:left;">
 Lilibet Ct
@@ -1872,11 +2073,74 @@ range
 <td style="text-align:left;">
 geocoded
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-9596220
+<td style="text-align:right;">
+39061021303
+</td>
+<td style="text-align:right;">
+0.0380034
+</td>
+<td style="text-align:right;">
+0.9396114
+</td>
+<td style="text-align:right;">
+83385
+</td>
+<td style="text-align:right;">
+0.0236515
+</td>
+<td style="text-align:right;">
+0.0250104
+</td>
+<td style="text-align:right;">
+0.0128779
+</td>
+<td style="text-align:right;">
+0.2087159
+</td>
+<td style="text-align:right;">
+900
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12118633
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5793.1013
+</td>
+<td style="text-align:right;">
+1654.8006
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.4183
+</td>
+<td style="text-align:right;">
+0.4350
+</td>
+<td style="text-align:right;">
+0.4296
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-211050625307
+30
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+10219.409
 </td>
 </tr>
 <tr>
@@ -1885,12 +2149,6 @@ geocoded
 </td>
 <td style="text-align:left;">
 1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;">
-2010-06-07
-</td>
-<td style="text-align:left;">
-2010-06-08
 </td>
 <td style="text-align:left;">
 Catalina Ave
@@ -1919,11 +2177,74 @@ range
 <td style="text-align:left;">
 geocoded
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-9614001
+<td style="text-align:right;">
+39061006300
+</td>
+<td style="text-align:right;">
+0.1149033
+</td>
+<td style="text-align:right;">
+0.8787645
+</td>
+<td style="text-align:right;">
+38395
+</td>
+<td style="text-align:right;">
+0.0391429
+</td>
+<td style="text-align:right;">
+0.1641705
+</td>
+<td style="text-align:right;">
+0.1284085
+</td>
+<td style="text-align:right;">
+0.3569748
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2098249
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+502.7043
+</td>
+<td style="text-align:right;">
+534.7928
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.3356
+</td>
+<td style="text-align:right;">
+0.3556
+</td>
+<td style="text-align:right;">
+0.3864
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-211050650500
+18
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+5004.925
 </td>
 </tr>
 <tr>
@@ -1932,12 +2253,6 @@ geocoded
 </td>
 <td style="text-align:left;">
 630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;">
-2019-07-08
-</td>
-<td style="text-align:left;">
-2019-07-09
 </td>
 <td style="text-align:left;">
 Greenwood Ave
@@ -1966,1017 +2281,104 @@ range
 <td style="text-align:left;">
 geocoded
 </td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-9609779
+<td style="text-align:right;">
+39061006800
+</td>
+<td style="text-align:right;">
+0.3517316
+</td>
+<td style="text-align:right;">
+0.8051400
+</td>
+<td style="text-align:right;">
+19783
+</td>
+<td style="text-align:right;">
+0.0579212
+</td>
+<td style="text-align:right;">
+0.3901274
+</td>
+<td style="text-align:right;">
+0.2309613
+</td>
+<td style="text-align:right;">
+0.5527528
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1453.0147
+</td>
+<td style="text-align:right;">
+548.5412
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.4157
+</td>
+<td style="text-align:right;">
+0.4083
+</td>
+<td style="text-align:right;">
+0.3774
 </td>
 <td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-211050644503
+6
+</td>
+<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
+1755.939
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>More information on <a
-href="https://degauss.org/schwartz_grid_lookup/">schwartz_grid_lookup</a></p>
+<p>More information on <a href="https://degauss.org/drivetime">drive time</a></p>
 </div>
-<div id="step-9b-schwartz" class="section level2">
-<h2>Step 9b: schwartz</h2>
-<p>This step adds daily Schwartz pollutant estimates based on the grid
-identifiers added in Step 9a and <code>start_date</code> and
-<code>end_date</code> columns.</p>
+<div id="step-9-landcover" class="section level1">
+<h1>Step 9: Landcover</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz:0.5.5  my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code></pre>
-<p>Replace
-<code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code> with
-the name of the CSV file created in <strong>Step 9a</strong> and
-run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_schwartz_site_index_schwartz_v0.5.5.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code> with the name of the CSV file created in Step 8 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code>.</p>
+<p><strong>Note that the landcover container will result in mulitple rows per patient, due to multiple years of landcover data.</strong></p>
 <p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-id
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-address
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-start_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-end_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_street
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-matched_zip
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_city
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_state
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-lat
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-lon
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-score
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-precision
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-geocode_result
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-site_index
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-sitecode
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-date
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-year
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-gh6
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-gh3
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-gh3_combined
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-PM25
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-NO2
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-O3
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-11200020024
-</td>
-<td style="text-align:left;">
-630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;">
-2019-07-08
-</td>
-<td style="text-align:left;">
-2019-07-09
-</td>
-<td style="text-align:left;">
-Greenwood Ave
-</td>
-<td style="text-align:right;">
-45229
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.15321
-</td>
-<td style="text-align:right;">
--84.49236
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9609779
-</td>
-<td style="text-align:right;">
-211050644503
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-08
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2019
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11200020024
-</td>
-<td style="text-align:left;">
-630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;">
-2019-07-08
-</td>
-<td style="text-align:left;">
-2019-07-09
-</td>
-<td style="text-align:left;">
-Greenwood Ave
-</td>
-<td style="text-align:right;">
-45229
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.15321
-</td>
-<td style="text-align:right;">
--84.49236
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9609779
-</td>
-<td style="text-align:right;">
-211050644503
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-09
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2019
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-13100070229
-</td>
-<td style="text-align:left;">
-1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;">
-2010-06-07
-</td>
-<td style="text-align:left;">
-2010-06-08
-</td>
-<td style="text-align:left;">
-Catalina Ave
-</td>
-<td style="text-align:right;">
-45237
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.17112
-</td>
-<td style="text-align:right;">
--84.46176
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9614001
-</td>
-<td style="text-align:right;">
-211050650500
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-07
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2010
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dngyvg
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-5.6
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-19.1
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-47.0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-13100070229
-</td>
-<td style="text-align:left;">
-1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;">
-2010-06-07
-</td>
-<td style="text-align:left;">
-2010-06-08
-</td>
-<td style="text-align:left;">
-Catalina Ave
-</td>
-<td style="text-align:right;">
-45237
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.17112
-</td>
-<td style="text-align:right;">
--84.46176
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9614001
-</td>
-<td style="text-align:right;">
-211050650500
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-08
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2010
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dngyvg
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-12.2
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-22.5
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-50.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-54000600136
-</td>
-<td style="text-align:left;">
-5358 LILIBET CT DELHI TOWNSHIP OH 45238
-</td>
-<td style="text-align:left;">
-2015-05-05
-</td>
-<td style="text-align:left;">
-2015-05-06
-</td>
-<td style="text-align:left;">
-Lilibet Ct
-</td>
-<td style="text-align:right;">
-45238
-</td>
-<td style="text-align:left;">
-Delhi Hills
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.11552
-</td>
-<td style="text-align:right;">
--84.61902
-</td>
-<td style="text-align:right;">
-0.754
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9596220
-</td>
-<td style="text-align:right;">
-211050625307
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-05
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2015
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dngyd2
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-16.1
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-42.5
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-49.2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-54000600136
-</td>
-<td style="text-align:left;">
-5358 LILIBET CT DELHI TOWNSHIP OH 45238
-</td>
-<td style="text-align:left;">
-2015-05-05
-</td>
-<td style="text-align:left;">
-2015-05-06
-</td>
-<td style="text-align:left;">
-Lilibet Ct
-</td>
-<td style="text-align:right;">
-45238
-</td>
-<td style="text-align:left;">
-Delhi Hills
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.11552
-</td>
-<td style="text-align:right;">
--84.61902
-</td>
-<td style="text-align:right;">
-0.754
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;">
-9596220
-</td>
-<td style="text-align:right;">
-211050625307
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-06
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2015
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dngyd2
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-dng
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-20.8
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-56.5
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-46.9
-</td>
-</tr>
-</tbody>
-</table>
+<p>More information on <a href="https://degauss.org/nlcd/">landcover</a></p>
 </div>
-<p>More information on <a
-href="https://degauss.org/schwartz/">schwartz</a></p>
-</div>
-<div id="ureca-only-step-9c-pm" class="section level2">
-<h2><strong>(URECA only)</strong> Step 9c: pm</h2>
-<p>Note that the Schwartz model covers the years 2000 - 2016. To obtain
-PM<span class="math inline">\({_2.5}\)</span> estimates beyond 2016,
-please use our <code>pm</code> container. <strong>If your data ends
-before 2016, you can skip this step.</strong></p>
-<p>Again, we suggest using your original address file after geocoding
-(the output of Step 3) for this step, and your file must also included
-columns called <code>start_date</code> and <code>end_date</code>. The
-result of this step will be daily air pollution estimates in long
-format. In other words, the output file will contain one row per day
-between <code>start_date</code> and <code>end_date</code> for each
-individual <code>lat</code> and <code>lon</code> location. This means
-that the output file will likely contain many more rows than the input
-file, so using identifiers with this container is useful for merging its
-output with other sources.</p>
+<div id="step-10-census-tract-data" class="section level1">
+<h1>Step 10: Census Tract Data</h1>
+<p>In this step, you will use a container to merge the output of Step 9 with a CSV file containing census tract level data.</p>
+<p>The census tract level data is called <code>nash_crn_census_data_2010.csv</code> and should have been sent to you. Otherwise you can download the data and accompanying data dictionary <a href="http://geomarker.io/NASH_CRN/">here</a>.</p>
+<p>Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CSV is opened in Excel then saved, the leading zeros will be truncated (e.g., <code>01234567891</code> will become <code>1234567891</code>). Avoid opening any CSVs and saving.</p>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/pm:0.2.0 my_address_file_geocoded_3.2.0.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
-of the CSV file created in <strong>Step 3</strong> and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and
-in our example, will be called
-<code>my_address_file_geocoded_3.2.0_pm_0.2.0.csv</code>.</p>
-<p>Example output:</p>
-<div
-style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-id
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-address
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-start_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-end_date
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_street
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-matched_zip
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_city
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-matched_state
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-lat
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-lon
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-score
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-precision
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-geocode_result
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-.row
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-date
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-year
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-h3
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-h3_3
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-pm_pred
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-pm_se
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-54000600136
-</td>
-<td style="text-align:left;">
-5358 LILIBET CT DELHI TOWNSHIP OH 45238
-</td>
-<td style="text-align:left;">
-2015-05-05
-</td>
-<td style="text-align:left;">
-2015-05-06
-</td>
-<td style="text-align:left;">
-Lilibet Ct
-</td>
-<td style="text-align:right;">
-45238
-</td>
-<td style="text-align:left;">
-Delhi Hills
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.11552
-</td>
-<td style="text-align:right;">
--84.61902
-</td>
-<td style="text-align:right;">
-0.754
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-1
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-05
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2015
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9308a9fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-16.130
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2.9480
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-54000600136
-</td>
-<td style="text-align:left;">
-5358 LILIBET CT DELHI TOWNSHIP OH 45238
-</td>
-<td style="text-align:left;">
-2015-05-05
-</td>
-<td style="text-align:left;">
-2015-05-06
-</td>
-<td style="text-align:left;">
-Lilibet Ct
-</td>
-<td style="text-align:right;">
-45238
-</td>
-<td style="text-align:left;">
-Delhi Hills
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.11552
-</td>
-<td style="text-align:right;">
--84.61902
-</td>
-<td style="text-align:right;">
-0.754
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-1
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2015-05-06
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2015
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9308a9fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-18.110
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2.5140
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-13100070229
-</td>
-<td style="text-align:left;">
-1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;">
-2010-06-07
-</td>
-<td style="text-align:left;">
-2010-06-08
-</td>
-<td style="text-align:left;">
-Catalina Ave
-</td>
-<td style="text-align:right;">
-45237
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.17112
-</td>
-<td style="text-align:right;">
--84.46176
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-07
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2010
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9301c9fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-5.485
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.3087
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-13100070229
-</td>
-<td style="text-align:left;">
-1922 CATALINA AV CINCINNATI OH 45237
-</td>
-<td style="text-align:left;">
-2010-06-07
-</td>
-<td style="text-align:left;">
-2010-06-08
-</td>
-<td style="text-align:left;">
-Catalina Ave
-</td>
-<td style="text-align:right;">
-45237
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.17112
-</td>
-<td style="text-align:right;">
--84.46176
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2010-06-08
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2010
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9301c9fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-10.740
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2.8420
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11200020024
-</td>
-<td style="text-align:left;">
-630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;">
-2019-07-08
-</td>
-<td style="text-align:left;">
-2019-07-09
-</td>
-<td style="text-align:left;">
-Greenwood Ave
-</td>
-<td style="text-align:right;">
-45229
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.15321
-</td>
-<td style="text-align:right;">
--84.49236
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-3
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-08
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2019
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9301e3fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-12.240
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-0.9182
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-11200020024
-</td>
-<td style="text-align:left;">
-630 GREENWOOD AV CINCINNATI OH 45229
-</td>
-<td style="text-align:left;">
-2019-07-08
-</td>
-<td style="text-align:left;">
-2019-07-09
-</td>
-<td style="text-align:left;">
-Greenwood Ave
-</td>
-<td style="text-align:right;">
-45229
-</td>
-<td style="text-align:left;">
-Cincinnati
-</td>
-<td style="text-align:left;">
-OH
-</td>
-<td style="text-align:right;">
-39.15321
-</td>
-<td style="text-align:right;">
--84.49236
-</td>
-<td style="text-align:right;">
-0.922
-</td>
-<td style="text-align:left;">
-range
-</td>
-<td style="text-align:left;">
-geocoded
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-3
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-2019-07-09
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2019
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-882a9301e3fffff
-</td>
-<td style="text-align:left;font-weight: bold;color: white !important;background-color: gray !important;">
-832a93fffffffff
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-11.330
-</td>
-<td style="text-align:right;font-weight: bold;color: white !important;background-color: gray !important;">
-2.0150
-</td>
-</tr>
-</tbody>
-</table>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 9 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv</code>.</p>
 </div>
-<p>More information on <a href="https://degauss.org/pm/">pm</a></p>
-</div>
-</div>
-<div id="step-10-removing-phi" class="section level1">
-<h1>Step 10: Removing PHI</h1>
-<p>Before sharing your data, remove the following columns from both the
-air pollution output file and the file created by Step 8:</p>
+<div id="step-11-removing-phi" class="section level1">
+<h1>Step 11: Removing PHI</h1>
+<p>Before sharing your data, remove the following columns from both the air pollution output file and the file created by Step 8:</p>
 <ul>
 <li><code>address</code></li>
 <li><code>matched_street</code></li>
@@ -2985,16 +2387,20 @@ air pollution output file and the file created by Step 8:</p>
 <li><code>matched_state</code></li>
 <li><code>lat</code></li>
 <li><code>lon</code></li>
-<li><code>fips_block_group_id_2010</code></li>
-<li><code>fips_tract_id_2010</code></li>
-<li><code>site_index</code></li>
-<li><code>sitecode</code></li>
-<li><code>gh6</code></li>
-<li><code>gh3</code></li>
-<li><code>gh3_combined</code></li>
-<li><code>h3</code></li>
-<li><code>h3_3</code></li>
+<li><code>fips_tract_id</code></li>
+<li><code>nlcd_cell</code></li>
 </ul>
+</div>
+<div id="code-summary" class="section level1">
+<h1>Code Summary</h1>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
 </div>
 
 

@@ -1,0 +1,4 @@
+id,address,matched_street,matched_zip,matched_city,matched_state,lat,lon,score,precision,geocode_result
+54000600136,5358 LILIBET CT DELHI TOWNSHIP OH 45238,Lilibet Ct,45238,Delhi Hills,OH,39.115521,-84.61902,0.754,range,geocoded
+13100070229,1922 CATALINA AV CINCINNATI OH 45237,Catalina Ave,45237,Cincinnati,OH,39.171117,-84.461759,0.922,range,geocoded
+11200020024,630 GREENWOOD AV CINCINNATI OH 45229,Greenwood Ave,45229,Cincinnati,OH,39.153214,-84.492359,0.922,range,geocoded
