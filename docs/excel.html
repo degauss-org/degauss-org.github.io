@@ -324,25 +324,43 @@ $(document).ready(function () {
 </div>
 
 
-<p>Opening an input CSV file in Microsoft Excel can change column formats resulting in incorrect results from DeGAUSS containers. If opening the CSV in Excel before feeding it to a container cannot be avoided, please follow the guidelines below for ensuring columns are formatted properly.</p>
+<p>Opening an input CSV file in Microsoft Excel can change column
+formats resulting in incorrect results from DeGAUSS containers. If
+opening the CSV in Excel before feeding it to a container cannot be
+avoided, please follow the guidelines below for ensuring columns are
+formatted properly.</p>
 <div id="dates" class="section level2">
 <h2>1. dates</h2>
-<p>Excel autoformats dates, usually as <code>MM/DD/YY</code>, regardless of the format in which the user supplied the date. Further, Excel will <em>display</em> a date in that format even if the actual <em>value</em> is stored in a different format.</p>
-<p>DeGAUSS containers work best when dates are formatted as <code>YYYY-MM-DD</code>. You can change this format manually in Excel.</p>
-<p>Highlight your date column(s) and select “More Number Formats”. Then, under <strong>Date</strong> formatting, select the <code>YYYY-MM-DD</code> format and click OK.</p>
+<p>Excel autoformats dates, usually as <code>MM/DD/YY</code>, regardless
+of the format in which the user supplied the date. Further, Excel will
+<em>display</em> a date in that format even if the actual <em>value</em>
+is stored in a different format.</p>
+<p>DeGAUSS containers work best when dates are formatted as
+<code>YYYY-MM-DD</code>. You can change this format manually in
+Excel.</p>
+<p>Highlight your date column(s) and select “More Number Formats”. Then,
+under <strong>Date</strong> formatting, select the
+<code>YYYY-MM-DD</code> format and click OK.</p>
 <p><img src="figs/format_columns.png" width="800" /></p>
 <p><img src="figs/format_dates.png" width="400" /></p>
 <p><br></p>
 </div>
 <div id="large-numbers" class="section level2">
 <h2>2. large numbers</h2>
-<p>Excel will often display large numbers in scientific notation. If large numbers do not remain formatted numerically, some digits could be stored as zeros, (e.g., the number 123456789 could be stored as 1.2E8, which could then be converted to 120000000).</p>
-<p>Similar to formatting the dates, you can manually format large numbers in Excel.</p>
+<p>Excel will often display large numbers in scientific notation. If
+large numbers do not remain formatted numerically, some digits could be
+stored as zeros, (e.g., the number 123456789 could be stored as 1.2E8,
+which could then be converted to 120000000).</p>
+<p>Similar to formatting the dates, you can manually format large
+numbers in Excel.</p>
 <p><img src="figs/format_sitecode.png" width="800" /></p>
 </div>
 <div id="excel-display-vs.-actual-cell-values" class="section level2">
 <h2>Excel display vs. actual cell values</h2>
-<p>Excel’s display will probably not show these changes if the file is saved, closed, and re-opened. One way to see the actual values of the csv file, is to open with a simple text editor, like notepad or TextEdit.</p>
+<p>Excel’s display will probably not show these changes if the file is
+saved, closed, and re-opened. One way to see the actual values of the
+csv file, is to open with a simple text editor, like notepad or
+TextEdit.</p>
 <p><img src="figs/open_with.png" width="700" /></p>
 <p><img src="figs/text_edit_view.png" width="500" /></p>
 </div>

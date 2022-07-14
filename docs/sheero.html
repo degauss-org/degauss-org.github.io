@@ -329,12 +329,19 @@ $(document).ready(function () {
 <p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>This is an example of the workflow a SHEERO study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p>This is an example of the workflow a SHEERO study site might use to
+add geomarkers to their data with <a
+href="https://degauss.org/">DeGAUSS</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback
+and completing a short <a
+href="https://redcap.link/gvhbxfjd">survey</a>?</p>
 <p><strong>Overview:</strong></p>
 <ul>
 <li><p>Steps 0 through 2: Install Software and Prepare Data</p></li>
-<li><p>Steps 3 through 7: Use DeGAUSS to geocode addresses add geomarkers (columns added in each step are highlighted in gray). Note that in each step, the input file is the CSV created in the previous step.</p></li>
+<li><p>Steps 3 through 7: Use DeGAUSS to geocode addresses add
+geomarkers (columns added in each step are highlighted in gray). Note
+that in each step, the input file is the CSV created in the previous
+step.</p></li>
 <li><p>Step 8: Link to Census Data</p></li>
 <li><p>Step 9: Use DeGAUSS to add daily air pollution data.</p></li>
 <li><p>Step 10: Remove PHI before sharing.</p></li>
@@ -342,23 +349,35 @@ $(document).ready(function () {
 </div>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
-<p>See the <a href="https://degauss.org/using_degauss.html#Installing_Docker">Installing Docker</a> webpage.</p>
+<p>See the <a
+href="https://degauss.org/using_degauss.html#Installing_Docker">Installing
+Docker</a> webpage.</p>
 <blockquote>
-<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong> </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to <strong>Docker Settings &gt; Advanced</strong> and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB) <br>
+<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong>
+</font> <br> <font size="2.75"> After installing Docker, but before
+running containers, go to <strong>Docker Settings &gt; Advanced</strong>
+and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB)
+<br>
 <center>
 <img width=75% src="figs/docker_settings_memory.png">
 </center>
-<br> If you are using a Windows computer, also set <strong>CPUs</strong> to 1. <br>
+<br> If you are using a Windows computer, also set <strong>CPUs</strong>
+to 1. <br>
 <center>
 <img width=75% src="figs/docker_settings_cpu.png">
 </center>
-<p>Click <strong>Apply</strong> and wait for Docker to restart. </font></p>
+<p>Click <strong>Apply</strong> and wait for Docker to restart.
+</font></p>
 </blockquote>
 </div>
 <div id="step-1-preparing-your-input-file" class="section level1">
 <h1>Step 1: Preparing Your Input File</h1>
-<p>The input file must be a CSV file with one column called <code>address</code> containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.</p>
-<p>An example input CSV file (called <code>my_address_file.csv</code>) might look like:</p>
+<p>The input file must be a CSV file with one column called
+<code>address</code> containing all address components. Other columns
+may be present and will be returned in the output file, but should be
+kept to a minimum to reduce file size.</p>
+<p>An example input CSV file (called <code>my_address_file.csv</code>)
+might look like:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -397,32 +416,60 @@ address
 </tr>
 </tbody>
 </table>
-<p>Refer to the DeGAUSS <a href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a> webpage for more information about the input file and address string formatting.</p>
+<p>Refer to the DeGAUSS <a
+href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a>
+webpage for more information about the input file and address string
+formatting.</p>
 <div id="working-with-home-and-school-addresses" class="section level3">
 <h3>Working with <em>home</em> and <em>school</em> addresses</h3>
-<p>Because the geocoder requires one address column named <code>address</code>, we suggest that home addresses and school addresses be stored in separate CSV files and geocoded separately. This means that steps 3 through 10 will be done twice– once for home addresses and once for school addresses. Alternatively, home and school addresses can be in the same file in long format (i.e., with a column that defines the <em>type</em> of address as <code>home</code> or <code>school</code> and one column that contains the <code>address</code>).</p>
+<p>Because the geocoder requires one address column named
+<code>address</code>, we suggest that home addresses and school
+addresses be stored in separate CSV files and geocoded separately. This
+means that steps 3 through 10 will be done twice– once for home
+addresses and once for school addresses. Alternatively, home and school
+addresses can be in the same file in long format (i.e., with a column
+that defines the <em>type</em> of address as <code>home</code> or
+<code>school</code> and one column that contains the
+<code>address</code>).</p>
 </div>
 </div>
 <div id="step-2-navigating-the-shell" class="section level1">
 <h1>Step 2: Navigating the Shell</h1>
-<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.</p>
-<p>Navigate to the directory where the CSV file to be geocoded is located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a> for help navigating a filesystem using the command line.</p>
-<p>For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command <code>cd Desktop</code>.</p>
+<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use
+this shell for the rest of the steps in this example.</p>
+<p>Navigate to the directory where the CSV file to be geocoded is
+located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a>
+for help navigating a filesystem using the command line.</p>
+<p>For those unfamiliar with the command line, a simple approach is to
+save the file to be geocoded to the Desktop, then navigate to your
+Desktop folder with the command <code>cd Desktop</code>.</p>
 </div>
 <div id="step-3-geocoding" class="section level1">
 <h1>Step 3: Geocoding</h1>
-<p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
+<p>After navigating to your working directory, use the <a
+href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a>
+to geocode your addresses.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv</code></pre>
-<p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
+<p>Replace <code>my_address_file.csv</code> with the name of the CSV
+file to be geocoded and run the call in the shell.</p>
 <p><br></p>
 <blockquote>
-<p><strong><em>Note for Windows Users:</em></strong> <br> In this and all following docker calls in this example, replace <code>"$PWD"</code> with <code>"%cd%"</code>. Refer to the DeGAUSS <a href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a> page for more information.</p>
+<p><strong><em>Note for Windows Users:</em></strong> <br> In this and
+all following docker calls in this example, replace <code>"$PWD"</code>
+with <code>"%cd%"</code>. Refer to the DeGAUSS <a
+href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a>
+page for more information.</p>
 </blockquote>
-<p>See <a href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a> for more information on the anatomy of a degauss command.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0.csv</code>.</p>
+<p>See <a
+href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a>
+for more information on the anatomy of a degauss command.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -594,17 +641,25 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>For more information on interpreting geocoder output, see <a href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
+<p>For more information on interpreting geocoder output, see <a
+href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
 </div>
 <div id="step-4-census-block-group" class="section level1">
 <h1>Step 4: Census Block Group</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_block_group:0.5.1 my_address_file_geocoded_3.2.0.csv 2010</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
-<p><strong>Note</strong>: The CCAAPS cohort should repeat this step, replacing <code>2010</code> with <code>2000</code>, resulting in a file with both 2010 census identifiers <em>and</em> 2000 census identifiers.</p>
-<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code>.</p>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
+of the geocoded CSV file created in Step 3 and run.</p>
+<p><strong>Note</strong>: The CCAAPS cohort should repeat this step,
+replacing <code>2010</code> with <code>2000</code>, resulting in a file
+with both 2010 census identifiers <em>and</em> 2000 census
+identifiers.</p>
+<p>The <strong>output file</strong> is written to the same directory
+and, in our example, will be called
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -776,16 +831,23 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on the <a href="https://degauss.org/census_block_group">census_block_group container</a></p>
+<p>More information on the <a
+href="https://degauss.org/census_block_group">census_block_group
+container</a></p>
 </div>
 <div id="step-5-average-annual-daily-traffic" class="section level1">
 <h1>Step 5: Average Annual Daily Traffic</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv </code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code> with the name of the CSV file created in Step 4 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010.csv</code>
+with the name of the CSV file created in Step 4 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1035,10 +1097,15 @@ geocoded
 <h1>Step 6: Distance to Roadway</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer.csv</code>
+with the name of the CSV file created in Step 5 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1330,16 +1397,22 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on <a href="https://degauss.org/roads/">roads</a></p>
+<p>More information on <a
+href="https://degauss.org/roads/">roads</a></p>
 </div>
 <div id="step-7-greenspace" class="section level1">
 <h1>Step 7: Greenspace</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code> with the name of the CSV file created in Step 6 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>
+with the name of the CSV file created in Step 6 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_census_block_group_0.5.1_2010_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1667,25 +1740,47 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on <a href="https://degauss.org/greenspace/">greenspace</a></p>
+<p>More information on <a
+href="https://degauss.org/greenspace/">greenspace</a></p>
 </div>
 <div id="step-8-census-data" class="section level1">
 <h1>Step 8: Census Data</h1>
-<p>Using the software of your choice, join the census data file to the file created in Step 7 using the <code>fips_tract_id_2010</code> column. If you are unfamiliar with merging data, try following this <a href="https://www.daveondata.com/blog/introduction-to-sql-for-excel-users-part-15-basic-left-joins/">introduction</a> in Excel.</p>
-<p>Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CSV is opened in Excel then saved, the leading zeros will be truncated (e.g., <code>01234567891</code> will become <code>1234567891</code>).</p>
+<p>Using the software of your choice, join the census data file to the
+file created in Step 7 using the <code>fips_tract_id_2010</code> column.
+If you are unfamiliar with merging data, try following this <a
+href="https://www.daveondata.com/blog/introduction-to-sql-for-excel-users-part-15-basic-left-joins/">introduction</a>
+in Excel.</p>
+<p>Note that any CSV opened in Microsoft Excel will not show leading
+zeros. If a CSV is opened in Excel then saved, the leading zeros will be
+truncated (e.g., <code>01234567891</code> will become
+<code>1234567891</code>).</p>
 </div>
 <div id="step-9-air-pollution" class="section level1">
 <h1>Step 9: Air Pollution</h1>
-<p>For this simplicity, we suggest using your original address file after geocoding (the output of Step 3) for this step. This file must also included columns called <code>start_date</code> and <code>end_date</code>. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between <code>start_date</code> and <code>end_date</code> for each individual <code>lat</code> and <code>lon</code> location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.</p>
+<p>For this simplicity, we suggest using your original address file
+after geocoding (the output of Step 3) for this step. This file must
+also included columns called <code>start_date</code> and
+<code>end_date</code>. The result of this step will be daily air
+pollution estimates in long format. In other words, the output file will
+contain one row per day between <code>start_date</code> and
+<code>end_date</code> for each individual <code>lat</code> and
+<code>lon</code> location. This means that the output file will likely
+contain many more rows than the input file, so using identifiers with
+this container is useful for merging its output with other sources.</p>
 <div id="step-9a-schwartz_grid_lookup" class="section level2">
 <h2>Step 9a: schwartz_grid_lookup</h2>
-<p>This step finds the nearest grid cell with Schwartz pollutant estimates for each input <code>lat</code> and <code>lon</code>.</p>
+<p>This step finds the nearest grid cell with Schwartz pollutant
+estimates for each input <code>lat</code> and <code>lon</code>.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz_grid_lookup:0.4.1  my_address_file_geocoded_3.2.0.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the CSV file created in <strong>Step 3</strong> and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code>.</p>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
+of the CSV file created in <strong>Step 3</strong> and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1881,17 +1976,26 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on <a href="https://degauss.org/schwartz_grid_lookup/">schwartz_grid_lookup</a></p>
+<p>More information on <a
+href="https://degauss.org/schwartz_grid_lookup/">schwartz_grid_lookup</a></p>
 </div>
 <div id="step-9b-schwartz" class="section level2">
 <h2>Step 9b: schwartz</h2>
-<p>This step adds daily Schwartz pollutant estimates based on the grid identifiers added in Step 9a and <code>start_date</code> and <code>end_date</code> columns.</p>
+<p>This step adds daily Schwartz pollutant estimates based on the grid
+identifiers added in Step 9a and <code>start_date</code> and
+<code>end_date</code> columns.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/schwartz:0.5.5  my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code> with the name of the CSV file created in <strong>Step 9a</strong> and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_schwartz_site_index_schwartz_v0.5.5.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_3.2.0_schwartz_site_index.csv</code> with
+the name of the CSV file created in <strong>Step 9a</strong> and
+run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_schwartz_site_index_schwartz_v0.5.5.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2396,18 +2500,35 @@ dng
 </tbody>
 </table>
 </div>
-<p>More information on <a href="https://degauss.org/schwartz/">schwartz</a></p>
+<p>More information on <a
+href="https://degauss.org/schwartz/">schwartz</a></p>
 </div>
 <div id="ureca-only-step-9c-pm" class="section level2">
 <h2><strong>(URECA only)</strong> Step 9c: pm</h2>
-<p>Note that the Schwartz model covers the years 2000 - 2016. To obtain PM<span class="math inline">\({_2.5}\)</span> estimates beyond 2016, please use our <code>pm</code> container. <strong>If your data ends before 2016, you can skip this step.</strong></p>
-<p>Again, we suggest using your original address file after geocoding (the output of Step 3) for this step, and your file must also included columns called <code>start_date</code> and <code>end_date</code>. The result of this step will be daily air pollution estimates in long format. In other words, the output file will contain one row per day between <code>start_date</code> and <code>end_date</code> for each individual <code>lat</code> and <code>lon</code> location. This means that the output file will likely contain many more rows than the input file, so using identifiers with this container is useful for merging its output with other sources.</p>
+<p>Note that the Schwartz model covers the years 2000 - 2016. To obtain
+PM<span class="math inline">\({_2.5}\)</span> estimates beyond 2016,
+please use our <code>pm</code> container. <strong>If your data ends
+before 2016, you can skip this step.</strong></p>
+<p>Again, we suggest using your original address file after geocoding
+(the output of Step 3) for this step, and your file must also included
+columns called <code>start_date</code> and <code>end_date</code>. The
+result of this step will be daily air pollution estimates in long
+format. In other words, the output file will contain one row per day
+between <code>start_date</code> and <code>end_date</code> for each
+individual <code>lat</code> and <code>lon</code> location. This means
+that the output file will likely contain many more rows than the input
+file, so using identifiers with this container is useful for merging its
+output with other sources.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/pm:0.2.0 my_address_file_geocoded_3.2.0.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name of the CSV file created in <strong>Step 3</strong> and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_3.2.0_pm_0.2.0.csv</code>.</p>
+<p>Replace <code>my_address_file_geocoded_3.2.0.csv</code> with the name
+of the CSV file created in <strong>Step 3</strong> and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_3.2.0_pm_0.2.0.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2854,7 +2975,8 @@ geocoded
 </div>
 <div id="step-10-removing-phi" class="section level1">
 <h1>Step 10: Removing PHI</h1>
-<p>Before sharing your data, remove the following columns from both the air pollution output file and the file created by Step 8:</p>
+<p>Before sharing your data, remove the following columns from both the
+air pollution output file and the file created by Step 8:</p>
 <ul>
 <li><code>address</code></li>
 <li><code>matched_street</code></li>

@@ -564,9 +564,11 @@ geocoded
 <div id="step-4-deprivation-index" class="section level1">
 <h1>Step 4: Deprivation Index</h1>
 <p>macOS example call:</p>
+
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code></pre>
 <p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
 <p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv</code>.</p>
+
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1146,6 +1148,7 @@ geocoded
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv</code></pre>
 <p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
 <p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
+
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">

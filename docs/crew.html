@@ -325,9 +325,16 @@ $(document).ready(function () {
 
 
 <p><a href='https://degauss-org.github.io'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
-<p>This step-by-step guide covers how to add daily spatiotemporal PM25, NO2, and O3 estimates from models created by Joel Schwartz and used within CREW. We assume that the user starts with geocoded data, but DeGAUSS can also be used to geocode address data if needed.</p>
-<p>For detailed documentation on DeGAUSS, including general usage and installation, please see <a href="https://degauss.org">https://degauss.org</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p>This step-by-step guide covers how to add daily spatiotemporal PM25,
+NO2, and O3 estimates from models created by Joel Schwartz and used
+within CREW. We assume that the user starts with geocoded data, but
+DeGAUSS can also be used to geocode address data if needed.</p>
+<p>For detailed documentation on DeGAUSS, including general usage and
+installation, please see <a
+href="https://degauss.org">https://degauss.org</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback
+and completing a short <a
+href="https://redcap.link/gvhbxfjd">survey</a>?</p>
 <div id="assemble-data" class="section level2">
 <h2>1. Assemble Data</h2>
 <ul>
@@ -335,9 +342,13 @@ $(document).ready(function () {
 <ul>
 <li><code>lat</code>: latitude to estimate pollutants at</li>
 <li><code>lon</code>: longitude to estimate pollutants at</li>
-<li><code>start_date</code>: starting date for daily sequence used for estimates</li>
-<li><code>end_date</code>: ending date for daily sequence used for estimates</li>
-<li>(optional) <code>index_date</code>: include <code>days_from_index_date</code> in output to create “relative dates”</li>
+<li><code>start_date</code>: starting date for daily sequence used for
+estimates</li>
+<li><code>end_date</code>: ending date for daily sequence used for
+estimates</li>
+<li>(optional) <code>index_date</code>: include
+<code>days_from_index_date</code> in output to create “relative
+dates”</li>
 </ul></li>
 <li>for example, <code>my_address_file_geocoded.csv</code>:</li>
 </ul>
@@ -383,21 +394,37 @@ $(document).ready(function () {
 <div id="authenticate-with-docker" class="section level2">
 <h2>2. Authenticate With Docker</h2>
 <ul>
-<li>the DeGAUSS images used in the following steps can only be accessed if authorized using a DockerHub account</li>
-<li>create a <a href="https://hub.docker.com/">DockerHub</a> account if you don’t have one already and send your username to the maintainers</li>
-<li>run <code>docker login</code> and enter your DockerHub username and password as prompted</li>
+<li>the DeGAUSS images used in the following steps can only be accessed
+if authorized using a DockerHub account</li>
+<li>create a <a href="https://hub.docker.com/">DockerHub</a> account if
+you don’t have one already and send your username to the
+maintainers</li>
+<li>run <code>docker login</code> and enter your DockerHub username and
+password as prompted</li>
 </ul>
 </div>
-<div id="use-geolocation-to-find-grid-identifier" class="section level2">
+<div id="use-geolocation-to-find-grid-identifier"
+class="section level2">
 <h2>3. Use geolocation to find grid identifier</h2>
 <ul>
 <li>example DeGAUSS call:</li>
 </ul>
 <pre><code>docker run --rm -v $PWD:/tmp degauss/schwartz_grid_lookup:0.4.1 my_address_file_geocoded.csv</code></pre>
 <ul>
-<li>results in <code>my_address_file_geocoded_schwartz_site_index.csv</code>:</li>
+<li>results in
+<code>my_address_file_geocoded_schwartz_site_index.csv</code>:</li>
 </ul>
 <table>
+<colgroup>
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
+<col width="17%" />
+<col width="14%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="center">id</th>
@@ -444,14 +471,16 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="use-grid-identifers-and-dates-to-get-exposure-estimates" class="section level2">
+<div id="use-grid-identifers-and-dates-to-get-exposure-estimates"
+class="section level2">
 <h2>4. Use grid identifers and dates to get exposure estimates</h2>
 <ul>
 <li>example DeGAUSS call:</li>
 </ul>
 <pre><code>docker run --rm -v $PWD:/tmp degauss/schwartz:0.5.5 my_address_file_geocoded_schwartz_site_index.csv</code></pre>
 <ul>
-<li>results in <code>my_address_file_geocoded_schwartz_site_index_schwartz.csv</code></li>
+<li>results in
+<code>my_address_file_geocoded_schwartz_site_index_schwartz.csv</code></li>
 </ul>
 <table style="width:100%;">
 <colgroup>
@@ -710,7 +739,8 @@ $(document).ready(function () {
 <div id="remove-potential-identifiers" class="section level2">
 <h2>5. Remove potential identifiers</h2>
 <ul>
-<li>this resulting data set satifies HIPAA “Safe Harbor” guidelines and is not considered PHI</li>
+<li>this resulting data set satifies HIPAA “Safe Harbor” guidelines and
+is not considered PHI</li>
 </ul>
 <table>
 <thead>
@@ -808,16 +838,25 @@ $(document).ready(function () {
 <div id="optional-index_date" class="section level3">
 <h3>Optional <code>index_date</code></h3>
 <ul>
-<li>Optionally include a column called <code>index_date</code> to be used to anonymize dates; for example, a date of birth</li>
-<li>This adds an additional column called <code>days_from_index_date</code> (defined as<code>date</code> - <code>index_date</code>) to the output</li>
+<li>Optionally include a column called <code>index_date</code> to be
+used to anonymize dates; for example, a date of birth</li>
+<li>This adds an additional column called
+<code>days_from_index_date</code> (defined as<code>date</code> -
+<code>index_date</code>) to the output</li>
 </ul>
 </div>
 <div id="dates-and-sitecode-formatting" class="section level3">
 <h3>Dates and Sitecode formatting</h3>
 <ul>
-<li>If <code>start_date</code> and <code>end_date</code> (and <code>index_date</code>) are not in ISO format (<code>YYYY-MM-DD</code>) or standard ‘slash’ format (<code>MM/DD/YY</code>), the container will return an error.</li>
-<li>If over half of the <code>sitecode</code>s end in all zeros, the container will return a warning, suggesting the user checks that sitecodes have not been unintentionally altered.</li>
-<li>See <a href="https://degauss.org/excel">Excel formatting for DeGAUSS</a> for more information.</li>
+<li>If <code>start_date</code> and <code>end_date</code> (and
+<code>index_date</code>) are not in ISO format (<code>YYYY-MM-DD</code>)
+or standard ‘slash’ format (<code>MM/DD/YY</code>), the container will
+return an error.</li>
+<li>If over half of the <code>sitecode</code>s end in all zeros, the
+container will return a warning, suggesting the user checks that
+sitecodes have not been unintentionally altered.</li>
+<li>See <a href="https://degauss.org/excel">Excel formatting for
+DeGAUSS</a> for more information.</li>
 </ul>
 </div>
 </div>
@@ -826,38 +865,77 @@ $(document).ready(function () {
 <div id="linking-to-the-nearest-grid" class="section level3">
 <h3>Linking to the nearest “grid”</h3>
 <ul>
-<li><a href="https://s2geometry.io">s2</a> geohashes are used to link to nearby grids</li>
-<li>the query point is geohashed and used to find nearby grid centroids</li>
-<li>the Great Circle distance is used to determine the closest grid point to the query point</li>
-<li>returns a <code>sitecode</code>, which uniquely identifies a grid cell</li>
+<li><a href="https://s2geometry.io">s2</a> geohashes are used to link to
+nearby grids</li>
+<li>the query point is geohashed and used to find nearby grid
+centroids</li>
+<li>the Great Circle distance is used to determine the closest grid
+point to the query point</li>
+<li>returns a <code>sitecode</code>, which uniquely identifies a grid
+cell</li>
 </ul>
 <div class="figure">
 <img src="figs/example_schwartz_lookup.png" alt="" />
 <p class="caption">example_schwartz_lookup</p>
 </div>
 </div>
-<div id="downloading-and-extracting-exposure-estimates" class="section level3">
+<div id="downloading-and-extracting-exposure-estimates"
+class="section level3">
 <h3>Downloading and Extracting Exposure Estimates</h3>
 <ul>
-<li>start and end dates are expanded into a daily time series for each row in input data</li>
-<li>year and coarsened geohash used to download a spatiotemporal “slice” of exposure estimates</li>
+<li>start and end dates are expanded into a daily time series for each
+row in input data</li>
+<li>year and coarsened geohash used to download a spatiotemporal “slice”
+of exposure estimates</li>
 <li>“slice” data files are cached locally</li>
-<li>exposure estimates merged in based on date and grid sitecode identifier</li>
+<li>exposure estimates merged in based on date and grid sitecode
+identifier</li>
 </ul>
 </div>
 <div id="privacy-considerations" class="section level3">
 <h3>Privacy Considerations</h3>
-<p><code>degauss/schwartz_exposure_assessment</code> does not come with all of the spatiotemporal exposure estimates (which are around 200 GB in a compressed zip file). Instead, the container determines which geographic regions and calendar years are necessary based on the input dataset. However, since the container requesting chunks of the exposure estimate data is downloading them over the internet, we need to make sure to not include any protected health information. The HIPAA Safe Harbor Guidelines and the Revised Common Rule specify that spatial location information is not considered PHI if the geographic identifier contains at least 20,000 people. For example, this is why “de-identified” datasets will only contain 3-digit zipcodes instead of 5-digit zipcodes. Similarly, we can conveniently use the geohash we are already using for lookup to “coarsen” our geographic precision by truncating it from a resolution of 6 to a resolution of 3. The container transmits the calendar year and resolution 3 h2 geohash to an Amazon Web Services Simple Storage Service (AWS S3) to retrieve estimates as needed. This prevents the download of unnecessary spatial and/or temporal “slices” of data that will never be necessary for every individual user, decreasing the time and resources needed by the end user to run the software while never sharing any protected health information.</p>
-<div id="population-of-each-resolution-3-h2-geohash-polygon" class="section level4">
+<p><code>degauss/schwartz_exposure_assessment</code> does not come with
+all of the spatiotemporal exposure estimates (which are around 200 GB in
+a compressed zip file). Instead, the container determines which
+geographic regions and calendar years are necessary based on the input
+dataset. However, since the container requesting chunks of the exposure
+estimate data is downloading them over the internet, we need to make
+sure to not include any protected health information. The HIPAA Safe
+Harbor Guidelines and the Revised Common Rule specify that spatial
+location information is not considered PHI if the geographic identifier
+contains at least 20,000 people. For example, this is why
+“de-identified” datasets will only contain 3-digit zipcodes instead of
+5-digit zipcodes. Similarly, we can conveniently use the geohash we are
+already using for lookup to “coarsen” our geographic precision by
+truncating it from a resolution of 6 to a resolution of 3. The container
+transmits the calendar year and resolution 3 h2 geohash to an Amazon Web
+Services Simple Storage Service (AWS S3) to retrieve estimates as
+needed. This prevents the download of unnecessary spatial and/or
+temporal “slices” of data that will never be necessary for every
+individual user, decreasing the time and resources needed by the end
+user to run the software while never sharing any protected health
+information.</p>
+<div id="population-of-each-resolution-3-h2-geohash-polygon"
+class="section level4">
 <h4>population of each resolution 3 h2 geohash polygon</h4>
 <ul>
-<li>The population for each geohash was estimated area-weighted averages of census tract-level 2018 5-yr ACS population estimates.</li>
-<li>Of the 502 geohash polygons, 98 (19.5%) had an estimated population below 20,000. Population among those geohashes ranges from 0 to 19,545 with a median population of 7,515 (IQR: 2,042 - 12,956).</li>
+<li>The population for each geohash was estimated area-weighted averages
+of census tract-level 2018 5-yr ACS population estimates.</li>
+<li>Of the 502 geohash polygons, 98 (19.5%) had an estimated population
+below 20,000. Population among those geohashes ranges from 0 to 19,545
+with a median population of 7,515 (IQR: 2,042 - 12,956).</li>
 </ul>
 <p><img src="figs/geohash3_population_map.png" /></p>
 <ul>
-<li>To combine geohashes such that none have a population of less than 20,000, the geohash with the lowest population was repeatedly merged with the neighboring geohash that had the lowest population. This process was repeated until all geohashes had a population greater than 20,000, reducing the total number of geohash polygons from 502 to 424.</li>
-<li>Population among the newer merged geohashes ranges from 20,006 to 11,607,468 with a median population of 263,485 (IQR: 62,439 - 810,279).</li>
+<li>To combine geohashes such that none have a population of less than
+20,000, the geohash with the lowest population was repeatedly merged
+with the neighboring geohash that had the lowest population. This
+process was repeated until all geohashes had a population greater than
+20,000, reducing the total number of geohash polygons from 502 to
+424.</li>
+<li>Population among the newer merged geohashes ranges from 20,006 to
+11,607,468 with a median population of 263,485 (IQR: 62,439 -
+810,279).</li>
 </ul>
 <p><img src="figs/geohash3_merged_population_map.png" /></p>
 </div>

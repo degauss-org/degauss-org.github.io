@@ -329,33 +329,51 @@ $(document).ready(function () {
 <p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>This is an example of the workflow a PAC3 study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p>This is an example of the workflow a PAC3 study site might use to add
+geomarkers to their data with <a
+href="https://degauss.org/">DeGAUSS</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback
+and completing a short <a
+href="https://redcap.link/gvhbxfjd">survey</a>?</p>
 <p>In steps 2 through 6:</p>
 <ul>
-<li>A DeGAUSS container is used to add geomarker(s) to the input file (columns added in each step are highlighted in gray).</li>
-<li>The input file is the CSV created in the previous step, and the output file will be the input in the next step.</li>
+<li>A DeGAUSS container is used to add geomarker(s) to the input file
+(columns added in each step are highlighted in gray).</li>
+<li>The input file is the CSV created in the previous step, and the
+output file will be the input in the next step.</li>
 </ul>
 </div>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
-<p>See the <a href="https://degauss.org/using_degauss.html#Installing_Docker">Installing Docker</a> webpage.</p>
+<p>See the <a
+href="https://degauss.org/using_degauss.html#Installing_Docker">Installing
+Docker</a> webpage.</p>
 <blockquote>
-<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong> </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to <strong>Docker Settings &gt; Advanced</strong> and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB) <br>
+<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong>
+</font> <br> <font size="2.75"> After installing Docker, but before
+running containers, go to <strong>Docker Settings &gt; Advanced</strong>
+and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB)
+<br>
 <center>
 <img width=75% src="figs/docker_settings_memory.png">
 </center>
-<br> If you are using a Windows computer, also set <strong>CPUs</strong> to 1. <br>
+<br> If you are using a Windows computer, also set <strong>CPUs</strong>
+to 1. <br>
 <center>
 <img width=75% src="figs/docker_settings_cpu.png">
 </center>
-<p>Click <strong>Apply</strong> and wait for Docker to restart. </font></p>
+<p>Click <strong>Apply</strong> and wait for Docker to restart.
+</font></p>
 </blockquote>
 </div>
 <div id="step-1-preparing-your-input-file" class="section level1">
 <h1>Step 1: Preparing Your Input File</h1>
-<p>The input file must be a CSV file with one column called <code>address</code> containing all address components. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.</p>
-<p>An example input CSV file (called <code>my_address_file.csv</code>) might look like:</p>
+<p>The input file must be a CSV file with one column called
+<code>address</code> containing all address components. Other columns
+may be present and will be returned in the output file, but should be
+kept to a minimum to reduce file size.</p>
+<p>An example input CSV file (called <code>my_address_file.csv</code>)
+might look like:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -394,30 +412,50 @@ address
 </tr>
 </tbody>
 </table>
-<p>Refer to the DeGAUSS <a href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a> webpage for more information about the input file and address string formatting.</p>
+<p>Refer to the DeGAUSS <a
+href="https://degauss.org/using_degauss.html#Geocoding">geocoding</a>
+webpage for more information about the input file and address string
+formatting.</p>
 </div>
 <div id="step-2-navigating-the-shell" class="section level1">
 <h1>Step 2: Navigating the Shell</h1>
-<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.</p>
-<p>Navigate to the directory where the CSV file to be geocoded is located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a> for help navigating a filesystem using the command line.</p>
-<p>For those unfamiliar with the command line, a simple approach is to save the file to be geocoded to the Desktop, then navigate to your Desktop folder with the command <code>cd Desktop</code>.</p>
+<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use
+this shell for the rest of the steps in this example.</p>
+<p>Navigate to the directory where the CSV file to be geocoded is
+located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a>
+for help navigating a filesystem using the command line.</p>
+<p>For those unfamiliar with the command line, a simple approach is to
+save the file to be geocoded to the Desktop, then navigate to your
+Desktop folder with the command <code>cd Desktop</code>.</p>
 </div>
 <div id="step-3-geocoding" class="section level1">
 <h1>Step 3: Geocoding</h1>
-<p>After navigating to your working directory, use the <a href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a> to geocode your addresses.</p>
+<p>After navigating to your working directory, use the <a
+href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a>
+to geocode your addresses.</p>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
 <p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/geocoder:3.0.2 my_address_file.csv</code></pre>
-<p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
+<p>Replace <code>my_address_file.csv</code> with the name of the CSV
+file to be geocoded and run the call in the shell.</p>
 <p><br></p>
 <blockquote>
-<p><strong><em>Note for Windows Users:</em></strong> <br> In this and all following docker calls in this example, replace <code>"$PWD"</code> with <code>"%cd%"</code>. Refer to the DeGAUSS <a href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a> page for more information.</p>
+<p><strong><em>Note for Windows Users:</em></strong> <br> In this and
+all following docker calls in this example, replace <code>"$PWD"</code>
+with <code>"%cd%"</code>. Refer to the DeGAUSS <a
+href="https://degauss.org/troubleshooting.html#PWD">Troubleshooting</a>
+page for more information.</p>
 </blockquote>
-<p>See <a href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a> for more information on the anatomy of a degauss command.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_v3.0.2.csv</code>.</p>
+<p>See <a
+href="https://degauss.org/using_degauss.html#DeGAUSS_Commands">here</a>
+for more information on the anatomy of a degauss command.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_v3.0.2.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -589,7 +627,8 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>For more information on interpreting geocoder output, see <a href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
+<p>For more information on interpreting geocoder output, see <a
+href="https://degauss.org/geocoder/#interpreting-geocoding-results">here</a>.</p>
 </div>
 <div id="step-4-deprivation-index" class="section level1">
 <h1>Step 4: Deprivation Index</h1>
@@ -597,10 +636,14 @@ geocoded
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
 <p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/dep_index:0.1 my_address_file_geocoded_v3.0.2.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_v3.0.2.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code>.</p>
+<p>Replace <code>my_address_file_geocoded_v3.0.2.csv</code> with the
+name of the geocoded CSV file created in Step 3 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory
+and, in our example, will be called
+<code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -844,16 +887,22 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on the <a href="https://geomarker.io/dep_index">deprivation index</a></p>
-<p>More information on the <a href="https://degauss.org/dep_index">dep_index container</a></p>
+<p>More information on the <a
+href="https://geomarker.io/dep_index">deprivation index</a></p>
+<p>More information on the <a
+href="https://degauss.org/dep_index">dep_index container</a></p>
 </div>
-<div id="step-5-drive-time-and-distance-to-care-center" class="section level1">
+<div id="step-5-drive-time-and-distance-to-care-center"
+class="section level1">
 <h1>Step 5: Drive Time and Distance to Care Center</h1>
 <p>macOS example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
 <p>Windows (CMD) example call:</p>
 <pre><code>docker run --rm -v &quot;%cd%&quot;:/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc</code></pre>
-<p>Replace <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code> with the name of the CSV file created in Step 4, and replace <code>cchmc</code> with the abbrevation for your care center from this list:</p>
+<p>Replace
+<code>my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv</code> with the
+name of the CSV file created in Step 4, and replace <code>cchmc</code>
+with the abbrevation for your care center from this list:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1124,7 +1173,7 @@ dimaggio
 </tr>
 <tr>
 <td style="text-align:left;">
-Cohen Children’s Medical Center of New York at Northwell Health
+Cohen Children’s Medical Center of New York at Northwell Health 
 </td>
 <td style="text-align:left;">
 cohen
@@ -1172,9 +1221,12 @@ maine
 </tr>
 </tbody>
 </table>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv</code>.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1442,7 +1494,8 @@ geocoded
 </tbody>
 </table>
 </div>
-<p>More information on <a href="https://degauss.org/drivetime/">drivetime</a></p>
+<p>More information on <a
+href="https://degauss.org/drivetime/">drivetime</a></p>
 </div>
 <div id="step-6-removing-phi" class="section level1">
 <h1>Step 6: Removing PHI</h1>

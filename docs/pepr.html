@@ -327,29 +327,46 @@ $(document).ready(function () {
 
 
 <p><a href='https://degauss-org.github.io/DeGAUSS/'><img src='figs/DeGAUSS_hex.png' align="right" height="138.5" /></a></p>
-<p>This is an example of the workflow a PEPR study site might use to add geomarkers to their data with <a href="https://degauss.org/">DeGAUSS</a>.</p>
-<p>If you have used DeGAUSS, would you mind providing us some feedback and completing a short <a href="https://redcap.link/gvhbxfjd">survey</a>?</p>
+<p>This is an example of the workflow a PEPR study site might use to add
+geomarkers to their data with <a
+href="https://degauss.org/">DeGAUSS</a>.</p>
+<p>If you have used DeGAUSS, would you mind providing us some feedback
+and completing a short <a
+href="https://redcap.link/gvhbxfjd">survey</a>?</p>
 <p>In steps 2 through 6:</p>
 <ul>
-<li>A DeGAUSS container is used to add geomarker(s) to the input file (columns added in each step are highlighted in gray).</li>
-<li>The input file is the CSV created in the previous step, and the output file will be the input in the next step.</li>
+<li>A DeGAUSS container is used to add geomarker(s) to the input file
+(columns added in each step are highlighted in gray).</li>
+<li>The input file is the CSV created in the previous step, and the
+output file will be the input in the next step.</li>
 </ul>
 <div id="step-0-install-docker" class="section level1">
 <h1>Step 0: Install Docker</h1>
-<p>See <a href="https://degauss.org/installing_docker">Installing Docker</a>.</p>
+<p>See <a href="https://degauss.org/installing_docker">Installing
+Docker</a>.</p>
 <blockquote>
-<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong> </font> <br> <font size="2.75"> After installing Docker, but before running containers, go to <strong>Docker Settings &gt; Advanced</strong> and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB) <br>
+<font size="3.5"> <strong><em>Note about Docker Settings:</em></strong>
+</font> <br> <font size="2.75"> After installing Docker, but before
+running containers, go to <strong>Docker Settings &gt; Advanced</strong>
+and change <strong>memory</strong> to greater than 4000 MB (or 4 GiB)
+<br>
 <center>
 <img width=50% src="figs/docker_settings_memory.png">
 </center>
-<br> If you are using a Windows computer, also set <strong>CPUs</strong> to 1. <br>
+<br> If you are using a Windows computer, also set <strong>CPUs</strong>
+to 1. <br>
 <center>
 <img width=50% src="figs/docker_settings_cpu.png">
 </center>
-<p>Click <strong>Apply</strong> and wait for Docker to restart. </font> # Step 1: Preparing Your Input File</p>
+<p>Click <strong>Apply</strong> and wait for Docker to restart. </font>
+# Step 1: Preparing Your Input File</p>
 </blockquote>
-<p>The input file must be a CSV file with a column called <code>address</code> containing an address string. Other columns may be present and will be returned in the output file, but should be kept to a minimum to reduce file size.</p>
-<p>An example input CSV file (called <code>my_address_file.csv</code>) might look like:</p>
+<p>The input file must be a CSV file with a column called
+<code>address</code> containing an address string. Other columns may be
+present and will be returned in the output file, but should be kept to a
+minimum to reduce file size.</p>
+<p>An example input CSV file (called <code>my_address_file.csv</code>)
+might look like:</p>
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -388,23 +405,39 @@ address
 </tr>
 </tbody>
 </table>
-<p>Refer to the DeGAUSS <a href="https://degauss.org/geocoding">geocoding wiki</a> for more information about the input file and address string formatting.</p>
+<p>Refer to the DeGAUSS <a
+href="https://degauss.org/geocoding">geocoding wiki</a> for more
+information about the input file and address string formatting.</p>
 </div>
 <div id="step-2-geocoding-and-deprivation-index" class="section level1">
 <h1>Step 2: Geocoding and Deprivation Index</h1>
-<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use this shell for the rest of the steps in this example.</p>
-<p>Navigate to the directory where the CSV file to be geocoded is located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a> for help on navigating a filesystem using the command line.</p>
-<p>For those unfamiliar with the command line, the simplest approach might be to put the file to be geocoded on the desktop and then navigate to your desktop folder after starting the Docker Quickstart Terminal with <code>cd Desktop</code>.</p>
+<p>Open a shell (i.e., terminal on Mac or CMD on Windows). We will use
+this shell for the rest of the steps in this example.</p>
+<p>Navigate to the directory where the CSV file to be geocoded is
+located. See <a href="http://linuxcommand.org/lc3_lts0020.php">here</a>
+for help on navigating a filesystem using the command line.</p>
+<p>For those unfamiliar with the command line, the simplest approach
+might be to put the file to be geocoded on the desktop and then navigate
+to your desktop folder after starting the Docker Quickstart Terminal
+with <code>cd Desktop</code>.</p>
 <p>Example call:</p>
 <pre><code>docker run --rm=TRUE -v &quot;$PWD&quot;:/tmp degauss/cchmc_batch_geocoder my_address_file.csv</code></pre>
-<p>Replace <code>my_address_file.csv</code> with the name of the CSV file to be geocoded and run the call in the shell.</p>
+<p>Replace <code>my_address_file.csv</code> with the name of the CSV
+file to be geocoded and run the call in the shell.</p>
 <p><br></p>
 <blockquote>
-<p><strong><em>Note for Windows Users:</em></strong> <br> In this and all following docker calls in this example, replace <code>"$PWD"</code> with <code>"%cd%"</code>. Refer to the DeGAUSS <a href="https://degauss.org/windows_troubleshooting">Windows Troubleshooting</a> page for more information.</p>
+<p><strong><em>Note for Windows Users:</em></strong> <br> In this and
+all following docker calls in this example, replace <code>"$PWD"</code>
+with <code>"%cd%"</code>. Refer to the DeGAUSS <a
+href="https://degauss.org/windows_troubleshooting">Windows
+Troubleshooting</a> page for more information.</p>
 </blockquote>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded.csv</code>.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -628,15 +661,28 @@ TRUE
 <div id="step-3-roadways" class="section level1">
 <h1>Step 3: Roadways</h1>
 <blockquote>
-<p><font size="3"> <strong><em>Note:</em></strong> Prior to November 2019, this step involved running a different container called “Distance to Major Roadway”. The old version added one new geomarker column, but this version adds 4 new columns. The new column called “dist_to_1100” should be very similar to the “dist_to_major_road” column produced by the old version. </font></p>
+<p><font size="3"> <strong><em>Note:</em></strong> Prior to November
+2019, this step involved running a different container called “Distance
+to Major Roadway”. The old version added one new geomarker column, but
+this version adds 4 new columns. The new column called “dist_to_1100”
+should be very similar to the “dist_to_major_road” column produced by
+the old version. </font></p>
 </blockquote>
 <p>Example call:</p>
 <pre><code>docker run --rm=TRUE -v &quot;$PWD&quot;:/tmp degauss/pepr_roadways:0.2 my_address_file_geocoded.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded.csv</code> with the name of the geocoded CSV file created in Step 2 and run.</p>
-<p><strong><em>Note:</em></strong> This container could take longer than what users may be used to with other DeGAUSS containers due to the large size of the S1200 roadways shapefile. For example, using Docker to run this container for 193 geocoded addresses took 20-30 minutes on an HP laptop running Windows 10.</p>
-<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoded_pepr_roads_300m_buffer.csv</code>.</p>
+<p>Replace <code>my_address_file_geocoded.csv</code> with the name of
+the geocoded CSV file created in Step 2 and run.</p>
+<p><strong><em>Note:</em></strong> This container could take longer than
+what users may be used to with other DeGAUSS containers due to the large
+size of the S1200 roadways shapefile. For example, using Docker to run
+this container for 193 geocoded addresses took 20-30 minutes on an HP
+laptop running Windows 10.</p>
+<p>The <strong>output file</strong> is written to the same directory
+and, in our example, will be called
+<code>my_address_file_geocoded_pepr_roads_300m_buffer.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -905,11 +951,16 @@ TRUE
 </table>
 </div>
 </div>
-<div id="step-4-drive-time-and-distance-to-care-center" class="section level1">
+<div id="step-4-drive-time-and-distance-to-care-center"
+class="section level1">
 <h1>Step 4: Drive Time and Distance to Care Center</h1>
 <p>Example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/pepr_drivetime:0.6 my_address_file_geocoded_pepr_roads_300m_buffer.csv cchmc</code></pre>
-<p>Replace <code>my_address_file_geocoded_pepr_roads_300m_buffer.csv</code> with the name of the CSV file created in Step 3, and replace <code>cchmc</code> with the abbrevation for your care center from this list:</p>
+<p>Replace
+<code>my_address_file_geocoded_pepr_roads_300m_buffer.csv</code> with
+the name of the CSV file created in Step 3, and replace
+<code>cchmc</code> with the abbrevation for your care center from this
+list:</p>
 <table>
 <thead>
 <tr class="header">
@@ -1020,9 +1071,12 @@ TRUE
 </tr>
 </tbody>
 </table>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc.csv</code>.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1319,10 +1373,15 @@ TRUE
 <h1>Step 5: Greenspace</h1>
 <p>Example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/pepr_greenspace:0.1 my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc.csv</code> with the name of the CSV file created in Step 4 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc.csv</code>
+with the name of the CSV file created in Step 4 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1655,10 +1714,15 @@ TRUE
 <h1>Step 6: Crime</h1>
 <p>Example call:</p>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp degauss/pepr_crime:0.1 my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace.csv</code></pre>
-<p>Replace <code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace.csv</code> with the name of the CSV file created in Step 5 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace_pepr_crime.csv</code>.</p>
+<p>Replace
+<code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace.csv</code>
+with the name of the CSV file created in Step 5 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and
+in our example, will be called
+<code>my_address_file_geocoded_pepr_roads_300m_buffer_pepr_drivetime_cchmc_pepr_greenspace_pepr_crime.csv</code>.</p>
 <p>Example output:</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
