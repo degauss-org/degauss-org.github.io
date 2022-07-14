@@ -98,17 +98,17 @@ For more information on interpreting geocoder output, see [here](https://degauss
 macOS example call:
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
 ```
 
 Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5.csv` with the name of the geocoded CSV file created in Step 3 and run.
 
-The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv`.
+The **output file** is written to the same directory and, in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv`.
 
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv") %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
   column_spec(12:19, bold = T, color = "white", background = "gray") %>% 
@@ -124,17 +124,17 @@ More information on the [deprivation index](https://geomarker.io/dep_index)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv 
 ```
 
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv ` with the name of the CSV file created in Step 4 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv ` with the name of the CSV file created in Step 4 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv`.
 
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv") %>% 
   select(-.row) %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
@@ -149,17 +149,17 @@ More information on [aadt](https://degauss.org/aadt/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 5 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv`.
 
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv") %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
   column_spec(26:29, bold = T, color = "white", background = "gray") %>% 
@@ -173,17 +173,17 @@ More information on [roads](https://degauss.org/roads/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
 ```
 
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv` with the name of the CSV file created in Step 6 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv`.
 
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv") %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
   column_spec(30:32, bold = T, color = "white", background = "gray") %>% 
@@ -197,19 +197,19 @@ More information on [greenspace](https://degauss.org/greenspace/)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
 ```
 
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv` with the name of the CSV file  created in Step 7 **and** replace `cchmc` with the abbrevation for your site and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv` with the name of the CSV file  created in Step 7 **and** replace `cchmc` with the abbrevation for your site and run.
 
 [List of site abbrevations](https://degauss.org/drivetime/#required-argument)
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv`.
 
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv") %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
   column_spec(33:34, bold = T, color = "white", background = "gray") %>% 
@@ -223,19 +223,19 @@ More information on [drive time](https://degauss.org/drivetime)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
 ```
 
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv` with the name of the CSV file created in Step 8 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv` with the name of the CSV file created in Step 8 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv`.
 
 **Note that the landcover container will result in mulitple rows per patient, due to multiple years of landcover data.**
 
 Example output:
 
 ```{r, eval = F}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv") %>% 
+read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv") %>% 
   kable() %>% 
   kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
   column_spec(35:49, bold = T, color = "white", background = "gray") %>% 
@@ -255,11 +255,11 @@ Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CS
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
 ```
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv`.
 
 
 # Step 11: Removing PHI
@@ -273,19 +273,19 @@ Before sharing your data, remove the following columns from both the air polluti
 + `matched_state`
 + `lat`
 + `lon`
-+ `fips_tract_id`
++ `census_tract_id`
 + `nlcd_cell`
 
 # Code Summary
 
 ```
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/dep_index:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv 
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
 ```
 
