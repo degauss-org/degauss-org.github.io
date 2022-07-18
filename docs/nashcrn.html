@@ -564,9 +564,11 @@ geocoded
 <div id="step-4-deprivation-index" class="section level1">
 <h1>Step 4: Deprivation Index</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code></pre>
+
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code></pre>
 <p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5.csv</code> with the name of the geocoded CSV file created in Step 3 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv</code>.</p>
+<p>The <strong>output file</strong> is written to the same directory and, in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv</code>.</p>
+
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -606,7 +608,7 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id
+census_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 fraction_assisted_income
@@ -818,9 +820,9 @@ geocoded
 <div id="step-5-average-annual-daily-traffic" class="section level1">
 <h1>Step 5: Average Annual Daily Traffic</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv </code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv</code> with the name of the CSV file created in Step 4 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv </code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv</code> with the name of the CSV file created in Step 4 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv</code>.</p>
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -860,7 +862,7 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id
+census_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 fraction_assisted_income
@@ -1143,9 +1145,10 @@ geocoded
 <div id="step-6-proximity-to-roads" class="section level1">
 <h1>Step 6: Proximity to Roads</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 5 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code>.</p>
+
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1185,7 +1188,7 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id
+census_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 fraction_assisted_income
@@ -1516,9 +1519,9 @@ geocoded
 <div id="step-7-greenspace" class="section level1">
 <h1>Step 7: Greenspace</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code> with the name of the CSV file created in Step 6 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv</code> with the name of the CSV file created in Step 6 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code>.</p>
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1558,7 +1561,7 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id
+census_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 fraction_assisted_income
@@ -1925,10 +1928,10 @@ geocoded
 <div id="step-8-drive-time" class="section level1">
 <h1>Step 8: Drive Time</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc</code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code> with the name of the CSV file created in Step 7 <strong>and</strong> replace <code>cchmc</code> with the abbrevation for your site and run.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv</code> with the name of the CSV file created in Step 7 <strong>and</strong> replace <code>cchmc</code> with the abbrevation for your site and run.</p>
 <p><a href="https://degauss.org/drivetime/#required-argument">List of site abbrevations</a></p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code>.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code>.</p>
 <p>Example output:</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; overflow-x: scroll; width:900px; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1968,7 +1971,7 @@ precision
 geocode_result
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-fips_tract_id
+census_tract_id
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 fraction_assisted_income
@@ -2359,9 +2362,9 @@ geocoded
 <div id="step-9-landcover" class="section level1">
 <h1>Step 9: Landcover</h1>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code> with the name of the CSV file created in Step 8 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv</code> with the name of the CSV file created in Step 8 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code>.</p>
 <p><strong>Note that the landcover container will result in mulitple rows per patient, due to multiple years of landcover data.</strong></p>
 <p>Example output:</p>
 <p>More information on <a href="https://degauss.org/nlcd/">landcover</a></p>
@@ -2372,9 +2375,9 @@ geocoded
 <p>The census tract level data is called <code>nash_crn_census_data_2010.csv</code> and should have been sent to you. Otherwise you can download the data and accompanying data dictionary <a href="http://geomarker.io/NASH_CRN/">here</a>.</p>
 <p>Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CSV is opened in Excel then saved, the leading zeros will be truncated (e.g., <code>01234567891</code> will become <code>1234567891</code>). Avoid opening any CSVs and saving.</p>
 <p>macOS example call:</p>
-<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
-<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 9 and run.</p>
-<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv</code>.</p>
+<pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
+<p>Replace <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv</code> with the name of the CSV file created in Step 9 and run.</p>
+<p>The <strong>output file</strong> is written to the same directory and in our example, will be called <code>my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv</code>.</p>
 </div>
 <div id="step-11-removing-phi" class="section level1">
 <h1>Step 11: Removing PHI</h1>
@@ -2387,20 +2390,20 @@ geocoded
 <li><code>matched_state</code></li>
 <li><code>lat</code></li>
 <li><code>lon</code></li>
-<li><code>fips_tract_id</code></li>
+<li><code>census_tract_id</code></li>
 <li><code>nlcd_cell</code></li>
 </ul>
 </div>
 <div id="code-summary" class="section level1">
 <h1>Code Summary</h1>
 <pre><code>docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/geocoder:3.2.0 my_address_file.csv
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0.csv 
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer.csv
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
-docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.0_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/dep_index:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/aadt:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv 
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v &quot;$PWD&quot;:/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv</code></pre>
 </div>
 
 
