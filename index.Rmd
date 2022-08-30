@@ -8,7 +8,13 @@ DeGAUSS (**De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite *
 
 #### Using DeGAUSS
 
-Get started using DeGAUSS with the [Using DeGAUSS](using_degauss.html) guide. If you have any questions or problems, please first see our [troubleshooting](troubleshooting.html) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org). 
+Get started using DeGAUSS with the [Using DeGAUSS](using_degauss.html) guide. Shown below is a run of a [sample workflow](sample_workflow.html) using DeGAUSS to geocode and add measurements of nearby roadways and greenness to a set of example addresses.
+
+<div style = "text-align: center">
+<img src='figs/degauss_example.gif' width = 60% height = auto/>
+</div>
+
+If you have any questions or problems, please first see our [troubleshooting](troubleshooting.html) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org). 
 
 If you have used DeGAUSS, would you mind giving us some [quick feedback](survey.html)?
 
