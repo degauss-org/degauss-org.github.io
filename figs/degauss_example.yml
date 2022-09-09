@@ -1,0 +1,647 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: bash -l
+
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: /Users/MilanParikh/Library/CloudStorage/OneDrive-SharedLibraries-cchmc/Brokamp Group - Documents/General/milan/Terminalizer
+
+  # Export additional ENV variables
+  env:
+    recording: true
+
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 80
+
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 24
+
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+
+  # Quality
+  # 1 - 100
+  quality: 100
+
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: solid
+    title: null
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+
+  # The size of the font
+  fontSize: 12
+
+  # The height of lines
+  lineHeight: 1
+
+  # The spacing between letters
+  letterSpacing: 0
+
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+
+# Records, feel free to edit them
+records:
+  - delay: 100
+    content: "$ "
+  - delay: 1000
+    content: d
+  - delay: 100
+    content: o
+  - delay: 100
+    content: c
+  - delay: 100
+    content: k
+  - delay: 100
+    content: e
+  - delay: 100
+    content: r
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: r
+  - delay: 100
+    content: u
+  - delay: 100
+    content: 'n'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: r
+  - delay: 100
+    content: m
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: v
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: $
+  - delay: 100
+    content: P
+  - delay: 100
+    content: W
+  - delay: 100
+    content: D
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: /
+  - delay: 100
+    content: t
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: d
+  - delay: 100
+    content: e
+  - delay: 100
+    content: g
+  - delay: 100
+    content: a
+  - delay: 100
+    content: u
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: /
+  - delay: 100
+    content: g
+  - delay: 100
+    content: e
+  - delay: 100
+    content: o
+  - delay: 100
+    content: c
+  - delay: 100
+    content: o
+  - delay: 100
+    content: d
+  - delay: 100
+    content: e
+  - delay: 100
+    content: r
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: '3'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '0'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '2'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: s
+  - delay: 100
+    content: a
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: l
+  - delay: 100
+    content: e
+  - delay: 100
+    content: _
+  - delay: 100
+    content: a
+  - delay: 100
+    content: d
+  - delay: 100
+    content: d
+  - delay: 100
+    content: r
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: .
+  - delay: 100
+    content: c
+  - delay: 100
+    content: s
+  - delay: 100
+    content: v
+  - delay: 1000
+    content: "\r\n"
+  - delay: 1000
+    content: "\r\n"
+  - delay: 1000
+    content: "-- Wecome to DeGAUSS! ----------------------------------------------------------\r\n"
+  - delay: 50
+    content: "i You are using the geocoder container, version 3.0.2.\r\nThis container returns geocoded coordinates based on input address strings.\r\n"
+  - delay: 50
+    content: "For more information about the geocoder container, visit\r\n<https://degauss.org/geocoder/>\r\n"
+  - delay: 50
+    content: "For DeGAUSS troubleshooting, visit <https://degauss.org/>\r\nTo help us improve DeGAUSS, please take our user survey at\r\n<https://redcap.link/jf4lil0n>\r\n"
+  - delay: 500
+    content: "\r\n-- Column specification --------------------------------------------------------\r\ncols(\r\n  id = col_double(),\r\n  address = col_character()\r\n)\r\n\r\n"
+  - delay: 50
+    content: "i removing non-alphanumeric characters...\r\n"
+  - delay: 200
+    content: "i removing excess whitespace...\r\n"
+  - delay: 200
+    content: "i flagging PO boxes...\r\n"
+  - delay: 200
+    content: "i flagging known Cincinnati foster & institutional addresses...\r\n"
+  - delay: 200
+    content: "i flagging non-address text and missing addresses...\r\n"
+  - delay: 200
+    content: "i now geocoding ...\r\n"
+  - delay: 50
+    content: "\r  |                                          |   0%, ETA NA\r  |                                          |   0%, ETA NA"
+  - delay: 500
+    content: "\r  |====                                   |  10%, ETA 00:00"
+  - delay: 500
+    content: "\r  |========                               |  20%, ETA 00:00\r  |============                           |  30%, ETA 00:00\r  |================                       |  40%, ETA 00:00"
+  - delay: 500
+    content: "\r  |====================                   |  50%, ETA 00:00\r  |=======================                |  60%, ETA 00:00"
+  - delay: 500
+    content: "\r  |===========================            |  70%, ETA 00:00\r  |===============================        |  80%, ETA 00:00\r  |===================================    |  90%, ETA 00:00"
+  - delay: 500
+    content: "\r  |===================================| 100%, Elapsed 00:00\r\n"
+  - delay: 500
+    content: "i geocoding complete; now filtering to precise geocodes...\r\n"
+  - delay: 500
+    content: "v FINISHED! output written to sample_addresses_geocoded_v3.0.2.csv\r\n"
+  - delay: 500
+    content: "i 8 of 11 (72.7%) addresses were successfully geocoded. See detailed summary\r\nbelow.\r\n"
+  - delay: 500
+    content: "\r\n\r\n|geocode_result    |n (%)    |\r\n|:-----------------|:--------|\r\n|po_box            |1 (9.1)  |\r\n|imprecise_geocode |2 (18.2) |\r\n|geocoded          |8 (72.7) |\r\n\n\n"
+  - delay: 1000
+    content: "$ "
+  - delay: 500
+    content: d
+  - delay: 100
+    content: o
+  - delay: 100
+    content: c
+  - delay: 100
+    content: k
+  - delay: 100
+    content: e
+  - delay: 100
+    content: r
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: r
+  - delay: 100
+    content: u
+  - delay: 100
+    content: 'n'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: r
+  - delay: 100
+    content: m
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: v
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: $
+  - delay: 100
+    content: P
+  - delay: 100
+    content: W
+  - delay: 100
+    content: D
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: /
+  - delay: 100
+    content: t
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: d
+  - delay: 100
+    content: e
+  - delay: 100
+    content: g
+  - delay: 100
+    content: a
+  - delay: 100
+    content: u
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: /
+  - delay: 100
+    content: r
+  - delay: 100
+    content: o
+  - delay: 100
+    content: a
+  - delay: 100
+    content: d
+  - delay: 100
+    content: s
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: '0'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '1'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: s
+  - delay: 100
+    content: a
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: l
+  - delay: 100
+    content: e
+  - delay: 100
+    content: _
+  - delay: 100
+    content: a
+  - delay: 100
+    content: d
+  - delay: 100
+    content: d
+  - delay: 100
+    content: r
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: _
+  - delay: 100
+    content: "geocoded_v3.0.2.csv "
+  - delay: 1000
+    content: "\r\n"
+  - delay: 100
+    content: "\r\nloading and projecting S1100 roads shapefile...\r\n"
+  - delay: 500
+    content: "\r\nloading and projecting S1500 roads shapefile...\r\n"
+  - delay: 500
+    content: "\r\nloading and projecting input file...\r\n"
+  - delay: 500
+    content: "\r\nfinding distance to nearest S1100 road...\r\n"
+  - delay: 500
+    content: "\r\nfinding distance to nearest S1200 road...\r\n"
+  - delay: 500
+    content: "\r\nfinding length of S1100 roads within buffer...\r\n"
+  - delay: 500
+    content: "\r\nfinding length of S1200 roads within buffer...\r\n"
+  - delay: 500
+    content: "\r\nFINISHED! output written to sample_addresses_geocoded_v3.0.2_roads_400m_buffer.csv\r\n\n\n"
+  - delay: 1000
+    content: "$ "
+  - delay: 1000
+    content: d
+  - delay: 100
+    content: o
+  - delay: 100
+    content: c
+  - delay: 100
+    content: k
+  - delay: 100
+    content: e
+  - delay: 100
+    content: r
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: r
+  - delay: 100
+    content: u
+  - delay: 100
+    content: 'n'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: r
+  - delay: 100
+    content: m
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: '-'
+  - delay: 100
+    content: v
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: $
+  - delay: 100
+    content: P
+  - delay: 100
+    content: W
+  - delay: 100
+    content: D
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: /
+  - delay: 100
+    content: t
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: d
+  - delay: 100
+    content: e
+  - delay: 100
+    content: g
+  - delay: 100
+    content: a
+  - delay: 100
+    content: u
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: /
+  - delay: 100
+    content: g
+  - delay: 100
+    content: r
+  - delay: 100
+    content: e
+  - delay: 100
+    content: e
+  - delay: 100
+    content: 'n'
+  - delay: 100
+    content: s
+  - delay: 100
+    content: p
+  - delay: 100
+    content: a
+  - delay: 100
+    content: c
+  - delay: 100
+    content: e
+  - delay: 100
+    content: ':'
+  - delay: 100
+    content: '0'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '2'
+  - delay: 100
+    content: ' '
+  - delay: 100
+    content: s
+  - delay: 100
+    content: a
+  - delay: 100
+    content: m
+  - delay: 100
+    content: p
+  - delay: 100
+    content: l
+  - delay: 100
+    content: e
+  - delay: 100
+    content: _
+  - delay: 100
+    content: a
+  - delay: 100
+    content: d
+  - delay: 100
+    content: d
+  - delay: 100
+    content: r
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: s
+  - delay: 100
+    content: e
+  - delay: 100
+    content: s
+  - delay: 100
+    content: _
+  - delay: 100
+    content: g
+  - delay: 100
+    content: e
+  - delay: 100
+    content: o
+  - delay: 100
+    content: c
+  - delay: 100
+    content: o
+  - delay: 100
+    content: d
+  - delay: 100
+    content: e
+  - delay: 100
+    content: d
+  - delay: 100
+    content: _
+  - delay: 100
+    content: v
+  - delay: 100
+    content: '3'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '0'
+  - delay: 100
+    content: .
+  - delay: 100
+    content: '2'
+  - delay: 100
+    content: _
+  - delay: 100
+    content: 'roads_400m_buffer.csv '
+  - delay: 1000
+    content: "\r\n"
+  - delay: 100
+    content: "reading input file...\r\n"
+  - delay: 500
+    content: "Parsed with column specification:\r\ncols(\r\n  id = col_double(),\r\n  address = col_character(),\r\n  matched_street = col_character(),\r\n  matched_zip = col_double(),\r\n  matched_city = col_character(),\r\n  matched_state = col_character(),\r\n  lat = col_double(),\r\n  lon = col_double(),\r\n  score = col_double(),\r\n  precision = col_character(),\r\n  geocode_result = col_character(),\r\n  dist_to_1100 = col_double(),\r\n  dist_to_1200 = col_double(),\r\n  length_1100 = col_double(),\r\n  length_1200 = col_double()\r\n)\r\n"
+  - delay: 500
+    content: "\r\nloading greenspace raster file...\r\n"
+  - delay: 500
+    content: "\r\nfinding greenspace for each point...\r\n\r\nusing 500 m buffer...\r\n"
+  - delay: 500
+    content: "\r\nusing 1500 m buffer...\r\n"
+  - delay: 500
+    content: "\r\nusing 2500 m buffer...\r\n"
+  - delay: 500
+    content: "\r\nFINISHED! output written to sample_addresses_geocoded_v3.0.2_roads_400m_buffer_greenspace.csv\r\n"
+  - delay: 2000
+    content: "   "
