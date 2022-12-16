@@ -1,5 +1,7 @@
 &nbsp;
 
+To get started finding the right DeGAUSS image for your project, try using our [menu](http://app.degauss.org/menu/).
+
 | image\* |  description | version\*\* |
 |:-----------|:------------------:|:-------------:|
 [`ghcr.io/degauss-org/postal`](https://degauss.org/postal) | normalized and parsed addresses | [![](https://img.shields.io/github/v/release/degauss-org/postal?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/postal/releases)
