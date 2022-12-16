@@ -87,6 +87,8 @@ docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv
 
 will produce `my_address_file_geocoded_v3.0.csv` with added columns including `lat`, `lon`, and geocoding diagnostic information.
 
+Note: DeGAUSS geocoded 50,000 addresses in about 30 minutes using Docker Desktop with 6 CPUs and 10 GB of shared memory on a 15-inch, 2019 MacBook Pro with a 2.6 GHz Intel Core i7 processor.
+
 #### Interpreting geocoding results
 
 The geocoder's output file includes the following columns: 
