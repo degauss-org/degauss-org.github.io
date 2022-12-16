@@ -420,6 +420,9 @@ specify the bind point (<code>-v $PWD:/tmp</code>) you will have to use
 a Command Line variable, <code>%cd</code>, for example:
 <code>-v %cd%:/tmp</code> or</p>
 <p><code>docker run --rm=TRUE -v "%cd%":/tmp degauss/pepr_roadways:0.3 my_address_file_geocoded.csv</code></p>
+<p>Please note that when you are using the command line variable,
+<code>%cd%</code>, your file path and filename cannot include
+spaces.</p>
 <p>Alternatively, you can specify the full path to the folder,
 substituting <code>/</code> for <code>\</code>. For example:
 <code>-v  C:/Temp/docker_testing:/tmp</code> or</p>
