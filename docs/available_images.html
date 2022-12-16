@@ -24,6 +24,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -326,139 +328,188 @@ $(document).ready(function () {
 <p> </p>
 <p>To get started finding the right DeGAUSS image for your project, try
 using our <a href="http://app.degauss.org/menu/">menu</a>.</p>
-<table>
-<colgroup>
-<col width="25%" />
-<col width="42%" />
-<col width="31%" />
-</colgroup>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">image*</th>
-<th align="center">description</th>
-<th align="center">version**</th>
+<tr>
+<th style="text-align:left;">
+image*
+</th>
+<th style="text-align:center;">
+description
+</th>
+<th style="text-align:center;">
+version**
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/postal"><code>ghcr.io/degauss-org/postal</code></a></td>
-<td align="center">normalized and parsed addresses</td>
-<td align="center"><a
-href="https://github.com/degauss-org/postal/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/postal?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/postal"><code>ghcr.io/degauss-org/postal</code></a>
+</td>
+<td style="text-align:center;">
+normalized and parsed addresses
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/postal/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/postal?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a></td>
-<td align="center">geocode</td>
-<td align="center"><a
-href="https://github.com/degauss-org/geocoder/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/geocoder?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/geocoder"><code>ghcr.io/degauss-org/geocoder</code></a>
+</td>
+<td style="text-align:center;">
+geocode
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/geocoder/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/geocoder?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/census_block_group"><code>ghcr.io/degauss-org/census_block_group</code></a></td>
-<td align="center">census block group and tract</td>
-<td align="center"><a
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/census_block_group"><code>ghcr.io/degauss-org/census_block_group</code></a>
+</td>
+<td style="text-align:center;">
+census block group and tract
+</td>
+<td style="text-align:center;width: 25%; ">
+<a
 href="https://github.com/degauss-org/census_block_group/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/census_block_group?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+src="https://img.shields.io/github/v/release/degauss-org/census_block_group?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/st_census_tract"><code>ghcr.io/degauss-org/st_census_tract</code></a></td>
-<td align="center">spatiotemporal census tract 1970 - 2020</td>
-<td align="center"><a
-href="https://github.com/degauss-org/st_census_tract/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/st_census_tract"><code>ghcr.io/degauss-org/st_census_tract</code></a>
+</td>
+<td style="text-align:center;">
+spatiotemporal census tract 1970 - 2020
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/st_census_tract/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/dep_index"><code>ghcr.io/degauss-org/dep_index</code></a></td>
-<td align="center">census tract-level deprivation index</td>
-<td align="center"><a
-href="https://github.com/degauss-org/dep_index/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/dep_index?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/dep_index"><code>ghcr.io/degauss-org/dep_index</code></a>
+</td>
+<td style="text-align:center;">
+census tract-level deprivation index
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/dep_index/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/dep_index?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/roads"><code>ghcr.io/degauss-org/roads</code></a></td>
-<td align="center">proximity and length of major roads</td>
-<td align="center"><a
-href="https://github.com/degauss-org/roads/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/roads?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/roads"><code>ghcr.io/degauss-org/roads</code></a>
+</td>
+<td style="text-align:center;">
+proximity and length of major roads
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/roads/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/roads?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/aadt"><code>ghcr.io/degauss-org/aadt</code></a></td>
-<td align="center">average annual daily traffic</td>
-<td align="center"><a
-href="https://github.com/degauss-org/aadt/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/aadt?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/aadt"><code>ghcr.io/degauss-org/aadt</code></a>
+</td>
+<td style="text-align:center;">
+average annual daily traffic
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/aadt/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/aadt?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/greenspace"><code>ghcr.io/degauss-org/greenspace</code></a></td>
-<td align="center">enhanced vegetation index</td>
-<td align="center"><a
-href="https://github.com/degauss-org/greenspace/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/greenspace?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/greenspace"><code>ghcr.io/degauss-org/greenspace</code></a>
+</td>
+<td style="text-align:center;">
+enhanced vegetation index
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/greenspace/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/greenspace?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/nlcd"><code>ghcr.io/degauss-org/nlcd</code></a></td>
-<td align="center">land cover (imperviousness, land use, greenness)</td>
-<td align="center"><a
-href="https://github.com/degauss-org/nlcd/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/nlcd?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/nlcd"><code>ghcr.io/degauss-org/nlcd</code></a>
+</td>
+<td style="text-align:center;">
+land cover (imperviousness, land use, greenness)
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/nlcd/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/nlcd?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/pm"><code>ghcr.io/degauss-org/pm</code></a></td>
-<td align="center">daily PM2.5</td>
-<td align="center"><a
-href="https://github.com/degauss-org/pm/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/pm?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a href="https://degauss.org/pm"><code>ghcr.io/degauss-org/pm</code></a>
+</td>
+<td style="text-align:center;">
+daily PM2.5
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/pm/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/pm?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/narr"><code>ghcr.io/degauss-org/narr</code></a></td>
-<td align="center">daily weather data (temperature, humidity, etc)</td>
-<td align="center"><a
-href="https://github.com/degauss-org/narr/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/narr?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/narr"><code>ghcr.io/degauss-org/narr</code></a>
+</td>
+<td style="text-align:center;">
+daily weather data (temperature, humidity, etc)
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/narr/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/narr?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/drivetime"><code>ghcr.io/degauss-org/drivetime</code></a></td>
-<td align="center">distance and drive time to care sites</td>
-<td align="center"><a
-href="https://github.com/degauss-org/drivetime/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/drivetime?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a
+href="https://degauss.org/drivetime"><code>ghcr.io/degauss-org/drivetime</code></a>
+</td>
+<td style="text-align:center;">
+distance and drive time to care sites
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/drivetime/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/drivetime?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/h3"><code>ghcr.io/degauss-org/h3</code></a></td>
-<td align="center">h3 hierarchical spatial index</td>
-<td align="center"><a
-href="https://github.com/degauss-org/h3/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/h3?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
-</tr>
-<tr class="even">
-<td align="left"><a
-href="https://degauss.org/schwartz_grid_lookup"><code>degauss/schwartz_grid_lookup</code></a></td>
-<td align="center">schwartz 1 x 1 km grid identifier</td>
-<td align="center"><a
-href="https://github.com/degauss-org/schwartz_grid_lookup/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/schwartz_grid_lookup?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
-</tr>
-<tr class="odd">
-<td align="left"><a
-href="https://degauss.org/schwartz"><code>degauss/schwartz</code></a></td>
-<td align="center">daily PM2.5, NO2, and O3 concentrations</td>
-<td align="center"><a
-href="https://github.com/degauss-org/schwartz/releases"><img
-src="https://img.shields.io/github/v/release/degauss-org/schwartz?color=C2326B&amp;label=version&amp;sort=semver" /></a></td>
+<tr>
+<td style="text-align:left;">
+<a href="https://degauss.org/h3"><code>ghcr.io/degauss-org/h3</code></a>
+</td>
+<td style="text-align:center;">
+h3 hierarchical spatial index
+</td>
+<td style="text-align:center;width: 25%; ">
+<a href="https://github.com/degauss-org/h3/releases"><img
+src="https://img.shields.io/github/v/release/degauss-org/h3?color=C2326B&amp;label=version&amp;sort=semver" /></a>
+</td>
 </tr>
 </tbody>
 </table>
