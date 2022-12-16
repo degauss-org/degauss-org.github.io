@@ -27,6 +27,8 @@ The Windows Command Line (`CMD`) does not support the `$PWD` environment variabl
 
  `docker run --rm=TRUE -v "%cd%":/tmp degauss/pepr_roadways:0.3 my_address_file_geocoded.csv`
 
+Please note that when you are using the command line variable, `%cd%`, your file path and filename cannot include spaces.
+
 Alternatively, you can specify the full path to the folder, substituting `/` for `\`. For example: `-v 
 C:/Temp/docker_testing:/tmp` or 
  
