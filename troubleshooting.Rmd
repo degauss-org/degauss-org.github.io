@@ -128,6 +128,25 @@ Switch Docker settings to use Linux Containers instead of Windows Containers. Fo
 ![](figs/switch_to_linux_containers.png)
 
 screenshot from this [stackoverflow post](https://stackoverflow.com/questions/48066994/docker-no-matching-manifest-for-windows-amd64-in-the-manifest-list-entries)
+
+## Parallel Computing on Windows
+
+### Problem
+
+When running a DeGAUSS container on Windows it results in an error:
+
+```
+Error in fifo(tempfile(), open = "w+b", blocking = T) :
+  cannot open the connection
+Execution halted
+```
+
+### Solution
+
+This error occurs because some Windows platforms cannot support the R code used for parallel computing.  Although this option is enabled by default and cannot be changed by the user, a workaround is to set the Docker host to use only 1 CPU.  This can be done in the Docker settings panel and will force the container to use only a single thread.
+
+![](figs/docker_settings_cpu.png)
+
 	
 ## Proxy
 
