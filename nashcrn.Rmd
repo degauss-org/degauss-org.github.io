@@ -223,12 +223,12 @@ More information on [drive time](https://degauss.org/drivetime)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.3 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
 ```
 
 Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv` with the name of the CSV file created in Step 8 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv`.
 
 **Note that the landcover container will result in mulitple rows per patient, due to multiple years of landcover data.**
 
@@ -255,11 +255,11 @@ Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CS
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.2 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv nash_crn_census_data_2010.csv
 ```
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.0.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.2.csv`.
 
 
 # Step 11: Removing PHI
