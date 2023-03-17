@@ -8,7 +8,7 @@ output:
 
 ## Installing Docker
 
-Getting started with Docker requires installing "Docker Desktop" on a Windows or macOS machine or a "Docker Engine" on a Linux operating system. Follow the [official installation instructions](https://hub.docker.com/search/?type=edition&offering=community) specific to your operating system.
+Getting started with Docker requires installing "Docker Desktop" on a Windows or macOS machine or a "Docker Engine" on a Linux operating system. Follow the [official installation instructions](https://docs.docker.com/desktop/) specific to your operating system.
 Docker also has detailed installation guides, user manuals, and troubleshooting for both [macOS](https://docs.docker.com/desktop/mac/install/) and [Windows](https://docs.docker.com/desktop/windows/install/).
 
 To test your installation, open a shell and run `docker run hello-world`. (See the next section for details on using a shell for command line instructions if you are unfamiliar.) You should see some output describing what Docker did and that it is working correctly:
