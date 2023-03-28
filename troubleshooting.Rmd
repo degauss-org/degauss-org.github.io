@@ -40,7 +40,7 @@ When using Windows PowerShell, by placing the `PWD` inside curly brackets, you a
 
 **OneDrive:** If you or your institution use OneDrive, your working directory may have a different path than expected. If you have navigated to your Desktop using `cd Desktop` and your file cannot be found, or if you cannot navigate to your Desktop, use the instructions below to check your Desktop path. After locating your Desktop path, replace `Desktop` in `cd Desktop` with the new path. 
 
-![](figs/check_path.png)
+![](figs/check_path.png) 
 
 ## Insufficient Memory
 
