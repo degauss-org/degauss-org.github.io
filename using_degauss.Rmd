@@ -82,7 +82,7 @@ Addresses must be stored as a `CSV` file and follow these formatting requirement
 If `my_address_file.csv` is a file in the current working directory with an address column named `address`, then
 
 ```sh
-docker run --rm -v $PWD:/tmp degauss/geocoder:3.0.1 my_address_file.csv
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/geocoder my_address_file.csv
 ```
 
 will produce `my_address_file_geocoded_v3.0.csv` with added columns including `lat`, `lon`, and geocoding diagnostic information.
@@ -95,40 +95,8 @@ The geocoder's output file includes the following columns:
 
 - `matched_street`, `matched_city`, `matched_state`, `matched_zip`: matched address componets (e.g., `matched_street` is the street the geocoder matched with the input address); can be used to investigate input address misspellings, typos, etc.
 
+- For more detailed information on the interpretation of the geocoding results, please see [degauss.org/geocoder](https://degauss.org/geocoder)
 
-- `precision`: The qualitative precision of the geocode. The value will be one of:
-
-    * `range`: interpolated based on address ranges from street segments
-
-    * `street`:  center of the matched street
-
-    * `intersection`: intersection of two streets
-
-    * `zip`: centroid of the matched zip code
-
-    * `city`: centroid of the matched city
-      
-    
-- `score`: The percentage of text match between the given address and the geocoded result, expressed as a number between 0 and 1. A higher score indicates a closer match. Note that each score is relative within a precision method (i.e. a `score` of `0.8` with a `precision` of `range `is not the same as a `score` of `0.8` with a `precision` of `street`). 
-
-- `lat` and `lon`: geocoded coordinates for matched address
-
-
-- `geocode_result`: A qualitative summary of the geocoding result. The value will be one of
-
-    * `po_box`: the address was not geocoded because it is a PO Box
-    * `cincy_inst_foster_addr`: the address was not geocoded because it is a known institutional address, not a residential address
-      
-    * `non_address_text`: the address was not geocoded because it was blank or listed as "foreign", "verify", or "unknown" 
-      
-    * `imprecise_geocode`: the address was geocoded, but results were suppressed because the `precision` was `intersection`, `zip`, or `city` and/or the `score` was less than `0.5`.
-      
-    * `geocoded`: the address was geocoded with a `precision` of either `range` or `street` and a `score` of `0.5` or greater.
-	
-#### Missing geocoding results
-
-- Geocodes with a resulting precision of `intersection`, `zip`, or `city` are returned with a missing `lat` and `lon` because they are likely too inaccurate and/or too imprecise to be used for further analysis.
-- By default, `lat` and `lon` are also returned as missing if the `score` is less than `0.5` (regardless of the precision). This threshold can be changed by including an optional argument in the docker call (`docker run --rm -v $PWD:/tmp degauss/geocoder:3.0 my_address_file.csv 0.4`).
 
 ## Geomarker Assessment
 
@@ -137,13 +105,13 @@ The geomarker assessment images will only work with the output of the geocoding 
 Run:
 
 ```
-docker run --rm -v "$PWD":/tmp degauss/<name-of-image> <name-of-geocoded-file>
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/<name-of-image> <name-of-geocoded-file>
 ```
 
 Continuing with our usage example, if we wanted to calculate the distance to the nearest road and length of roads within a 400 m buffer for each subject, we could use the [degauss/roads](https://degauss.org/roads/) image:
 
 ```
-docker run --rm -v "$PWD":/tmp degauss/roads my_address_file_geocoded.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads my_address_file_geocoded.csv
 ```
 
 Docker will emit some messages as it progresses through the calculations and will again write the file to the working directory with a descriptive name appended, in this case the distance to nearest primary (`dist_to_1100`) and secondary (`dist_to_1200`) roads and the length of primary (`length_1100`) and secondary (`length_1200`) roads within a 400 m buffer.
@@ -169,3 +137,40 @@ Now that we have our desired geomarkers, we can remove the addresses and coordin
 | 112 | 1453.0 | 548.5 | 0 | 0 |
 
 In theory, since this file no longer contains any PHI, it is no longer subject to HIPAA and can be shared with others or used with third party online services. In reality, we are applying the "Safe Harbor" method defined by HIPAA for deidentification, but re-identification is certainly possible when enough geomarkers and non-identifying information are combined together.  Do not take the use of DeGAUSS as a guarantee of deidentification and please consult your institution for more information relating to their specific policies around sharing data.
+
+## A Sample Workflow
+
+> Below is a step-by-step workflow used to estimate the length and proximity of major roadways as well as nearby greenness for a set of addresses.
+>
+> For an animated GIF of these commands, check out the [DeGAUSS homepage](index.html).
+
+1. Start with your addresses in a .csv file, with the complete address in one column called “address”. For this example, that file will be called “sample_addresses.csv”.
+
+![](figs/sample/step1.png){width=40%}
+
+2. Use a DeGAUSS Docker command to geocode the addresses using version 3.0.2 of “degauss/geocoder”. If you have not previously used this version of this image, Docker will first download it, which can take several minutes, depending on the size of the image and internet speeds. Docker will then create and run a container to geocode the addresses.  
+
+```sh
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/geocoder sample_addresses.csv
+```
+
+3.	The results file, called “sample_addresses_geocoded_3.3.0_score_threshold_0.5.csv”, will be written to the same folder where the input CSV file is located. This file is the same as the input CSV file, but with appended columns for matched address components, geocoding score and precision, latitude, longitude, and a categorical geocoding result. See [Interpreting geocoding results](https://degauss.org/using_degauss.html#Interpreting_geocoding_results) for more information on the geocoding results.
+
+![](figs/sample/step3.png)
+
+4.	Now that we have geocoded addresses, we can use DeGAUSS to add a geomarker. In this example we will use the DeGAUSS images for the proximity to major roadways and greenspace, DeGAUSS/roads version 0.1 and DeGAUSS/greenspace version 0.2. The programs can either be run in parallel on the geocoded file or they can be run sequentially, creating one file with both geomarkers. Here, we first added the roadway geomarker and then add greenspace to that result. This is done using the following commands while in the directory of the geocoded .csv file: 
+
+```sh
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads sample_addresses_geocoded_3.3.0_score_threshold_0.5.csv
+```
+
+![](figs/sample/step4a.png)
+```sh
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/greenspace sample_addresses_geocoded_3.3.0_score_threshold_0.5_roads_400m_buffer.csv
+```
+
+![](figs/sample/step4b.png)
+
+5.	These two DeGAUSS containers append new columns to our dataset with their respective geomarkers, while keeping intact our original dataset. Now that we have added our geomarkers, we can remove the addresses to create a geomarker dataset without geographic PHI. 
+
+![](figs/sample/step5.png)
