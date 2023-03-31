@@ -38,6 +38,10 @@ When using Windows PowerShell, by placing the `PWD` inside curly brackets, you a
 
 `docker run --rm -v ${PWD}:/tmp degauss/geocoder:3.0 my_address_file.csv`
 
+**OneDrive:** If you or your institution use OneDrive, your working directory may have a different path than expected. If you have navigated to your Desktop using `cd Desktop` and your file cannot be found, or if you cannot navigate to your Desktop, use the instructions below to check your Desktop path. Alternatively, you could drag and drop your input file into the command prompt to view it's path. After locating your Desktop path, replace `Desktop` in `cd Desktop` with the new path. 
+
+![](figs/check_path.png) 
+
 ## Insufficient Memory
 
 **Problem**
@@ -149,9 +153,7 @@ This error occurs because some Windows platforms cannot support the R code used 
 
 ![](figs/docker_settings_cpu.png)
 
-	
 ## Proxy
-
 
 **Problem**
 
