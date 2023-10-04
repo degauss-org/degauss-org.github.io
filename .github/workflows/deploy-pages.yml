@@ -18,6 +18,7 @@ jobs:
       contents: write
     steps:
       - name: Build site
+        uses: actions/deploy-pages@v2
         run: rmarkdown::render_site(encoding = 'UTF-8')
         shell: Rscript {0}
 
