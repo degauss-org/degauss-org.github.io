@@ -164,7 +164,7 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_dep_index_v0.1_drivetime_1.3.0_cchmc.csv")
+drivetime <- read_csv("example_data/my_address_file_short_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv")
 
 drivetime %>% 
   kable() %>% 
