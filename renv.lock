@@ -25,7 +25,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.6-0",
+      "Version": "1.6-1.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "4ed05e9c9726267e4a5872e09c04587c"

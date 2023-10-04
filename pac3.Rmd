@@ -140,13 +140,13 @@ More information on the [dep_index container](https://degauss.org/dep_index)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.3.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
 ```
 
 Windows (CMD) example call:
 
 ```
-docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
+docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:1.3.0 my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv cchmc
 ```
 
 Replace `my_address_file_geocoded_v3.0.2_dep_index_v0.1.csv` with the name of the CSV file created in Step 4, and replace `cchmc` with the abbrevation for your care center from this list:
@@ -159,7 +159,7 @@ read_csv('example_data/centers.csv') %>%
 ```
 
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_v3.0.2_dep_index_v0.1_drivetime_v1.0_cchmc.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoded_v3.0.2_dep_index_v0.1_drivetime_1.3.0_cchmc.csv`.
 
 Example output:
 
