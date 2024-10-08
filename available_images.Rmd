@@ -1,48 +1,17 @@
 &nbsp;
 
-```{r include = FALSE}
-library(dplyr)
-library(kableExtra)
-
-avail_images_info <- rbind(c("postal", "normalized and parsed addresses"),
-                           c("geocoder", "geocode"),
-                           c("census_block_group", "census block group and tract"),
-                           c("st_census_tract", "spatiotemporal census tract 1970 - 2020"),
-                           c("dep_index", "census tract-level deprivation index"),
-                           c("roads", "proximity and length of major roads"),
-                           c("aadt", "average annual daily traffic"),
-                           c("greenspace", "enhanced vegetation index"),
-                           c("nlcd", "land cover (imperviousness, land use, greenness)"),
-                           c("pm", "daily PM2.5"),
-                           c("narr", "daily weather data (temperature, humidity, etc)"),
-                           c("drivetime", "distance and drive time to care sites"),
-                           c("h3", "h3 hierarchical spatial index	")) %>%
-  as_tibble() %>%
-  setNames(c("degauss_name", "desc"))
-
-images_table <- tibble(image = glue::glue("[`ghcr.io/degauss-org/{avail_images_info$degauss_name}`]",
-                                          "(https://degauss.org/{avail_images_info$degauss_name})"),
-                       description = avail_images_info$desc,
-                       version = glue::glue(
-                         "[![](https://img.shields.io/github/v/release/degauss-org/{avail_images_info$degauss_name}",
-                         "?color=C2326B&label=version&sort=semver)]",
-                         "(https://github.com/degauss-org/{avail_images_info$degauss_name}/releases)"
-                       ))
-```
-
-
-To get started finding the right DeGAUSS image for your project, try using our [menu](http://app.degauss.org/menu/).
-
-```{r echo = FALSE}
-knitr::kable(images_table, 
-             col.names = c("image*", "description", "version**"),
-             align = "lcc") %>%
-  kable_styling(full_width = T) %>%
-  column_spec(3, width = "25%")
-```
-
-**\*** Recent versions of DeGAUSS containers are hosted on the GitHub Container Registry and now require the `ghcr.io` prefix in a [DeGAUSS command](using_degauss.html#DeGAUSS_Commands) to specify this. Older DeGAUSS images were hosted on [Docker Hub](https://hub.docker.com/u/degauss) and many are still available there. 
-
-**\*\*** The badges display the most recent version of each DeGAUSS image. Click the badge to visit the GitHub releases page with notes about changes made in each version. When running a DeGAUSS container image, it is possible to specify an older version by changing the tag at the end of the repo/image name, e.g. `ghcr.io/degauss-org/geocoder:3.0.1`.
-
-
+|image                                   |                   description                    |                            version                            |
+|:----------------------------------------|:------------------------------------------------:|:---------------------------------------------------------------:|
+|[`ghcr.io/degauss-org/postal`](https://degauss.org/postal)|         normalized and parsed addresses          |[![](https://img.shields.io/github/v/release/degauss-org/postal?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/postal/releases)|
+|[`ghcr.io/degauss-org/geocoder`](https://degauss.org/geocoder)|                     geocode                      |[![](https://img.shields.io/github/v/release/degauss-org/geocoder?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/geocoder/releases)|
+|[`ghcr.io/degauss-org/census_block_group`](https://degauss.org/census_block_group)|           census block group and tract           |[![](https://img.shields.io/github/v/release/degauss-org/census_block_group?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/census_block_group/releases)|
+|[`ghcr.io/degauss-org/st_census_tract`](https://degauss.org/st_census_tract)|     spatiotemporal census tract 1970 - 2020      |[![](https://img.shields.io/github/v/release/degauss-org/st_census_tract?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/st_census_tract/releases)|
+|[`ghcr.io/degauss-org/dep_index`](https://degauss.org/dep_index)|       census tract-level deprivation index       |[![](https://img.shields.io/github/v/release/degauss-org/dep_index?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/dep_index/releases)|
+|[`ghcr.io/degauss-org/roads`](https://degauss.org/roads)|       proximity and length of major roads        |[![](https://img.shields.io/github/v/release/degauss-org/roads?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/roads/releases)|
+|[`ghcr.io/degauss-org/aadt`](https://degauss.org/aadt)|           average annual daily traffic           |[![](https://img.shields.io/github/v/release/degauss-org/aadt?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/aadt/releases)|
+|[`ghcr.io/degauss-org/greenspace`](https://degauss.org/greenspace)|            enhanced vegetation index             |[![](https://img.shields.io/github/v/release/degauss-org/greenspace?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/greenspace/releases)|
+|[`ghcr.io/degauss-org/nlcd`](https://degauss.org/nlcd)| land cover (imperviousness, land use, greenness) |[![](https://img.shields.io/github/v/release/degauss-org/nlcd?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/nlcd/releases)|
+|[`ghcr.io/degauss-org/pm`](https://degauss.org/pm)|                   daily PM2.5                    |[![](https://img.shields.io/github/v/release/degauss-org/pm?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/pm/releases)|
+|[`ghcr.io/degauss-org/narr`](https://degauss.org/narr)| daily weather data (temperature, humidity, etc)  |[![](https://img.shields.io/github/v/release/degauss-org/narr?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/narr/releases)|
+|[`ghcr.io/degauss-org/drivetime`](https://degauss.org/drivetime)|      distance and drive time to care sites       |[![](https://img.shields.io/github/v/release/degauss-org/drivetime?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/drivetime/releases)|
+|[`ghcr.io/degauss-org/h3`](https://degauss.org/h3)|          h3 hierarchical spatial index           |[![](https://img.shields.io/github/v/release/degauss-org/h3?color=C2326B&label=version&sort=semver)](https://github.com/degauss-org/h3/releases)|
