@@ -6,33 +6,16 @@ DeGAUSS (**De**centralized **G**eomarker **A**ssessment for M**u**lti-**S**ite *
 
 <img src='figs/degauss_multisite_study-degauss_flow.png'/>
 
+> Brokamp C, Wolfe C, Lingren T, Harley J, Ryan P. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. 
+
 #### Using DeGAUSS
 
 Get started using DeGAUSS with the [Using DeGAUSS](using_degauss.html) guide. Shown below is a run of a [sample workflow](sample_workflow.html) using DeGAUSS to geocode and add measurements of nearby roadways and greenness to a set of example addresses.
+To get started finding the right DeGAUSS image for your project, try using our [menu](http://app.degauss.org/menu/).
 
 <div style = "text-align: center">
 <img src='figs/degauss_example.gif' width = 60% height = auto/>
 </div>
 
-To get started finding the right DeGAUSS image for your project, try using our [menu](http://app.degauss.org/menu/).
 
-If you have any questions or problems, please first see our [troubleshooting](troubleshooting.html) guide and then open an issue within the corresponding [GitHub repository](https://github.com/degauss-org). 
 
-If you have used DeGAUSS, would you mind giving us some [quick feedback](survey.html)?
-
-#### Citation
-
-If you use this software in a scientific publication, please consider citing one of our publications:
-
-- Brokamp C, Wolfe C, Lingren T, Harley J, Ryan P. Decentralized and Reproducible Geocoding and Characterization of Community and Environmental Exposures for Multi-Site Studies. *Journal of American Medical Informatics Association*. 25(3). 309-314. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JAMIA_2017.pdf).
-- Brokamp C. DeGAUSS: Decentralized Geomarker Assessment for Multi-Site Studies. *Journal of Open Source Software*. 2018. [*Download*](https://colebrokamp-website.s3.amazonaws.com/publications/Brokamp_JOSS_2018.pdf).
-
-#### Supported By
-
-- NIH R01LM013222
-- NIH U2COD023375
-- The Harmony Project
-
-#### Trusted By 
-
-<img src='figs/trusted_by.png'/>
