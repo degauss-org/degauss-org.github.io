@@ -4,3 +4,9 @@
 .Ruserdata
 /sheero_cache/
 .DS_Store
+/geocoding_cache/
+/my_address_file.csv
+/my_address_file_geocoder_3.3.0_score_threshold_0.5.csv
+/my_address_file_geocoder_3.3.0_score_threshold_0.5_census_block_group_1.0.0_2010.csv
+/my_address_file_geocoder_3.3.0_score_threshold_0.5_drivetime_1.3.0_cchmc.csv
+/my_address_file_geocoder_3.3.0_score_threshold_0.5_roads_0.2.2_400m_buffer.csv
