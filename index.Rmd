@@ -14,7 +14,7 @@ Get started using DeGAUSS with the [Using DeGAUSS](using_degauss.html) guide. Sh
 To get started finding the right DeGAUSS image for your project, try using our [menu](http://app.degauss.org/menu/).
 
 <div style = "text-align: center">
-<img src='figs/degauss_example.gif' width = 60% height = auto/>
+<img src='degauss_usage_recording.gif' width = 100% height = auto/>
 </div>
 
 
