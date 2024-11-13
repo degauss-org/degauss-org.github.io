@@ -28,5 +28,5 @@ EOF
 
 # tweak times or hide platform warning messages in the .cast file
 
-# convert cast to gif
-# docker run --rm -v "$PWD:/data" asciinema/asciicast2gif degauss_example.cast degauss_example.gif
+# convert cast to gif using online tool: https://dstein64.github.io/gifcast/
+# or use rust: cargo install --git https://github.com/asciinema/agg
