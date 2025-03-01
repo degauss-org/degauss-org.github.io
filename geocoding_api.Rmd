@@ -12,8 +12,16 @@ docker run -it -d --name gs --entrypoint=/bin/bash degauss/geocoder:3.0
 
 Then geocode a specific address string and get the results in JSON:
 
+For DeGAUSS geocoder <=3.1.0:
+
 ```sh
 docker exec gs ruby /root/geocoder/geocode.rb "3333 Burnet Ave Cincinnati OH 45229"
+```
+
+As of DeGAUSS geocoder >= 3.2.0 (the ruby file moved to /app):
+
+```sh
+docker exec gs ruby /app/geocode.rb "3333 Burnet Ave Cincinnati OH 45229"
 ```
 
 After the geocoding process is complete, stop and remove the container:
