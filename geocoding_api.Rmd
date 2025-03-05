@@ -2,23 +2,15 @@
 title: "Using DeGAUSS as a Geocoding API"
 ---
 
-For users wanting more control over the raw geocoding results and address formatting, the geocoding "engine" behind the batch processing in `degauss/geocoder` can be programmatically called one address at a time:
+For users wanting more control over the raw geocoding results and address formatting, the geocoding "engine" behind the batch processing in `ghcr.io/degauss-org/geocoder` can be programmatically called one address at a time:
 
 Start the geocoding container in the background and override its entrypoint:
 
 ```sh
-docker run -it -d --name gs --entrypoint=/bin/bash degauss/geocoder:3.0
+docker run -it -d --name gs --entrypoint=/bin/bash ghcr.io/degauss-org/geocoder:3.4.0
 ```
 
 Then geocode a specific address string and get the results in JSON:
-
-For DeGAUSS geocoder <=3.1.0:
-
-```sh
-docker exec gs ruby /root/geocoder/geocode.rb "3333 Burnet Ave Cincinnati OH 45229"
-```
-
-As of DeGAUSS geocoder >= 3.2.0 (the ruby file moved to /app):
 
 ```sh
 docker exec gs ruby /app/geocode.rb "3333 Burnet Ave Cincinnati OH 45229"
@@ -28,7 +20,14 @@ After the geocoding process is complete, stop and remove the container:
 
 ```sh
 docker stop gs
-docker remove gs
+docker rm gs
 ```
 
 This process can be scripted; for example, in the R package [OfflineGeocodeR](https://github.com/geomarker-io/OfflineGeocodeR).
+
+*Note:* For DeGAUSS geocoder versions <=3.1.0, replace the path to the ruby file (`/app/geocode.rb`) in the `docker exec` command with `/root/geocoder/geocode.rb`.
+
+
+
+
+
