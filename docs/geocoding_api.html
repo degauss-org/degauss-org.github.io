@@ -13,14 +13,14 @@
 
 <title>Using DeGAUSS as a Geocoding API</title>
 
-<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="site_libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-<script src="site_libs/bs3compat-0.7.0/transition.js"></script>
-<script src="site_libs/bs3compat-0.7.0/tabs.js"></script>
-<script src="site_libs/bs3compat-0.7.0/bs3compat.js"></script>
+<script src="site_libs/bs3compat-0.8.0/transition.js"></script>
+<script src="site_libs/bs3compat-0.8.0/tabs.js"></script>
+<script src="site_libs/bs3compat-0.8.0/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -327,23 +327,24 @@ $(document).ready(function () {
 
 <p>For users wanting more control over the raw geocoding results and
 address formatting, the geocoding “engine” behind the batch processing
-in <code>degauss/geocoder</code> can be programmatically called one
-address at a time:</p>
+in <code>ghcr.io/degauss-org/geocoder</code> can be programmatically
+called one address at a time:</p>
 <p>Start the geocoding container in the background and override its
 entrypoint:</p>
-<pre class="sh"><code>docker run -it -d --name gs --entrypoint=/bin/bash degauss/geocoder:3.0</code></pre>
+<pre class="sh"><code>docker run -it -d --name gs --entrypoint=/bin/bash ghcr.io/degauss-org/geocoder:3.4.0</code></pre>
 <p>Then geocode a specific address string and get the results in
 JSON:</p>
-<p>For DeGAUSS geocoder &lt;=3.1.0:</p>
-<pre class="sh"><code>docker exec gs ruby /root/geocoder/geocode.rb &quot;3333 Burnet Ave Cincinnati OH 45229&quot;</code></pre>
-<p>As of DeGAUSS geocoder &gt;= 3.2.0 (the ruby file moved to /app):</p>
 <pre class="sh"><code>docker exec gs ruby /app/geocode.rb &quot;3333 Burnet Ave Cincinnati OH 45229&quot;</code></pre>
 <p>After the geocoding process is complete, stop and remove the
 container:</p>
 <pre class="sh"><code>docker stop gs
-docker remove gs</code></pre>
+docker rm gs</code></pre>
 <p>This process can be scripted; for example, in the R package <a
 href="https://github.com/geomarker-io/OfflineGeocodeR">OfflineGeocodeR</a>.</p>
+<p><em>Note:</em> For DeGAUSS geocoder versions &lt;=3.1.0, replace the
+path to the ruby file (<code>/app/geocode.rb</code>) in the
+<code>docker exec</code> command with
+<code>/root/geocoder/geocode.rb</code>.</p>
 
 
 
