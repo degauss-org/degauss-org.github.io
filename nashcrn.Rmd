@@ -41,8 +41,8 @@ An example input CSV file (called `my_address_file.csv`) might look like:
 ```{r}
 my_adds <- read_csv("example_data/my_address_file_short.csv")
 
-my_adds %>% 
-  kable() %>% 
+my_adds %>%
+  kable() %>%
   kable_styling(full_width = FALSE, bootstrap_options = "striped")
 ```
 
@@ -79,15 +79,17 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-read_csv('example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5.csv') %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
+read_csv(
+  'example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5.csv'
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
   column_spec(
-    3:11, 
+    3:11,
     bold = T,
-    color = "white", 
+    color = "white",
     background = "gray"
-   ) %>% 
+  ) %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -108,10 +110,12 @@ The **output file** is written to the same directory and, in our example, will b
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv") %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(12:19, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1.csv"
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(12:19, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -134,11 +138,13 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv") %>% 
-  select(-.row) %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(20:25, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer.csv"
+) %>%
+  select(-.row) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(20:25, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -159,10 +165,12 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv") %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(26:29, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv"
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(26:29, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -183,10 +191,12 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv") %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(30:32, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv"
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(30:32, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -209,10 +219,12 @@ The **output file** is written to the same directory and in our example, will be
 Example output:
 
 ```{r}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv") %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(33:34, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv"
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(33:34, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -223,22 +235,22 @@ More information on [drive time](https://degauss.org/drivetime)
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.3 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:1.0.1 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
 ```
 
 Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv` with the name of the CSV file created in Step 8 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv`.
-
-**Note that the landcover container will result in mulitple rows per patient, due to multiple years of landcover data.**
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer.csv`.
 
 Example output:
 
 ```{r, eval = F}
-read_csv("example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv") %>% 
-  kable() %>% 
-  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>% 
-  column_spec(35:49, bold = T, color = "white", background = "gray") %>% 
+read_csv(
+  "example_data/my_address_file_short_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer.csv"
+) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, bootstrap_options = "striped") %>%
+  column_spec(35:49, bold = T, color = "white", background = "gray") %>%
   scroll_box(width = "900px", height = "300px")
 ```
 
@@ -255,11 +267,11 @@ Note that any CSV opened in Microsoft Excel will not show leading zeros. If a CS
 macOS example call: 
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.2 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv nash_crn_census_data_2010.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.2 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer.csv nash_crn_census_data_2010.csv
 ```
-Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
+Replace `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer.csv` with the name of the CSV file created in Step 9 and run.
 
-The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.3_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.2.csv`.
+The **output file** is written to the same directory and in our example, will be called `my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer_nash_crn_census_data_2010_census_merger_0.1.2.csv`.
 
 
 # Step 11: Removing PHI
@@ -274,7 +286,6 @@ Before sharing your data, remove the following columns from both the air polluti
 + `lat`
 + `lon`
 + `census_tract_id`
-+ `nlcd_cell`
 
 # Code Summary
 
@@ -286,6 +297,6 @@ docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/roads:0.2.1 my_address_file_g
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer.csv
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0.csv cchmc
 docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/nlcd:0.2.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc.csv
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_0.2.0_400m_buffer.csv nash_crn_census_data_2010.csv
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/census_merger:0.1.0 my_address_file_geocoder_3.2.0_score_threshold_0.5_dep_index_0.2.1_aadt_0.2.0_400m_buffer_roads_0.2.1_400m_buffer_greenspace_0.3.0_drivetime_1.1.0_cchmc_nlcd_1.0.1_400m_buffer.csv nash_crn_census_data_2010.csv
 ```
 
