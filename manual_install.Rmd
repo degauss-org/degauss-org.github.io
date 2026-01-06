@@ -133,7 +133,7 @@ After making the database, it is safe to remove all of the TIGER files
 
 Create ruby metaphones
 
-	sudo bin/rebuild_metaphones /opt/geocoder.db
+	sudo build/rebuild_metaphones /opt/geocoder.db
 
 Construct database indexes
 
