@@ -47,10 +47,20 @@ Download the git repo to the home directory and then compile the SQLite3 extensi
 
 ### TIGER/Line Database
 
-The program relies on a sqlite3 database created from TIGER/Line files that is about 4.6 GB. Download the compiled database based on 2015 TIGER/Line files into the `/opt` directory so it is accessible by all users.
+The current TIGER/Line database file is based on 2021 TIGER/Line data.
 
-	sudo wget https://colebrokamp-dropbox.s3.amazonaws.com/geocoder.db -P /opt
+The program relies on a sqlite3 database created from TIGER/Line files that is about 4.6 GB. This file was previously available for download, but due to the size of the database, is no longer publicly available. In the future, this will likely be publicly available again. In the interim, if you need the db file directly and cannot build it yourself, you can consider extracting it from the geocoder image after pulling from the github container repository (ghcr.io).
 
+If you have the database file stored elsewere and need to build the geocoder, you can use the following instructions.
+
+Download the compiled database based on 2021 TIGER/Line files into the `/opt` directory so it is accessible by all users.
+
+	sudo wget https://<amazon-s3-bucket-name>.s3.amazonaws.com/geocoder.db -P /opt
+
+If hosting on amazon web services and not publicly available, you may have to authenticate to gain access.
+
+	aws login
+	aws s3 sync s3://<bucket-name>/<bucket-path>/geocoder.db /opt
 
 Alternatively, build your own database (see the section below for details).
 
@@ -103,19 +113,21 @@ Although a compiled database created from 2015 TIGER/Line files is available for
 
 #### Download TIGER/Line files
 
+Note only TIGER/Line layers ADDR, EDGES, and FEATNAMES are required for the DeGAUSS database. Change the year to represent the year of TIGER/Line data used.
+
 	mkdir TIGER2015 && cd TIGER2015
-	wget -nd -r -A.zip ftp://ftp2.census.gov/geo/tiger/TIGER2015/ADDR/
-	wget -nd -r -A.zip ftp://ftp2.census.gov/geo/tiger/TIGER2015/FEATNAMES/
-	wget -nd -r -A.zip ftp://ftp2.census.gov/geo/tiger/TIGER2015/EDGES/
+	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/ADDR/
+	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/FEATNAMES/
+	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/EDGES/
 
 If the download fails, rerun with `-c` option to continue where it left off.
 
 #### Unpack each TIGER/Line ZIP into a temp directory and extract/transform/load to build database
-	sudo build/tiger_import /opt/geocoder.db TIGER2015
+	sudo build/tiger_import /opt/geocoder.db TIGER2021
 
 After making the database, it is safe to remove all of the TIGER files
 
-	rm -r TIGER2015
+	rm -r TIGER2021
 
 #### Update database
 
