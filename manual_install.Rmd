@@ -109,13 +109,13 @@ The program will output a progress bar to the terminal.  The output will be merg
 
 ## Building TIGER/Line Database
 
-Although a compiled database created from 2015 TIGER/Line files is available for download, it is possible to create your own database using alternative years for example.
+Although a compiled database created from 2021 TIGER/Line files is available for download, it is possible to create your own database using alternative years for example.
 
 #### Download TIGER/Line files
 
 Note only TIGER/Line layers ADDR, EDGES, and FEATNAMES are required for the DeGAUSS database. Change the year to represent the year of TIGER/Line data used.
 
-	mkdir TIGER2015 && cd TIGER2015
+	mkdir TIGER2021 && cd TIGER2021
 	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/ADDR/
 	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/FEATNAMES/
 	wget -nd -r -A.zip https://www2.census.gov/geo/tiger/TIGER2021/EDGES/
