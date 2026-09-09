@@ -12,6 +12,8 @@ navbar:
       href: using_degauss.html
     - text: "Troubleshooting"
       href: troubleshooting.html
+    - text: "Migrate"
+      href: migrate.html
     - text: "Cohort Guides"
       menu:
         - text: "Sample Workflow"

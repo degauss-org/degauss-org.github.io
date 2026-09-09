@@ -1,0 +1,40 @@
+---
+pagetitle: "Migrate"
+---
+
+## Migrate
+
+DeGAUSS is evolving: we are moving from one separately maintained image per task to the actively developed [`addr`](https://geomarker.io/addr) and [`geomarker`](https://geomarker.io/geomarker) R packages and toolchains.
+
+Existing DeGAUSS images and their versioned tags will remain available for reproducibility; previously published versions of images will not be changed.
+Over time, new maintenance releases for each DeGAUSS image will print a short transition notice when run to direct users to the image-specific section on this page:
+```txt
+NOTICE: This DeGAUSS image is in maintenance mode.
+
+Future development has moved to the addr and geomarker packages and containers.
+The current command will continue to run, but consider migrating for new projects:
+
+https://degauss.org/migrate/geocoder
+```
+
+DeGAUSS images in maintenance mode will remain available for existing and reproducible workflows and may receive critical correctness or security fixes, but will not receive new features or routine method/data updates.
+
+## geocoder {#geocoder}
+
+`addr` was designed to perform geocoding using a method of street-range based interpolation very similarly to DeGAUSS.
+Read more details about the geocoding procedure and results at: [https://geomarker.io/addr/reference/geocode.html](https://geomarker.io/addr/reference/geocode.html)
+The container designed around addr for this specific workflow ([addr\_geocoder](https://github.com/geomarker-io/addr_geocoder)) also takes an input file (CSV or parquet) with an `address` column, and returns geocoded coordinates and information about match quality and precision.
+
+DeGAUSS command:
+```sh
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/geocoder:3.4.1 my_address_file.csv
+```
+
+equivalent addr command:
+```sh
+docker run --rm -v "$PWD:/tmp" ghcr.io/geomarker-io/addr_geocoder:v2.0.0-taf-v2-2025 \
+  --input /tmp/my_address_file.csv
+```
+
+Geocoding with the addr tools cleans address text by default and parses address components using the [usaddress](https://github.com/datamade/usaddress) library.
+Geocoding with detailed options for cleaning address text, parsing address components, and matching address components are available directly in R using the [`geocode()`](https://geomarker.io/addr/reference/geocode.html) function.
